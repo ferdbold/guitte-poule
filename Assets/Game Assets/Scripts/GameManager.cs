@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     static public GameManager instance;
     public bool isFirst; //TODO :The server chooses a first and second player in the date. THIS DOES NOT CHANGE DURING THE DATE !
 
-    private AudioClip aud;
+    private AudioClip aud = new AudioClip();
     private bool isRecording = false;
     private message testClip;
 
@@ -178,7 +178,6 @@ public class GameManager : MonoBehaviour {
         int cpt=0;
         NetObject subSound = new NetObject("subSound");
         subSound.addInt("", samples.Length);
-        Debug.Log(samples.Length);
 
         for(int i=0; i<samples.Length;i++)
         {
@@ -196,7 +195,6 @@ public class GameManager : MonoBehaviour {
 
     public void PlaySoundFromMessage(message sound)
     {
-        Debug.Log(sound.getNetObject(0).getInt(0));
         AudioSource speaker = GetComponent<AudioSource>();
         float[] samples = new float[sound.getNetObject(0).getInt(0)];
         for (int i = 0; i < sound.getNetObjectCount(); i++)
