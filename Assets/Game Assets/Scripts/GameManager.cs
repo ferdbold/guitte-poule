@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour {
                 loading.GetComponent<LoadingUI>().StartAnim();
                 break;
             case Scenes.Main:
+                Application.LoadLevel("Main");
                 break;
         }
     }
