@@ -31,24 +31,25 @@ public class NetManager : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        messenger.RefreshLoop();
-    }
-
     void Start()
     {
         Application.runInBackground = true;
         messenger.Connect();
         message mes = new message("Validate");
 
+
+
     }
   
     public void HandleMessage(message mes)
     {
+       // Debug.Log(message.id);
         switch (mes.messageText)
         {
-            /*--------------------------------------     -----------------------------------------*/
+            /*--------------------------------------  Movement Update   -----------------------------------------*/
+            case "startMatch":
+                GameManager.instance.Event_OnFindPartner();
+                break;
             case "":
                 
                 break;
