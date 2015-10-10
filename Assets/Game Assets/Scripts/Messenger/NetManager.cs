@@ -14,6 +14,7 @@ public class NetManager : MonoBehaviour
 {
     private Messenger messenger;
 
+   
     static public NetManager instance;
 
     void Awake()
@@ -42,9 +43,9 @@ public class NetManager : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
-        #if !UNITY_EDITOR
+        //#if !UNITY_EDITOR
         messenger.Connect();
-        #endif
+        //#endif
         message mes = new message("Validate");
 
     }
@@ -122,6 +123,10 @@ public class NetManager : MonoBehaviour
         }
         return new TendresseData(points);;
     }
+
+   
+
+
 
 
     /*---------------------------------------------------------------------------------*
