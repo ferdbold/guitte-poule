@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour {
 
     public void startRecord()
     {
-        aud = Microphone.Start("", false, 3, 11025);
+        aud = Microphone.Start("", false, 3, 16538);
         isRecording = true;
     }
 
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour {
 
         for(int i=0; i<samples.Length;i++)
         {
-            if (cpt == 100)
+            if (cpt == 250)
             {
                 sound.addNetObject(subSound);
                 subSound = new NetObject("subSound");
@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour {
             NetObject subSound= sound.getNetObject(i);
             for (int j = 0; j < subSound.getFloatCount(); j++)
             {
-                samples[(i * 100) + j] = subSound.getFloat(j);
+                samples[(i * 250) + j] = subSound.getFloat(j);
             }
         }
         speaker.clip = aud;
