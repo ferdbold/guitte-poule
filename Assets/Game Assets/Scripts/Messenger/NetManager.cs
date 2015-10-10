@@ -65,8 +65,11 @@ public class NetManager : MonoBehaviour
                 GameManager.instance.Event_OnFindPartner(mes.getNetObject(0).getBool(0));
                 break;
             case "receiveImage":
-                Debug.Log("receiveImage");
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
+                break;
+
+            case "receiveSound":
+                GameManager.instance.PlaySoundFromMessage(mes);
                 break;
             case "startDate":
                 DateManager.instance.OnStartNewDate(mes.getNetObject(0).getString(0),

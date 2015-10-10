@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
         }
         if (Input.GetKeyDown("v"))
         {
-            PlaySoundFromMessage(testClip);
+            NetManager.instance.SendMessage(testClip);
         }
     }
     
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour {
 
     public message MakeMessageFromClip()
     { 
-        message sound = new message("sound");
+        message sound = new message("sendSound");
 
         AudioSource speaker = GetComponent<AudioSource>();
         speaker.clip = aud;
