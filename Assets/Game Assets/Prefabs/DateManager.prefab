@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681f2b5822816a4581711658b30ed58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDateEvent: 0
   DrawingObjectPrefab: {fileID: 164996, guid: 1721a9c2fb4925541aaf5f73be084096, type: 2}
   mainTouchDraw: {fileID: 0}
 --- !u!1001 &100100000

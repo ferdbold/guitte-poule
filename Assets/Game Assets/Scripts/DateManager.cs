@@ -2,16 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using Tendresse.Data;
+using Tendresse.Date;
+
+
+namespace Tendresse.Date {
+    public struct DateEvent {
+        string question;
+        string answer;
+        TendresseData image;
+
+        DateEvent(TendresseData TD, string q, string a) {
+            image = TD;
+            question = q;
+            answer = a;
+        }
+    }
+
+    
+}
+
+
+
 
 public class DateManager : MonoBehaviour {
 
     static public DateManager instance;
 
-    public GameObject DrawingObjectPrefab;
+    [Header("Date Management")]
+    public List<DateEvent> DateEvents; //List of date events to execute
+    public int currentDateEvent = 0; //Current Date event
 
-    [SerializeField]
-    private TouchDraw mainTouchDraw;
-    private List<TouchDraw> tempDrawingList = new List<TouchDraw>();
+    [Header("Draw Zones")]
+    public GameObject DrawingObjectPrefab;
+    public TouchDraw mainTouchDraw; //Main space to draw. This is where the player draws.
+    private List<TouchDraw> tempDrawingList = new List<TouchDraw>(); //Temporary image shown, used to show drawings but not to draw !
 
     void Awake() {
         if (instance == null) {
@@ -43,6 +67,7 @@ public class DateManager : MonoBehaviour {
     public void DrawTempImageAt(TendresseData tData, Vector3 imagePosition, float imageScale) {
         GameObject go = (GameObject)Instantiate(DrawingObjectPrefab, imagePosition, Quaternion.identity);
         TouchDraw touchDraw = go.GetComponent<TouchDraw>();
+        touchDraw.canDraw = false; //Cant draw in temporaty touch  <--- Yes, there is a typo, too lazy to fix. Yes Am Tired. KthxBye.
         touchDraw.LoadTendresseData(tData, imagePosition, imageScale);
 
         tempDrawingList.Add(touchDraw);
@@ -81,4 +106,13 @@ public class DateManager : MonoBehaviour {
 
         }
     }
+
+    /////////////////////////////////////////////// Date Management ///////////////////////////////
+    /// <summary>
+    /// Player has clicked the submit button.
+    /// </summary>
+    public void OnConfirmEntry() {
+        Debug.Log("TODO : Confirm Entry");
+    }
+
 }

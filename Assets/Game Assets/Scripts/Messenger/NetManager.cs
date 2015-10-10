@@ -15,7 +15,6 @@ public class NetManager : MonoBehaviour
     private Messenger messenger = new Messenger();
 
 
-
     private static NetManager self;
     public static NetManager instance
     {
@@ -37,8 +36,6 @@ public class NetManager : MonoBehaviour
         Application.runInBackground = true;
         messenger.Connect();
         message mes = new message("Validate");
-
-
 
     }
 
