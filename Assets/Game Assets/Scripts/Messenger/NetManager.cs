@@ -42,7 +42,9 @@ public class NetManager : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
+        #if !UNITY_EDITOR
         messenger.Connect();
+        #endif
         message mes = new message("Validate");
 
     }
