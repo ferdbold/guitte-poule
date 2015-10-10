@@ -1,14 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Tendresse.Data;
+
+
+namespace Tendresse.Data {
+    [SerializeField]
+    public struct TendresseData  {
+        public List<List<Vector3>> pointList;
+    }
+};
 
 public class TouchDraw : MonoBehaviour {
 
+    public bool canDraw = true;
+
+    [Header("LineRenderer Properties")]
     public Material lineRenderMaterial;
     public Color lineRenderColorStart;
     public Color lineRenderColorEnd;
     public Vector2 LineSizes;
     public LayerMask DrawZoneLayer;
+
+    private TendresseData testData;
 
     [SerializeField] private List<LineRenderer> lineRenderers;
     [SerializeField] private List<List<Vector3>> pointList;
@@ -25,14 +39,14 @@ public class TouchDraw : MonoBehaviour {
     /// Upates the array of points to be draw
     /// </summary>
     void Update() {
-        /*
-        if (pointList != null) {
-            lineRenderer.SetVertexCount(pointList.Count);
-            for (var i = 0; i < pointList.Count; i++) {
-                lineRenderer.SetPosition(i, pointList[i]);
-            }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            testData = SaveCurrentData();
+            WipeDrawData();
         }
-        */
+        if (Input.GetKeyDown(KeyCode.L)) {
+            LoadTendresseData(testData, new Vector3(0,1,0), 0.25f);
+        }
+
 
         if (Input.touchCount > 0) {
             if (Input.touches[0].phase == TouchPhase.Began) {
@@ -44,9 +58,19 @@ public class TouchDraw : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Creates a new line renderer and set up points to draw in it
+    /// </summary>
     void CreateNewLine() {
         currentLine++;
         //setup new LineRenderer
+        lineRenderers.Add(CreateNewLineRendererObject());
+        pointList.Add(new List<Vector3>());
+
+    }
+
+    //Create new line renderer object
+    private LineRenderer CreateNewLineRendererObject() {
         GameObject newGO = new GameObject("LineRenderer Object");
         newGO.transform.parent = transform;
         LineRenderer newLR = newGO.gameObject.AddComponent<LineRenderer>(); ;
@@ -54,9 +78,8 @@ public class TouchDraw : MonoBehaviour {
         newLR.material = lineRenderMaterial;
         newLR.SetWidth(LineSizes.x, LineSizes.y);
         newLR.SetColors(lineRenderColorStart, lineRenderColorEnd);
-        lineRenderers.Add(newLR);
-        pointList.Add(new List<Vector3>());
 
+        return newLR;
     }
 
     /// <summary>
@@ -73,14 +96,51 @@ public class TouchDraw : MonoBehaviour {
             if(Physics.Raycast(newPos,new Vector3(0,0,100),out hit, DrawZoneLayer)) {
                 newPos += new Vector3(0, 0, 9);
 
-
                 pointList[currentLine].Add(newPos);
 
                 lineRenderers[currentLine].SetVertexCount(pointList[currentLine].Count);
                 lineRenderers[currentLine].SetPosition(pointList[currentLine].Count - 1, newPos);
-            }
-
-           
+            } 
         }
+        
+    }
+
+    /// <summary>
+    /// Saves current Draw data into a Tendresse Data
+    /// </summary>
+    /// <returns></returns>
+    public TendresseData SaveCurrentData() {
+        TendresseData TData = new TendresseData();
+        TData.pointList = pointList;
+
+        return TData;
+    }
+
+    public void LoadTendresseData(TendresseData TData, Vector3 translation, float scale) {
+        WipeDrawData();
+        pointList = TData.pointList;
+        lineRenderers = new List<LineRenderer>();
+
+        for (int i=0; i < pointList.Count; i++) {
+            lineRenderers.Add(CreateNewLineRendererObject());
+            lineRenderers[i].SetWidth(LineSizes.x*scale, LineSizes.y*scale);
+            lineRenderers[i].SetVertexCount(TData.pointList[i].Count);
+            for (int j = 0; j < TData.pointList[i].Count; j++) {
+                lineRenderers[i].SetPosition(j, (TData.pointList[i][j] + translation) * scale);
+            }
+        } 
+
+    }
+
+
+    public void WipeDrawData() {
+
+        foreach(LineRenderer lr in lineRenderers) {
+            Destroy(lr);
+        }
+
+        currentLine = -1;
+        lineRenderers = new List<LineRenderer>();
+        pointList = new List<List<Vector3>>();
     }
 }
