@@ -3,11 +3,13 @@ using System.Collections;
 
 public class MainMenuUI : MonoBehaviour {
 
-//-----------------------------------------------------------------------------------------------------------------------
-////////////////////////////////////////////////   ON CLICK   ///////////////////////////////////////////////////////////
+    [SerializeField]
+    private GameObject[] cloudRings;
 
     public void OnClick_StartGame() {
         GameManager.instance.SwitchScene(GameManager.Scenes.LoadingGame);
+        foreach(GameObject ring in cloudRings) {
+            ring.SetActive(false);
+        }
     }
-	
 }

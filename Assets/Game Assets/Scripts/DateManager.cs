@@ -30,6 +30,9 @@ namespace Tendresse.Date {
         public string answer; //Stored answer written for the question
         public TendresseData image; //Store image drawn for the question
 
+        public void SetAnswer(string var) { answer = var; }
+        public void SetImage(TendresseData var) { image = var; }
+
         public DateEvent(string q) {
             question = q;
             answer = "";
@@ -141,14 +144,30 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewDate(string theme, string intro, int id, int relationLevel) {
         Dates.Add(new DateStructure(theme, intro, id, relationLevel));
         _currentDate++;
+        _currentDateEvent = -1;
         GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginDate();
         SendMessage_OnConfirm();
     }
 
+    /// <summary>
+    /// Make new Event and starts it
+    /// </summary>
+    /// <param name="eventText"></param>
     public void OnStartNewEvent(string eventText) {
         Dates[_currentDate].DateEvents.Add(new DateEvent(eventText));
         _currentDateEvent++;
+        _currentStepInDate = 0;
+        ExecuteDateEvent_DrawPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
         GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginEvent();
+    }
+
+    /// <summary>
+    /// If the client is drawing and has finished, send the image to the server
+    /// </summary>
+    public void OnImageCompleted() {
+        if (IAmFirst()) {
+            GameManager.instance.Event_OnSendImage(mainTouchDraw.SaveCurrentData());
+        }
     }
 
     /// <summary>
@@ -156,25 +175,24 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     public void OnConfirmEntry() {
         if (_currentStepInDate == 0 && _canUseConfirmButton) { //If first player presses confirm when he draws, start text phase
-            ExecuteDateEvent_TextPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
+            ExecuteDateEvent_TextPhase();
         } else if (_currentStepInDate == 1 && _canUseConfirmButton) { //If second player presses confirm when he writes, start end phase
             ExecuteDateEvent_EndPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
         }
     }
 
-    /// <summary>
+    /*/// <summary>
     /// Execute a complete Date Event
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent() {
         if (_currentDateEvent < Dates[_currentDate].DateEvents.Count) { //If there is still events to do in list
             Debug.Log("Executing Date Event ");
-            _currentStepInDate = 0;
-            ExecuteDateEvent_DrawPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
+            
         } else {
             Debug.Log("Executed last date event in list. Date over.");
         }
-    }
+    }*/
 
     /// <summary>
     /// Start the draw phase of the event. First player draws while second player wait.
@@ -190,7 +208,8 @@ public class DateManager : MonoBehaviour {
     /// Starts the Text Phase of the Event where the second player write about the drawing while the first player waits.
     /// </summary>
     /// <param name="dateEvent"></param>
-    private void ExecuteDateEvent_TextPhase(DateEvent dateEvent) {
+    public void ExecuteDateEvent_TextPhase() {
+        Debug.Log("TextPhase");
         MainPageDisplay mainPage = GameObject.Find("UI").GetComponent<MainPageDisplay>();
         mainPage.Event_OnPartnerFinishDrawing();
         mainPage.confirmButton.SetActive(!IAmFirst());
