@@ -8,6 +8,10 @@ namespace Tendresse.Data {
     [SerializeField]
     public struct TendresseData  {
         public List<List<Vector3>> pointList;
+        public TendresseData(List<List<Vector3>> points)
+        {
+            pointList = points;
+        }
     }
 };
 
@@ -22,7 +26,7 @@ public class TouchDraw : MonoBehaviour {
     public Vector2 LineSizes;
     public LayerMask DrawZoneLayer;
 
-    private TendresseData testData;
+
 
     [SerializeField] private List<LineRenderer> lineRenderers;
     [SerializeField] private List<List<Vector3>> pointList;
