@@ -16,7 +16,7 @@ public class TiltShakeMotor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         tiltInputs = Input.acceleration;
-        Debug.Log(tiltInputs);
+        //Debug.Log(tiltInputs);
 
         JointMotor2D motor = hingeMotor.motor;
         motor.motorSpeed = (tiltInputs.x * motorForce);
