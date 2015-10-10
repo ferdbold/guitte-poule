@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Message;
+using Tendresse.Data;
 
 public class GameManager : MonoBehaviour {
 
     static public GameManager instance;
+
+    public GameObject DrawingObjectPrefab;
+
+    private TouchDraw mainTouchDraw;
+    private List<TouchDraw> tempDrawingList = new List<TouchDraw>();
 
     void Awake() {
         if (instance == null) {
@@ -97,4 +104,44 @@ public class GameManager : MonoBehaviour {
     public void Event_OnFindPartner() {
         SwitchScene(Scenes.Main);
     }
+
+
+    /////////////////////////// MAKE DRAWINGS ////////////////////////
+
+    /// <summary>
+    /// Draw a temporary drawing into a newly created gameobject
+    /// </summary>
+    /// <param name="tData"></param>
+    /// <param name="imagePosition"></param>
+    /// <param name="imageScale"></param>
+    public void DrawTempImageAt(TendresseData tData, Vector3 imagePosition, float imageScale) {
+        GameObject go = (GameObject)Instantiate(DrawingObjectPrefab, imagePosition, Quaternion.identity);
+        TouchDraw touchDraw = go.GetComponent<TouchDraw>();
+        touchDraw.LoadTendresseData(tData, imagePosition, imageScale);
+
+        tempDrawingList.Add(touchDraw);
+    }
+
+    /// <summary>
+    /// Delete all temporary drawings 
+    /// </summary>
+    public void DeleteTempImage() {
+        for(int i=0; i< tempDrawingList.Count; i++) {
+            Destroy(tempDrawingList[i].gameObject);
+        }
+        tempDrawingList = new List<TouchDraw>();
+    }
+
+    /// <summary>
+    /// Draw into the main image Draw
+    /// </summary>
+    /// <param name="tData"></param>
+    /// <param name="imagePosition"></param>
+    /// <param name="imageScale"></param>
+    public void DrawImageAt(TendresseData tData, Vector3 imagePosition, float imageScale) {
+        if (mainTouchDraw != null) {
+            mainTouchDraw.LoadTendresseData(tData, imagePosition, imageScale);
+        }
+    }
+
 }
