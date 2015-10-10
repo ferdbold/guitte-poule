@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Tendresse.Data;
 using Tendresse.Date;
@@ -145,7 +144,7 @@ public class DateManager : MonoBehaviour {
         Dates.Add(new DateStructure(theme, intro, id, relationLevel));
         _currentDate++;
         _currentDateEvent = -1;
-        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginDate();
+        GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginDate();
         SendMessage_OnConfirm();
     }
 
@@ -158,7 +157,7 @@ public class DateManager : MonoBehaviour {
         _currentDateEvent++;
         _currentStepInDate = 0;
         ExecuteDateEvent_DrawPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
-        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginEvent();
+        GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
 
     /// <summary>
@@ -199,7 +198,7 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_DrawPhase(DateEvent dateEvent) {
-        MainPageDisplay mainPage = GameObject.Find("UI").GetComponent<MainPageDisplay>();
+        HUD mainPage = GameObject.Find("UI").GetComponent<HUD>();
         mainPage.Event_OnPartnerFinishDrawing();
         mainPage.confirmButton.SetActive(IAmFirst());
     }
@@ -210,7 +209,7 @@ public class DateManager : MonoBehaviour {
     /// <param name="dateEvent"></param>
     public void ExecuteDateEvent_TextPhase() {
         Debug.Log("TextPhase");
-        MainPageDisplay mainPage = GameObject.Find("UI").GetComponent<MainPageDisplay>();
+        HUD mainPage = GameObject.Find("UI").GetComponent<HUD>();
         mainPage.Event_OnPartnerFinishDrawing();
         mainPage.confirmButton.SetActive(!IAmFirst());
     }

@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using Tendresse.Date;
 
-public class MainPageDisplay : MonoBehaviour {
+public class HUD : MonoBehaviour {
+
+    [Header("Components")]
+    [SerializeField]
+    private StoryView storyView;
+    [SerializeField]
+    private MessageView messageView;
 
     [Header("Title")]
     public Text dateTitle;
