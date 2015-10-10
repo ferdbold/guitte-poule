@@ -152,7 +152,6 @@ public class Messenger
 
                     byte[] data = ms.ToArray();
                     ms.Dispose();
-                    Debug.Log(data.Length);
                     mesSock.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallBack), null);
 
                 }

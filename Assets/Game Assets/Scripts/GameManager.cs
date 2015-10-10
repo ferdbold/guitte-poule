@@ -191,7 +191,6 @@ public class GameManager : MonoBehaviour {
             subSound.addFloat("", (Mathf.Floor(samples[i]*1000)/1000));
             cpt++;
         }
-        Debug.Log(conversionTools.convertMessageToString(sound));
         return sound;
     }
 
