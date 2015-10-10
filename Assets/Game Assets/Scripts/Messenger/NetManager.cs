@@ -40,6 +40,11 @@ public class NetManager : MonoBehaviour
 
 
     }
+
+    void Update()
+    {
+        messenger.RefreshLoop();
+    }
   
     public void HandleMessage(message mes)
     {

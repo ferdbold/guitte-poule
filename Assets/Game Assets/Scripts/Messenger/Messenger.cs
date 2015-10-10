@@ -25,11 +25,11 @@ public class Messenger
         listener;
 
 
-    private string _ip = "127.0.0.1";
+    private string _ip = "192.168.2.165";
     public string ip { get { return this._ip; } set { this._ip = value; } }
 
     private int
-        s_port = 3000;
+        s_port = 80;
 
 
     private bool
