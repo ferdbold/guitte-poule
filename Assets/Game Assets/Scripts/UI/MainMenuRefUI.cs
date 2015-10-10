@@ -22,11 +22,11 @@ public class MainMenuRefUI : MonoBehaviour {
 
     public void ShowIntroButton() {
         IntroButton.DOFade(1, 1);
-        playButton.GetComponentInChildren<Button>().interactable = true;
+        IntroButton.GetComponentInChildren<Button>().interactable = true;
     }
 
     public void HideIntroButton() {
         IntroButton.DOFade(0, 1);
-        playButton.GetComponentInChildren<Button>().interactable = false;
+        IntroButton.GetComponentInChildren<Button>().interactable = false;
     }
 }
