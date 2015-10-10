@@ -31,6 +31,11 @@ public class NetManager : MonoBehaviour
     }
 
 
+    void Update()
+    {
+        messenger.RefreshLoop();
+    }
+
     void Start()
     {
         Application.runInBackground = true;
@@ -43,10 +48,9 @@ public class NetManager : MonoBehaviour
   
     public void HandleMessage(message mes)
     {
-       // Debug.Log(message.id);
         switch (mes.messageText)
         {
-            /*--------------------------------------  Movement Update   -----------------------------------------*/
+            /*--------------------------------------     -----------------------------------------*/
             case "":
                 
                 break;
