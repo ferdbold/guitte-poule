@@ -57,7 +57,7 @@ public class NetManager : MonoBehaviour
                 GameManager.instance.Event_OnFindPartner();
                 break;
             case "receiveImage":
-                
+                GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
     
             /*----------------------------------------------------------------------------------------------------*/

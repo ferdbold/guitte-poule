@@ -145,4 +145,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void Event_OnSendImage(TendresseData tData) {
+        message mes = NetManager.instance.MakeMessageFromImage(tData);
+        NetManager.instance.SendMessage(mes);
+    }
+
+    public void Event_OnReceiveImage(TendresseData tData) {
+        DrawImageAt(tData, Vector3.zero, 1f);
+    }
+
 }
