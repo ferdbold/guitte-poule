@@ -82,12 +82,22 @@ public class NetManager : MonoBehaviour
         return img;
     }
 
-    /*public TendresseData MakeImageFromMessage(message image)
+    public TendresseData MakeImageFromMessage(message image)
     {
         TendresseData img = new TendresseData();
+        NetObject pointX = image.getNetObject(0);
+        NetObject pointY = image.getNetObject(1);
 
-        //img.pointList.Add
-    }*/
+        for(int i=0; i < pointX.getFloatCount();i+=2)
+        {
+            List<Vector3> line = new List<Vector3>();
+            line.Add(new Vector3(pointX.getFloat(i), pointY.getFloat(i), 0));
+            line.Add(new Vector3(pointX.getFloat(i+1), pointY.getFloat(i+1), 0));
+            img.pointList.Add(line);
+        }
+
+        return img;
+    }
 
 
     /*---------------------------------------------------------------------------------*
