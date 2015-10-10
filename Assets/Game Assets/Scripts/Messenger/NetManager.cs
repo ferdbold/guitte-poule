@@ -56,7 +56,7 @@ public class NetManager : MonoBehaviour
             case "startMatch":
                 GameManager.instance.Event_OnFindPartner();
                 break;
-            case "":
+            case "receiveImage":
                 
                 break;
     
@@ -71,7 +71,7 @@ public class NetManager : MonoBehaviour
 
     public message MakeMessageFromImage(TendresseData image)
     {
-        message img = new message("image");
+        message img = new message("sendImage");
         
         for (int i = 0; i < image.pointList.Count; i++)
         {
