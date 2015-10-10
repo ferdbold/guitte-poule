@@ -51,13 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176ab4353c167b64d9a5bd28b5d1bdc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DrawingObjectPrefab: {fileID: 193086, guid: 29bb55aff7783714e8d6373316be024f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: DrawingObjectPrefab
+      value: 
+      objectReference: {fileID: 193086, guid: 29bb55aff7783714e8d6373316be024f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 164996}

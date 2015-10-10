@@ -39,15 +39,6 @@ public class TouchDraw : MonoBehaviour {
     /// Upates the array of points to be draw
     /// </summary>
     void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            testData = SaveCurrentData();
-            WipeDrawData();
-        }
-        if (Input.GetKeyDown(KeyCode.L)) {
-            LoadTendresseData(testData, new Vector3(0,1,0), 0.25f);
-        }
-
-
         if (Input.touchCount > 0) {
             if (Input.touches[0].phase == TouchPhase.Began) {
                  CreateNewLine();

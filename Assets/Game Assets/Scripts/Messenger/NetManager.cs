@@ -56,7 +56,7 @@ public class NetManager : MonoBehaviour
             case "startMatch":
                 GameManager.instance.Event_OnFindPartner();
                 break;
-            case "":
+            case "receiveImage":
                 
                 break;
     
@@ -71,13 +71,18 @@ public class NetManager : MonoBehaviour
 
     public message MakeMessageFromImage(TendresseData image)
     {
-        message img = new message("image");
-        img.addNetObject(new NetObject("x"));
-        img.addNetObject(new NetObject("y"));
+        message img = new message("sendImage");
+        
         for (int i = 0; i < image.pointList.Count; i++)
         {
-             img.getNetObject(0).addFloat("",image.pointList[i][0].x);
-             img.getNetObject(1).addFloat("",image.pointList[i][0].y);
+            NetObject lineObj = new NetObject("");
+            List<Vector3> line = image.pointList[i];
+            for (int j = 0; j < line.Count; j++)
+            {
+                lineObj.addFloat("", line[j].x);
+                lineObj.addFloat("", line[j].y);
+            }
+            img.addNetObject(lineObj);
         }
         return img;
     }
@@ -85,17 +90,17 @@ public class NetManager : MonoBehaviour
     public TendresseData MakeImageFromMessage(message image)
     {
         TendresseData img = new TendresseData();
-        NetObject pointX = image.getNetObject(0);
-        NetObject pointY = image.getNetObject(1);
 
-        for(int i=0; i < pointX.getFloatCount();i+=2)
+        for (int i = 0; i < image.getNetObjectCount(); i++)
         {
+            NetObject lineObj = image.getNetObject(i);
             List<Vector3> line = new List<Vector3>();
-            line.Add(new Vector3(pointX.getFloat(i), pointY.getFloat(i), 0));
-            line.Add(new Vector3(pointX.getFloat(i+1), pointY.getFloat(i+1), 0));
+            for (int j = 0; j < lineObj.getFloatCount(); j+=2)
+            {
+                line.Add(new Vector3(lineObj.getFloat(j), lineObj.getFloat(j+1), 0));
+            }
             img.pointList.Add(line);
         }
-
         return img;
     }
 
