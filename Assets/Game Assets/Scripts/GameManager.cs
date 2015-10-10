@@ -9,12 +9,6 @@ public class GameManager : MonoBehaviour {
 
     static public GameManager instance;
 
-    public GameObject DrawingObjectPrefab;
-
-    [SerializeField]
-    private TouchDraw mainTouchDraw;
-    private List<TouchDraw> tempDrawingList = new List<TouchDraw>();
-
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -31,9 +25,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void Update() {
-        DebugMethods();
-    }
+
 
 //-----------------------------------------------------------------------------------------------------------------------
 //////////////////////////////////////////////// SWITCH SCENE ///////////////////////////////////////////////////////////
@@ -111,43 +103,7 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    /////////////////////////// MAKE DRAWINGS ////////////////////////
-
-    /// <summary>
-    /// Draw a temporary drawing into a newly created gameobject
-    /// </summary>
-    /// <param name="tData"></param>
-    /// <param name="imagePosition"></param>
-    /// <param name="imageScale"></param>
-    public void DrawTempImageAt(TendresseData tData, Vector3 imagePosition, float imageScale) {
-        GameObject go = (GameObject)Instantiate(DrawingObjectPrefab, imagePosition, Quaternion.identity);
-        TouchDraw touchDraw = go.GetComponent<TouchDraw>();
-        touchDraw.LoadTendresseData(tData, imagePosition, imageScale);
-
-        tempDrawingList.Add(touchDraw);
-    }
-
-    /// <summary>
-    /// Delete all temporary drawings 
-    /// </summary>
-    public void DeleteTempImage() {
-        for(int i=0; i< tempDrawingList.Count; i++) {
-            Destroy(tempDrawingList[i].gameObject);
-        }
-        tempDrawingList = new List<TouchDraw>();
-    }
-
-    /// <summary>
-    /// Draw into the main image Draw
-    /// </summary>
-    /// <param name="tData"></param>
-    /// <param name="imagePosition"></param>
-    /// <param name="imageScale"></param>
-    public void DrawImageAt(TendresseData tData, Vector3 imagePosition, float imageScale) {
-        if (mainTouchDraw != null) {
-            mainTouchDraw.LoadTendresseData(tData, imagePosition, imageScale);
-        }
-    }
+   
 
     public void Event_OnSendImage(TendresseData tData) {
         Debug.Log("Beginning Send Message");
@@ -158,19 +114,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Event_OnReceiveImage(TendresseData tData) {
-        DrawImageAt(tData, Vector3.zero, 1f);
+        DateManager.instance.DrawImageAt(tData, Vector3.zero, 1f);
     }
 
-    private void DebugMethods() {
-        
-
-        if (Input.GetKeyDown(KeyCode.Z)) {
-            if (mainTouchDraw == null) mainTouchDraw = GameObject.FindGameObjectWithTag("MainDrawObject").GetComponent<TouchDraw>();
-            Event_OnSendImage(mainTouchDraw.SaveCurrentData());  
-        }
-        if (Input.GetKeyDown(KeyCode.X)) {
-
-        }
-    }
+    
 
 }
