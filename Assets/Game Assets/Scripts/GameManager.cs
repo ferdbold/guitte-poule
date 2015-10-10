@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
     void OnSceneStartup(Scenes scene) {
         switch (scene) {
             case Scenes.Menu:
-                GameObject.FindWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().mainMenu.DOFade(1, 0.75f);
+                Application.LoadLevel("Menu");
                 break;
             case Scenes.LoadingGame:
                 CanvasGroup loading = GameObject.FindWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().loading;
