@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case Scenes.Main:
                 Application.LoadLevel("Main");
+                //mainTouchDraw.
                 break;
         }
     }
