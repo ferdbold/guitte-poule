@@ -6,6 +6,8 @@ public class TiltShakeMotor : MonoBehaviour {
 
     public HingeJoint2D hingeMotor;
     public float motorForce;
+    public GameObject SeedFallingObject;
+    public GameObject SeedGrowAnimation;
 
     [Header("Animation")]
     public AnimationCurve animCurve;
@@ -54,9 +56,18 @@ public class TiltShakeMotor : MonoBehaviour {
 
     IEnumerator PlantSeedAnimation() {
         GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
-        yield return new WaitForSeconds(3f);
+        yield return (StartCoroutine(DropSeedAndGrowPlant()));
         yield return(StartCoroutine(CucumberAnimation()));
         GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
+    }
+
+    IEnumerator DropSeedAndGrowPlant() {
+        Instantiate(SeedFallingObject, new Vector3(0, 10, 5), Quaternion.identity);
+        yield return new WaitForSeconds(2f);
+        Instantiate(SeedGrowAnimation, new Vector3(0, -5, 5), Quaternion.identity);
+        yield return new WaitForSeconds(5f);
+
+
     }
 
     IEnumerator CucumberAnimation() {
