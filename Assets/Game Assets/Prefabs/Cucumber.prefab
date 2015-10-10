@@ -751,7 +751,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hingeMotor: {fileID: 23342806}
-  motorForce: 35
+  motorForce: 5
+  animCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  targetPosition: -5
+  startPosition: -15
+  animationTime: 2.5
 --- !u!233 &23301644
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -823,7 +831,7 @@ HingeJoint2D:
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: -5}
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
