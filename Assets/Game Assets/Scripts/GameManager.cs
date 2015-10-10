@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown("v"))
         {
             NetManager.instance.SendMessage(testClip);
+            PlaySoundFromMessage(testClip);
         }
     }
     
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour {
 
     public void startRecord()
     {
-        aud = Microphone.Start("", false, 3, 16538);
+        aud = Microphone.Start("", false, 3, 8996);
         isRecording = true;
     }
 
@@ -187,7 +188,7 @@ public class GameManager : MonoBehaviour {
                 subSound = new NetObject("subSound");
                 cpt = 0;
             }
-            subSound.addFloat("", samples[i]);
+            subSound.addFloat("", (Mathf.Floor(samples[i]*1000)/1000));
             cpt++;
         }
         return sound;
