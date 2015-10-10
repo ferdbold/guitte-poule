@@ -17,8 +17,7 @@ namespace Tendresse.Date {
             answer = a;
         }
     }
-
-    
+ 
 }
 
 
@@ -113,6 +112,31 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     public void OnConfirmEntry() {
         Debug.Log("TODO : Confirm Entry");
+    }
+
+    /// <summary>
+    /// Execute a complete Date Event
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    public void ExecuteDateEvent(DateEvent dateEvent) {
+
+    }
+
+
+    /// <summary>
+    /// Returns where you are the first player for this date event.
+    /// Player 1 is first for even numbered events
+    /// Player 2 is first for un-even numbered events
+    /// </summary>
+    /// <returns></returns>
+    public bool IAmFirst() {
+        if (currentDateEvent % 2 == 0) {
+            if (GameManager.instance.isFirst == true) return true;
+            else return false;
+        } else {
+            if (GameManager.instance.isFirst == true) return false;
+            else return true;
+        }
     }
 
 }

@@ -8,6 +8,7 @@ using Tendresse.Data;
 public class GameManager : MonoBehaviour {
 
     static public GameManager instance;
+    public bool isFirst;
 
     void Awake() {
         if (instance == null) {
