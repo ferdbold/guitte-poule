@@ -4,7 +4,6 @@ using Tendresse.Data;
 using Tendresse.Date;
 using Message;
 
-
 namespace Tendresse.Date {
     //Date Structure
     public struct DateStructure {
@@ -41,9 +40,6 @@ namespace Tendresse.Date {
  
 }
 
-
-
-
 public class DateManager : MonoBehaviour {
 
     static public DateManager instance;
@@ -59,6 +55,10 @@ public class DateManager : MonoBehaviour {
     public GameObject DrawingObjectPrefab;
     public TouchDraw mainTouchDraw; //Main space to draw. This is where the player draws.
     private List<TouchDraw> tempDrawingList = new List<TouchDraw>(); //Temporary image shown, used to show drawings but not to draw !
+
+    [Header("Components")]
+    [SerializeField]
+    private HUD HUD;
 
     void Awake() {
         if (instance == null) {
@@ -198,9 +198,8 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_DrawPhase(DateEvent dateEvent) {
-        HUD mainPage = GameObject.Find("UI").GetComponent<HUD>();
-        mainPage.Event_OnPartnerFinishDrawing();
-        mainPage.confirmButton.SetActive(IAmFirst());
+        HUD.Event_OnPartnerFinishDrawing();
+        //mainPage.confirmButton.SetActive(IAmFirst());
     }
 
     /// <summary>
@@ -208,10 +207,8 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     public void ExecuteDateEvent_TextPhase() {
-        Debug.Log("TextPhase");
-        HUD mainPage = GameObject.Find("UI").GetComponent<HUD>();
-        mainPage.Event_OnPartnerFinishDrawing();
-        mainPage.confirmButton.SetActive(!IAmFirst());
+        HUD.Event_OnPartnerFinishDrawing();
+        //mainPage.confirmButton.SetActive(!IAmFirst());
     }
 
 

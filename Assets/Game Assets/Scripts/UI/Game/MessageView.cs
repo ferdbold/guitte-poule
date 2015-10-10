@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Tendresse.Date;
 
 public class MessageView : MonoBehaviour {
 
@@ -9,6 +10,12 @@ public class MessageView : MonoBehaviour {
     private Button titlePanel;
     [SerializeField]
     private Button closeButton;
+    [SerializeField]
+    private Button sendButton;
+    [SerializeField]
+    private Text questionText;
+    [SerializeField]
+    private TouchDraw drawZone;
 
     [Header("Animation")]
     [SerializeField]
@@ -19,6 +26,7 @@ public class MessageView : MonoBehaviour {
     private RectTransform rectTransform;
     private float titlePanelHeight;
     private float pivotY;
+    private float drawZoneY;
 
     public void Awake() {
         this.rectTransform = GetComponent<RectTransform>();
@@ -26,6 +34,7 @@ public class MessageView : MonoBehaviour {
         // Cache default anim values
         this.titlePanelHeight = this.rectTransform.anchoredPosition.y;
         this.pivotY = this.rectTransform.pivot.y;
+        this.drawZoneY = this.drawZone.transform.position.y;
 
         // Set anim settings
         this.slideAnimParams = new TweenParams().SetEase(Ease.InOutCubic);
@@ -38,40 +47,69 @@ public class MessageView : MonoBehaviour {
     }
 
     /// <summary>
+    /// Handle new date events
+    /// </summary>
+    /// <param name="dateEvent">The new date event</param>
+    public void OnNewDateEvent(DateEvent dateEvent) {
+        this.questionText.text = dateEvent.question;
+    }
+
+    /// <summary>
     /// Shows the message view by sliding it up.
     /// </summary>
-    public void SlideUp() {
+    private void SlideUp() {
         this.rectTransform.DOAnchorPos(new Vector2(0, 0), this.slideAnimDuration)
                           .SetAs(this.slideAnimParams);
         DOTween.To(() => this.pivotY, x => this.pivotY = x, 0, this.slideAnimDuration)
                .SetAs(this.slideAnimParams);
+        this.drawZone.transform.DOMoveY(0, this.slideAnimDuration)
+                               .SetAs(this.slideAnimParams);
 
         this.titlePanel.interactable = false;
-        this.DisplayCloseButton();
+        this.ShowTitleButtons();
     }
 
     /// <summary>
     /// Hides the message view by sliding it down.
     /// </summary>
-    public void SlideDown() {
+    private void SlideDown() {
         this.rectTransform.DOAnchorPos(new Vector2(0, this.titlePanelHeight), this.slideAnimDuration)
                           .SetAs(this.slideAnimParams);
         DOTween.To(() => this.pivotY, x => this.pivotY = x, 1, this.slideAnimDuration)
                .SetAs(this.slideAnimParams);
+        this.drawZone.transform.DOMoveY(this.drawZoneY, this.slideAnimDuration)
+                               .SetAs(this.slideAnimParams);
 
         this.titlePanel.interactable = true;
-        this.HideCloseButton();
+        this.HideTitleButtons();
     }
 
-    private void DisplayCloseButton() {
+    private void ShowTitleButtons() {
         this.closeButton.interactable = true;
         this.closeButton.GetComponent<CanvasGroup>().DOFade(1, this.slideAnimDuration)
             .SetAs(this.slideAnimParams);
+
+        this.sendButton.interactable = true;
+        this.sendButton.GetComponent<CanvasGroup>().DOFade(1, this.slideAnimDuration)
+            .SetAs(this.slideAnimParams);
     }
 
-    private void HideCloseButton() {
+    private void HideTitleButtons() {
         this.closeButton.interactable = false;
         this.closeButton.GetComponent<CanvasGroup>().DOFade(0, this.slideAnimDuration)
             .SetAs(this.slideAnimParams);
+
+        this.sendButton.interactable = false;
+        this.sendButton.GetComponent<CanvasGroup>().DOFade(0, this.slideAnimDuration)
+            .SetAs(this.slideAnimParams);
+    }
+
+    public void OnClose() {
+        this.SlideDown();
+    }
+
+    public void OnSend() {
+        this.SlideDown();
+        DateManager.instance.OnConfirmEntry();
     }
 }
