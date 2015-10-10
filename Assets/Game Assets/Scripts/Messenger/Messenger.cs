@@ -75,9 +75,16 @@ public class Messenger
 
     public void Disconnect()
     {
-        if (Sock != null && Sock.Connected)
+        try
         {
-            Sock.Close();
+            if (Sock != null && Sock.Connected)
+            {
+                Sock.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex.Message);
         }
     }
 
@@ -106,7 +113,6 @@ public class Messenger
         {
 
             Sock.EndConnect(AR);
-
             OnConnect();
         }
         catch (Exception ex)

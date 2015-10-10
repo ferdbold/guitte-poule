@@ -84,6 +84,7 @@ public class NetManager : MonoBehaviour
             }
             img.addNetObject(lineObj);
         }
+        Debug.Log(conversionTools.convertMessageToString(img));
         return img;
     }
 
