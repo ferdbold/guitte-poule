@@ -147,6 +147,7 @@ public class DateManager : MonoBehaviour {
 
     public void OnStartNewEvent(string eventText) {
         Dates[_currentDate].DateEvents.Add(new DateEvent(eventText));
+        _currentDateEvent++;
         GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginEvent();
     }
 

@@ -42,9 +42,9 @@ public class NetManager : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
-        //#if !UNITY_EDITOR
+        #if !UNITY_EDITOR
         messenger.Connect();
-        //#endif
+        #endif
         message mes = new message("Validate");
 
     }
@@ -56,7 +56,7 @@ public class NetManager : MonoBehaviour
   
     public void HandleMessage(message mes)
     {
-       // Debug.Log(message.id);
+        Debug.Log(mes.messageText);
         switch (mes.messageText)
         {
             /*--------------------------------------  Movement Update   -----------------------------------------*/
@@ -74,6 +74,7 @@ public class NetManager : MonoBehaviour
                                                     mes.getNetObject(0).getInt(2));
                 break;
             case "startEvent":
+                
                 DateManager.instance.OnStartNewEvent(mes.getNetObject(0).getString(0));
                 break;
             case "endDate":
