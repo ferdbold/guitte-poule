@@ -8,6 +8,7 @@ using Message;
 using System.Security.Cryptography;
 using System.Text;
 using System.Timers;
+using Tendresse.Data;
 
 public class NetManager : MonoBehaviour
 {
@@ -66,6 +67,27 @@ public class NetManager : MonoBehaviour
                 break;
         }
     }
+
+
+    public message MakeMessageFromImage(TendresseData image)
+    {
+        message img = new message("image");
+        img.addNetObject(new NetObject("x"));
+        img.addNetObject(new NetObject("y"));
+        for (int i = 0; i < image.pointList.Count; i++)
+        {
+             img.getNetObject(0).addFloat("",image.pointList[i][0].x);
+             img.getNetObject(1).addFloat("",image.pointList[i][0].y);
+        }
+        return img;
+    }
+
+    /*public TendresseData MakeImageFromMessage(message image)
+    {
+        TendresseData img = new TendresseData();
+
+        //img.pointList.Add
+    }*/
 
 
     /*---------------------------------------------------------------------------------*
