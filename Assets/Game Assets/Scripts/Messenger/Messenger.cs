@@ -142,15 +142,17 @@ public class Messenger
                 try
                 {
                     MemoryStream ms = new MemoryStream();
-
+                    
                     byte[] _buffer = conversionTools.convertMessageToBytes(mes);
                     byte[] lenght = BitConverter.GetBytes(_buffer.Length);
                     ms.Write(lenght, 0, lenght.Length);
                     ms.Write(_buffer, 0, _buffer.Length);
+                    
                     ms.Close();
 
                     byte[] data = ms.ToArray();
                     ms.Dispose();
+                    Debug.Log(data.Length);
                     mesSock.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallBack), null);
 
                 }
