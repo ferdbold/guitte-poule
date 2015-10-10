@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject DrawingObjectPrefab;
 
+    [SerializeField]
     private TouchDraw mainTouchDraw;
     private List<TouchDraw> tempDrawingList = new List<TouchDraw>();
 
@@ -95,7 +96,6 @@ public class GameManager : MonoBehaviour {
                 break;
             case Scenes.Main:
                 Application.LoadLevel("Main");
-                mainTouchDraw = GameObject.FindGameObjectWithTag("MainDrawObject").GetComponent<TouchDraw>();
                 break;
         }
     }
@@ -150,8 +150,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Event_OnSendImage(TendresseData tData) {
+        Debug.Log("Beginning Send Message");
         message mes = NetManager.instance.MakeMessageFromImage(tData);
+        Debug.Log("Created Message" + conversionTools.convertMessageToString(mes));
         NetManager.instance.SendMessage(mes);
+        Debug.Log("Sent Message");
     }
 
     public void Event_OnReceiveImage(TendresseData tData) {
@@ -159,8 +162,11 @@ public class GameManager : MonoBehaviour {
     }
 
     private void DebugMethods() {
+        
+
         if (Input.GetKeyDown(KeyCode.Z)) {
-            Event_OnSendImage(mainTouchDraw.SaveCurrentData());
+            if (mainTouchDraw == null) mainTouchDraw = GameObject.FindGameObjectWithTag("MainDrawObject").GetComponent<TouchDraw>();
+            Event_OnSendImage(mainTouchDraw.SaveCurrentData());  
         }
         if (Input.GetKeyDown(KeyCode.X)) {
 
