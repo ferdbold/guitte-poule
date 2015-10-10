@@ -12,12 +12,14 @@ namespace Tendresse.Date {
         public string theme;
         public string intro;
         public int ID;
+        public int relationLevel;
         public List<DateEvent> DateEvents;
 
-        public DateStructure(string t, string i, int id) {
+        public DateStructure(string t, string i, int id, int rl) {
             theme = t;
             intro = i;
-            ID = id; 
+            ID = id;
+            relationLevel = rl;
             DateEvents = new List<DateEvent>();
         }
     }
@@ -28,10 +30,10 @@ namespace Tendresse.Date {
         public string answer; //Stored answer written for the question
         public TendresseData image; //Store image drawn for the question
 
-        public DateEvent(TendresseData TD, string q, string a) {
-            image = TD;
+        public DateEvent(string q) {
             question = q;
-            answer = a;
+            answer = "";
+            image = new TendresseData();
         }
     }
  
@@ -136,10 +138,15 @@ public class DateManager : MonoBehaviour {
     /// <param name="theme"></param>
     /// <param name="intro"></param>
     /// <param name="id"></param>
-    public void OnStartNewDate(string theme, string intro, int id) {
-        Dates.Add(new DateStructure(theme, intro, id));
+    public void OnStartNewDate(string theme, string intro, int id, int relationLevel) {
+        Dates.Add(new DateStructure(theme, intro, id, relationLevel));
         _currentDate++;
-        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_StartIntro();
+        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginDate();
+    }
+
+    public void OnStartNewEvent(string eventText) {
+        Dates[_currentDate].DateEvents.Add(new DateEvent(eventText));
+        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_OnBeginEvent();
     }
 
     /// <summary>
@@ -193,7 +200,7 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_EndPhase(DateEvent dateEvent) {
-        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_StartRecap();
+
     }
 
     /// <summary>

@@ -8,10 +8,6 @@ public class MainPageDisplay : MonoBehaviour {
     [Header("Title")]
     public Text dateTitle;
 
-    [Header("Intro")]
-    public GameObject introObject;
-    public Text introductionText;
-
     [Header("Date")]
     public GameObject dateObject;
     public Text TextToFill; //The part of text that has a blank space
@@ -20,42 +16,29 @@ public class MainPageDisplay : MonoBehaviour {
     public InputField inputField;
     public GameObject confirmButton;
 
-    [Header("Recap")]
-    public GameObject recapObject;
+    /// <summary>
+    /// Called the date begins
+    /// </summary>
+    public void Event_OnBeginDate() {
+        DateStructure date = DateManager.instance.GetCurrentDate();
 
-    public void Event_StartIntro() {
-        dateObject.SetActive(false);
-        recapObject.SetActive(false);
-        introObject.SetActive(true);
-
-        DateManager dateManager = DateManager.instance;
-        dateTitle.text = dateManager.GetCurrentDate().theme;
-        introductionText.text = dateManager.GetCurrentDate().intro;
+        dateTitle.text = "Date " + date.relationLevel + " : " + date.theme;
+        TextToFill.text = date.intro;
     }
 
-    public void Event_NewEvent() {
-        dateObject.SetActive(true);
-        introObject.SetActive(false);
-        recapObject.SetActive(false);
+    /// <summary>
+    /// Called when a new event is started
+    /// </summary>
+    public void Event_OnBeginEvent() {
 
         DateManager dateManager = DateManager.instance;
 
         //Title and Question
-        introductionText.text = dateManager.GetCurrentEvent().question;
-        inputField.gameObject.SetActive(false);
-
-        //Draws
-        if (dateManager.IAmFirst()) { 
-            drawBlock.SetActive(false);
-            return;
-        }
-
-        //Else writes answer 
-        drawBlock.SetActive(true);
+        TextToFill.text = " \n" + dateManager.GetCurrentEvent().question;
     }
 
     /// <summary>
-    /// Event when the players drawing finishes and gives his turn to the next player
+    /// Called when your partner end his drawing
     /// </summary>
     public void Event_OnPartnerFinishDrawing() {
         if (!DateManager.instance.IAmFirst()) {
@@ -64,18 +47,18 @@ public class MainPageDisplay : MonoBehaviour {
         }
     }
 
-    public void Event_StartRecap() {
-        dateObject.SetActive(false);
-        introObject.SetActive(false);
-        recapObject.SetActive(true);
-    }
-
 //------------------------------------------------------------------------------------------------------------------------------------
 
-    public void OnClick_FindLove() {
+    /// <summary>
+    /// On Click when the player confirms his choice
+    /// </summary>
+    public void OnClick_Confirm() {
         DateManager.instance.SendMessage_OnConfirm();
     }
 
+    /// <summary>
+    /// On Click when the player runs from the date
+    /// </summary>
     public void OnClick_Run() {
 
     }
