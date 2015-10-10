@@ -47,6 +47,9 @@ public class NetManager : MonoBehaviour
         switch (mes.messageText)
         {
             /*--------------------------------------  Movement Update   -----------------------------------------*/
+            case "startMatch":
+                GameManager.instance.Event_OnFindPartner();
+                break;
             case "":
                 
                 break;

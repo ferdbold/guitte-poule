@@ -9,7 +9,6 @@ public class LoadingUI : MonoBehaviour {
 
     public void StartAnim() {
         StartCoroutine(LoadingIndicatorAnim());
-        StartCoroutine(TestLoad());
     }
 
     IEnumerator LoadingIndicatorAnim() {
@@ -19,10 +18,5 @@ public class LoadingUI : MonoBehaviour {
             loadingText.CrossFadeAlpha(1, timedInterval, false);
             yield return new WaitForSeconds(timedInterval);
         }
-    }
-
-    IEnumerator TestLoad() {
-        yield return new WaitForSeconds(4);
-        GameManager.instance.SwitchScene(GameManager.Scenes.Main);
     }
 }
