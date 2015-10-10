@@ -94,8 +94,7 @@ public class NetManager : MonoBehaviour
 
     public TendresseData MakeImageFromMessage(message image)
     {
-        TendresseData img = new TendresseData();
-
+        List<List<Vector3>> points = new List<List<Vector3>>();
         for (int i = 0; i < image.getNetObjectCount(); i++)
         {
             NetObject lineObj = image.getNetObject(i);
@@ -104,9 +103,9 @@ public class NetManager : MonoBehaviour
             {
                 line.Add(new Vector3(lineObj.getFloat(j), lineObj.getFloat(j+1), 0));
             }
-            img.pointList.Add(line);
+            points.Add(line);
         }
-        return img;
+        return new TendresseData(points);;
     }
 
 
