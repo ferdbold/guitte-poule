@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case Scenes.Main:
                 Application.LoadLevel("Main");
-                //mainTouchDraw.
+                mainTouchDraw = GameObject.FindGameObjectWithTag("MainDrawObject").GetComponent<TouchDraw>();
                 break;
         }
     }
