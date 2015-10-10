@@ -14,6 +14,7 @@ public class NetManager : MonoBehaviour
 {
     private Messenger messenger;
 
+   
     static public NetManager instance;
 
     void Awake()
@@ -42,9 +43,9 @@ public class NetManager : MonoBehaviour
     void Start()
     {
         Application.runInBackground = true;
-        #if !UNITY_EDITOR
+        //#if !UNITY_EDITOR
         messenger.Connect();
-        #endif
+        //#endif
         message mes = new message("Validate");
 
     }
@@ -64,8 +65,11 @@ public class NetManager : MonoBehaviour
                 GameManager.instance.Event_OnFindPartner(mes.getNetObject(0).getBool(0));
                 break;
             case "receiveImage":
-                Debug.Log("receiveImage");
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
+                break;
+
+            case "receiveSound":
+                GameManager.instance.PlaySoundFromMessage(mes);
                 break;
             case "startDate":
                 DateManager.instance.OnStartNewDate(mes.getNetObject(0).getString(0),
@@ -122,6 +126,10 @@ public class NetManager : MonoBehaviour
         }
         return new TendresseData(points);;
     }
+
+   
+
+
 
 
     /*---------------------------------------------------------------------------------*

@@ -9,15 +9,11 @@ using System.Text;
 using System.Timers;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 
 public class Messenger
 {
-
-    private Timer t;
-
-
-
     private Socket
         Sock;
 
@@ -134,33 +130,48 @@ public class Messenger
         SendMessage(new message("Validate"));
     }
 
-    public void SendMessage(message message)
+    public void SendMessage(message mes)
     {
-
-        Socket mesSock = Sock;
-        
-        if (ConnectedToServer)
+        try
         {
+            Socket mesSock = Sock;
 
-            try
-            {  
-                MemoryStream ms = new MemoryStream();
-                byte[] _buffer = conversionTools.convertMessageToBytes(message);
-                byte[] lenght = BitConverter.GetBytes(_buffer.Length);
-                ms.Write(lenght, 0, lenght.Length);
-                ms.Write(_buffer, 0, _buffer.Length);
-                ms.Close();
+            if (ConnectedToServer)
+            {
 
-                byte[] data = ms.ToArray();
-                ms.Dispose();
-                mesSock.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallBack), null);
+                try
+                {
+                    MemoryStream ms = new MemoryStream();
 
+                    byte[] _buffer = conversionTools.convertMessageToBytes(mes);
+                    byte[] lenght = BitConverter.GetBytes(_buffer.Length);
+                    ms.Write(lenght, 0, lenght.Length);
+                    ms.Write(_buffer, 0, _buffer.Length);
+                    ms.Close();
+
+                    byte[] data = ms.ToArray();
+                    ms.Dispose();
+                    mesSock.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallBack), null);
+
+                }
+                catch { }
             }
-            catch { }
         }
+        catch (Exception ex)
+        {
+            // log errors
+        }
+
+        
     }
 
-   
+
+
+    public void ThreadSendMessage()
+    {
+        
+    }
+
 
 
     private void SendCallBack(IAsyncResult AR)
