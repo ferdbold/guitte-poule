@@ -242,6 +242,10 @@ Prefab:
       propertyPath: drawZone
       value: 
       objectReference: {fileID: 831246158}
+    - target: {fileID: 170462, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
   m_IsPrefabParent: 0
@@ -626,7 +630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22448838, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 582
       objectReference: {fileID: 0}
     - target: {fileID: 22448838, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
       propertyPath: m_AnchorMin.x
@@ -642,7 +646,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22448838, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22448838, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
       propertyPath: m_Pivot.x
@@ -650,7 +654,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22448838, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
       propertyPath: m_Pivot.y
-      value: .5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
