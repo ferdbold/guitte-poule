@@ -28,6 +28,9 @@ public class MainPageDisplay : MonoBehaviour {
         recapObject.SetActive(false);
         introObject.SetActive(true);
 
+        DateManager dateManager = DateManager.instance;
+        dateTitle.text = dateManager.GetCurrentDate().theme;
+        introductionText.text = dateManager.GetCurrentDate().intro;
     }
 
     public void Event_NewEvent() {

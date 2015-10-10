@@ -7,18 +7,31 @@ using Message;
 
 
 namespace Tendresse.Date {
+    //Date Structure
+    public struct DateStructure {
+        public string theme;
+        public string intro;
+        public int ID;
+        public List<DateEvent> DateEvents;
+
+        public DateStructure(string t, string i, int id) {
+            theme = t;
+            intro = i;
+            ID = id; 
+            DateEvents = new List<DateEvent>();
+        }
+    }
+
     //Date Event
     public struct DateEvent {
-        public string title; //Title of the project
         public string question; //Question to be asked
         public string answer; //Stored answer written for the question
         public TendresseData image; //Store image drawn for the question
 
-        DateEvent(TendresseData TD, string q, string a, string t) {
+        public DateEvent(TendresseData TD, string q, string a) {
             image = TD;
             question = q;
             answer = a;
-            title = t;
         }
     }
  
@@ -32,10 +45,11 @@ public class DateManager : MonoBehaviour {
     static public DateManager instance;
 
     [Header("Date Management")]
-    public List<DateEvent> DateEvents; //List of date events to execute
-    private int _currentDateEvent = 0; //Current Date event
+    public List<DateStructure> Dates = new List<DateStructure>(); //List of date events to execute
+    private int _currentDateEvent = -1; //Current Date event
     private int _currentStepInDate = 0; //Current Step in the event ( 0 = first player draws , 1 = second player writes, 2 = text resolution, then start next )
     private bool _canUseConfirmButton = false;
+    private int _currentDate = -1;
 
     [Header("Draw Zones")]
     public GameObject DrawingObjectPrefab;
@@ -62,7 +76,7 @@ public class DateManager : MonoBehaviour {
     }
 
     /////////////////////////// MAKE DRAWINGS ////////////////////////
-
+    #region Make Drawing
     /// <summary>
     /// Draw a temporary drawing into a newly created gameobject
     /// </summary>
@@ -111,17 +125,31 @@ public class DateManager : MonoBehaviour {
 
         }
     }
+    #endregion
 
     /////////////////////////////////////////////// Date Management ///////////////////////////////
+    #region Date Managment
+
+    /// <summary>
+    /// Make new Date and starts the intro stage of the date
+    /// </summary>
+    /// <param name="theme"></param>
+    /// <param name="intro"></param>
+    /// <param name="id"></param>
+    public void OnStartNewDate(string theme, string intro, int id) {
+        Dates.Add(new DateStructure(theme, intro, id));
+        _currentDate++;
+        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_StartIntro();
+    }
 
     /// <summary>
     /// Player has clicked the submit button.
     /// </summary>
     public void OnConfirmEntry() {
         if (_currentStepInDate == 0 && _canUseConfirmButton) { //If first player presses confirm when he draws, start text phase
-            ExecuteDateEvent_TextPhase(DateEvents[_currentDateEvent]);
+            ExecuteDateEvent_TextPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
         } else if (_currentStepInDate == 1 && _canUseConfirmButton) { //If second player presses confirm when he writes, start end phase
-            ExecuteDateEvent_EndPhase(DateEvents[_currentDateEvent]);
+            ExecuteDateEvent_EndPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
         }
     }
 
@@ -130,10 +158,10 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent() {
-        if (_currentDateEvent < DateEvents.Count) { //If there is still events to do in list
+        if (_currentDateEvent < Dates[_currentDate].DateEvents.Count) { //If there is still events to do in list
             Debug.Log("Executing Date Event ");
             _currentStepInDate = 0;
-            ExecuteDateEvent_DrawPhase(DateEvents[_currentDateEvent]);
+            ExecuteDateEvent_DrawPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
         } else {
             Debug.Log("Executed last date event in list. Date over.");
         }
@@ -189,8 +217,14 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <returns> current event </returns>
     public DateEvent GetCurrentEvent() {
-        return DateEvents[_currentDateEvent];
+        return Dates[_currentDate].DateEvents[_currentDateEvent];
     }
+
+    public DateStructure GetCurrentDate() {
+        return Dates[_currentDate];
+    }
+
+    #endregion
 
     /////////////////////////////////////////////// Send Date Message ///////////////////////////////
 

@@ -66,6 +66,9 @@ public class NetManager : MonoBehaviour
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
             case "startDate":
+                DateManager.instance.OnStartNewDate(mes.getNetObject(0).getString(0),
+                                                    mes.getNetObject(0).getString(1),
+                                                    mes.getNetObject(0).getInt(0));
                 break;
             case "startEvent":
                 break;
