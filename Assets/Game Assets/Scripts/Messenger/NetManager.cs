@@ -59,7 +59,7 @@ public class NetManager : MonoBehaviour
         {
             /*--------------------------------------  Movement Update   -----------------------------------------*/
             case "startMatch":
-                GameManager.instance.Event_OnFindPartner();
+                GameManager.instance.Event_OnFindPartner(mes.getNetObject(0).getBool(0));
                 break;
             case "receiveImage":
                 Debug.Log("receiveImage");
