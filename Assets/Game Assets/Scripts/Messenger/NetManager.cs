@@ -22,6 +22,7 @@ public class NetManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            messenger = new Messenger();
         }
         else
         {
@@ -40,7 +41,6 @@ public class NetManager : MonoBehaviour
 
     void Start()
     {
-        messenger = new Messenger();
         Application.runInBackground = true;
         messenger.Connect();
         message mes = new message("Validate");

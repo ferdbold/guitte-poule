@@ -75,6 +75,7 @@ public class Messenger
 
     public void Disconnect()
     {
+        SendMessage(new message("disconnect"));
         try
         {
             if (Sock != null && Sock.Connected)
