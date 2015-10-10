@@ -3,19 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Tendresse.Data;
 using Tendresse.Date;
+using Message;
 
 
 namespace Tendresse.Date {
     //Date Event
     public struct DateEvent {
-        string question; //Question to be asked
-        string answer; //Stored answer written for the question
-        TendresseData image; //Store image drawn for the question
+        public string title; //Title of the project
+        public string question; //Question to be asked
+        public string answer; //Stored answer written for the question
+        public TendresseData image; //Store image drawn for the question
 
-        DateEvent(TendresseData TD, string q, string a) {
+        DateEvent(TendresseData TD, string q, string a, string t) {
             image = TD;
             question = q;
             answer = a;
+            title = t;
         }
     }
  
@@ -31,7 +34,7 @@ public class DateManager : MonoBehaviour {
     [Header("Date Management")]
     public List<DateEvent> DateEvents; //List of date events to execute
     private int _currentDateEvent = 0; //Current Date event
-    private int _currentStepInDate = 0; //Current Step in the date ( 0 = first player draws , 1 = second player writes, 2 = text resolution, then start next )
+    private int _currentStepInDate = 0; //Current Step in the event ( 0 = first player draws , 1 = second player writes, 2 = text resolution, then start next )
     private bool _canUseConfirmButton = false;
 
     [Header("Draw Zones")]
@@ -110,6 +113,7 @@ public class DateManager : MonoBehaviour {
     }
 
     /////////////////////////////////////////////// Date Management ///////////////////////////////
+
     /// <summary>
     /// Player has clicked the submit button.
     /// </summary>
@@ -140,13 +144,9 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_DrawPhase(DateEvent dateEvent) {
-        if (IAmFirst()) {
-            //TODO : Show Draw box
-            _canUseConfirmButton = true;
-        } else {
-            //TODO : Wait for Other Player Draw Phase
-            _canUseConfirmButton = false;
-        }
+        MainPageDisplay mainPage = GameObject.Find("UI").GetComponent<MainPageDisplay>();
+        mainPage.Event_OnPartnerFinishDrawing();
+        mainPage.confirmButton.SetActive(IAmFirst());
     }
 
     /// <summary>
@@ -154,13 +154,9 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_TextPhase(DateEvent dateEvent) {
-        if (IAmFirst()) {
-            //TODO : Wait for other player Write Phase
-            _canUseConfirmButton = false;
-        } else {
-            //TODO : Show Text Box and Other Player Image
-            _canUseConfirmButton = true;
-        }
+        MainPageDisplay mainPage = GameObject.Find("UI").GetComponent<MainPageDisplay>();
+        mainPage.Event_OnPartnerFinishDrawing();
+        mainPage.confirmButton.SetActive(!IAmFirst());
     }
 
 
@@ -169,11 +165,7 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_EndPhase(DateEvent dateEvent) {
-        if (IAmFirst()) {
-            //TODO : Wait for next event to start ?
-        } else {
-            //TODO : Wait for next event to start ?
-        }
+        GameObject.Find("UI").GetComponent<MainPageDisplay>().Event_StartRecap();
     }
 
     /// <summary>
@@ -190,6 +182,22 @@ public class DateManager : MonoBehaviour {
             if (GameManager.instance.isFirst == true) return false;
             else return true;
         }
+    }
+
+    /// <summary>
+    /// Returns the current event
+    /// </summary>
+    /// <returns> current event </returns>
+    public DateEvent GetCurrentEvent() {
+        return DateEvents[_currentDateEvent];
+    }
+
+    /////////////////////////////////////////////// Send Date Message ///////////////////////////////
+
+    public void SendMessage_OnConfirm() {
+        DateManager.instance.OnConfirmEntry();
+        message messa = new message("dateReady");
+        NetManager.instance.SendMessage(messa);
     }
 
 }

@@ -67,6 +67,13 @@ public class NetManager : MonoBehaviour
                 Debug.Log("receiveImage");
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
+            case "startDate":
+                break;
+            case "startEvent":
+                break;
+            case "endDate":
+                
+                break;
     
             /*----------------------------------------------------------------------------------------------------*/
             default:
