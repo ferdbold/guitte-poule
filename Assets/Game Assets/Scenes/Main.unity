@@ -363,7 +363,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22473112, guid: 02c0441b4d43aac43adc937cc3ab7175, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 22473112, guid: 02c0441b4d43aac43adc937cc3ab7175, type: 2}
       propertyPath: m_AnchorMin.x
@@ -388,10 +388,6 @@ Prefab:
     - target: {fileID: 22473112, guid: 02c0441b4d43aac43adc937cc3ab7175, type: 2}
       propertyPath: m_Pivot.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 146278, guid: 02c0441b4d43aac43adc937cc3ab7175, type: 2}
-      propertyPath: m_Name
-      value: Date Event Widget
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02c0441b4d43aac43adc937cc3ab7175, type: 2}
