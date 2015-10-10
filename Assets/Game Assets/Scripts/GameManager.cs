@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     static public GameManager instance;
     public bool isFirst; //TODO :The server chooses a first and second player in the date. THIS DOES NOT CHANGE DURING THE DATE !
 
+
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -20,16 +21,46 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void Start() {
+        LoadData();
+    }
+
     void OnDestroy() {
         if (instance == this) {
             instance = null;
+            SaveData();
+           
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------
+    //////////////////////////////////////////////// SAVE AND LOAD ///////////////////////////////////////////////////////////
 
 
-//-----------------------------------------------------------------------------------------------------------------------
-//////////////////////////////////////////////// SWITCH SCENE ///////////////////////////////////////////////////////////
+    public void LoadData() {
+        SaveAndLoad.Load();
+        Debug.Log("Length : " + SaveAndLoad.savedGame.lenght);
+    }
+
+    public void SaveData() {
+        SaveAndLoad.Save();
+        Debug.Log("Length : " + SaveAndLoad.savedGame.lenght);
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.P)){
+            SaveAndLoad.DeleteSaves();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O)) {
+            SaveAndLoad.savedGame.lenght++;
+            Debug.Log("Length : " + SaveAndLoad.savedGame.lenght);
+        }
+    }
+    
+
+    //-----------------------------------------------------------------------------------------------------------------------
+    //////////////////////////////////////////////// SWITCH SCENE ///////////////////////////////////////////////////////////
 
     //VARIABLES
     Scenes currentScene;
