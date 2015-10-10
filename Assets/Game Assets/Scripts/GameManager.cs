@@ -30,9 +30,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void Update() {
+        DebugMethods();
+    }
+
 //-----------------------------------------------------------------------------------------------------------------------
 //////////////////////////////////////////////// SWITCH SCENE ///////////////////////////////////////////////////////////
-    
+
     //VARIABLES
     Scenes currentScene;
 
@@ -142,6 +146,24 @@ public class GameManager : MonoBehaviour {
     public void DrawImageAt(TendresseData tData, Vector3 imagePosition, float imageScale) {
         if (mainTouchDraw != null) {
             mainTouchDraw.LoadTendresseData(tData, imagePosition, imageScale);
+        }
+    }
+
+    public void Event_OnSendImage(TendresseData tData) {
+        message mes = NetManager.instance.MakeMessageFromImage(tData);
+        NetManager.instance.SendMessage(mes);
+    }
+
+    public void Event_OnReceiveImage(TendresseData tData) {
+        DrawImageAt(tData, Vector3.zero, 1f);
+    }
+
+    private void DebugMethods() {
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            Event_OnSendImage(mainTouchDraw.SaveCurrentData());
+        }
+        if (Input.GetKeyDown(KeyCode.X)) {
+
         }
     }
 
