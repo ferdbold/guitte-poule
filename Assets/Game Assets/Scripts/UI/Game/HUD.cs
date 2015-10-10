@@ -10,6 +10,26 @@ public class HUD : MonoBehaviour {
     [SerializeField]
     private MessageView messageView;
 
+    public void Awake() {
+        this.AdaptToScreenSize();
+    }
+
+    /// <summary>
+    /// Adjusts the size of elements so it fits all phone screen sizes.
+    /// </summary>
+    private void AdaptToScreenSize() {
+        RectTransform storyViewRectTransform = this.storyView.GetComponent<RectTransform>(),
+                      messageViewRectTransform = this.messageView.GetComponent<RectTransform>();
+        Vector2 storyViewSize = storyViewRectTransform.sizeDelta,
+                messageViewSize = messageViewRectTransform.sizeDelta;
+
+        storyViewSize.y = Screen.height;
+        messageViewSize.y = Screen.height;
+
+        storyViewRectTransform.sizeDelta = storyViewSize;
+        messageViewRectTransform.sizeDelta = messageViewSize;
+    }
+
     /// <summary>
     /// Called the date begins
     /// </summary>
