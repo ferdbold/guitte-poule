@@ -40,6 +40,11 @@ public class NetManager : MonoBehaviour
 
 
     }
+
+    void Update()
+    {
+        messenger.RefreshLoop();
+    }
   
     public void HandleMessage(message mes)
     {
@@ -47,6 +52,9 @@ public class NetManager : MonoBehaviour
         switch (mes.messageText)
         {
             /*--------------------------------------  Movement Update   -----------------------------------------*/
+            case "startMatch":
+                GameManager.instance.Event_OnFindPartner();
+                break;
             case "":
                 
                 break;
