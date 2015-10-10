@@ -6,10 +6,11 @@ using Tendresse.Date;
 
 
 namespace Tendresse.Date {
+    //Date Event
     public struct DateEvent {
-        string question;
-        string answer;
-        TendresseData image;
+        string question; //Question to be asked
+        string answer; //Stored answer written for the question
+        TendresseData image; //Store image drawn for the question
 
         DateEvent(TendresseData TD, string q, string a) {
             image = TD;
@@ -29,7 +30,9 @@ public class DateManager : MonoBehaviour {
 
     [Header("Date Management")]
     public List<DateEvent> DateEvents; //List of date events to execute
-    public int currentDateEvent = 0; //Current Date event
+    private int _currentDateEvent = 0; //Current Date event
+    private int _currentStepInDate = 0; //Current Step in the date ( 0 = first player draws , 1 = second player writes, 2 = text resolution, then start next )
+    private bool _canUseConfirmButton = false;
 
     [Header("Draw Zones")]
     public GameObject DrawingObjectPrefab;
@@ -111,17 +114,67 @@ public class DateManager : MonoBehaviour {
     /// Player has clicked the submit button.
     /// </summary>
     public void OnConfirmEntry() {
-        Debug.Log("TODO : Confirm Entry");
+        if (_currentStepInDate == 0 && _canUseConfirmButton) { //If first player presses confirm when he draws, start text phase
+            ExecuteDateEvent_TextPhase(DateEvents[_currentDateEvent]);
+        } else if (_currentStepInDate == 1 && _canUseConfirmButton) { //If second player presses confirm when he writes, start end phase
+            ExecuteDateEvent_EndPhase(DateEvents[_currentDateEvent]);
+        }
     }
 
     /// <summary>
     /// Execute a complete Date Event
     /// </summary>
     /// <param name="dateEvent"></param>
-    public void ExecuteDateEvent(DateEvent dateEvent) {
-
+    private void ExecuteDateEvent() {
+        if (_currentDateEvent < DateEvents.Count) { //If there is still events to do in list
+            Debug.Log("Executing Date Event ");
+            _currentStepInDate = 0;
+            ExecuteDateEvent_DrawPhase(DateEvents[_currentDateEvent]);
+        } else {
+            Debug.Log("Executed last date event in list. Date over.");
+        }
     }
 
+    /// <summary>
+    /// Start the draw phase of the event. First player draws while second player wait.
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    private void ExecuteDateEvent_DrawPhase(DateEvent dateEvent) {
+        if (IAmFirst()) {
+            //TODO : Show Draw box
+            _canUseConfirmButton = true;
+        } else {
+            //TODO : Wait for Other Player Draw Phase
+            _canUseConfirmButton = false;
+        }
+    }
+
+    /// <summary>
+    /// Starts the Text Phase of the Event where the second player write about the drawing while the first player waits.
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    private void ExecuteDateEvent_TextPhase(DateEvent dateEvent) {
+        if (IAmFirst()) {
+            //TODO : Wait for other player Write Phase
+            _canUseConfirmButton = false;
+        } else {
+            //TODO : Show Text Box and Other Player Image
+            _canUseConfirmButton = true;
+        }
+    }
+
+
+    /// <summary>
+    /// Starts the last part of the event where the resolution is shown
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    private void ExecuteDateEvent_EndPhase(DateEvent dateEvent) {
+        if (IAmFirst()) {
+            //TODO : Wait for next event to start ?
+        } else {
+            //TODO : Wait for next event to start ?
+        }
+    }
 
     /// <summary>
     /// Returns where you are the first player for this date event.
@@ -130,7 +183,7 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     public bool IAmFirst() {
-        if (currentDateEvent % 2 == 0) {
+        if (_currentDateEvent % 2 == 0) {
             if (GameManager.instance.isFirst == true) return true;
             else return false;
         } else {
