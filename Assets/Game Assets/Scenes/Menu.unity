@@ -460,7 +460,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1700384525}
         m_MethodName: PlantSeed
         m_Mode: 1
         m_Arguments:
@@ -572,21 +572,17 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .294255286
+      value: 2.6908493
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -14.21
+      value: -14.3699999
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.31084681
+      value: 5.27830553
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -594,7 +590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -.705006838
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalRotation.z
@@ -602,34 +598,118 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .709200561
       objectReference: {fileID: 0}
     - target: {fileID: 447106, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animCurve.m_Curve.Array.data[0].inSlope
-      value: 3.33333278
+    - target: {fileID: 5062194, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animCurve.m_Curve.Array.data[0].outSlope
-      value: 3.33333278
+    - target: {fileID: 5078312, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animCurve.m_Curve.Array.data[1].time
-      value: .991666675
+    - target: {fileID: 5029376, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animCurve.m_Curve.Array.data[1].value
-      value: 1
+    - target: {fileID: 5032526, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animCurve.m_Curve.Array.data[0].value
-      value: -.00624999963
+    - target: {fileID: 5086734, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11448880, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
-      propertyPath: animationTime
+    - target: {fileID: 5069486, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036540, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033348, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064366, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngularDrag
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23375828, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23363848, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23351714, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23301644, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23323006, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23379210, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23326598, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23360860, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23342806, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_LowerAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23375828, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23363848, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23351714, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23301644, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23323006, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23379210, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23326598, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23360860, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 23342806, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
+      propertyPath: m_AngleLimits.m_UpperAngle
       value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1212,6 +1292,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1700384525 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11425408, guid: cb8722b30a9233b4c99973c79a55bbbb,
+    type: 2}
+  m_PrefabInternal: {fileID: 908926016}
+  m_Script: {fileID: 11500000, guid: ac5af42ade2d2504084711df7235d68e, type: 3}
 --- !u!1 &1820931481
 GameObject:
   m_ObjectHideFlags: 0
