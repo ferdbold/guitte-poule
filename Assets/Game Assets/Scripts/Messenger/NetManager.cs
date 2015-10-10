@@ -12,28 +12,35 @@ using Tendresse.Data;
 
 public class NetManager : MonoBehaviour
 {
-    private Messenger messenger = new Messenger();
+    private Messenger messenger;
 
-
-
-    private static NetManager self;
-    public static NetManager instance
-    {
-        get
-        {
-            return self;
-        }
-    }
+    static public NetManager instance;
 
     void Awake()
     {
-        self = this;
-        DontDestroyOnLoad(transform.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
     }
 
 
     void Start()
     {
+        messenger = new Messenger();
         Application.runInBackground = true;
         messenger.Connect();
         message mes = new message("Validate");
@@ -57,6 +64,7 @@ public class NetManager : MonoBehaviour
                 GameManager.instance.Event_OnFindPartner();
                 break;
             case "receiveImage":
+                Debug.Log("receiveImage");
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
     
@@ -72,7 +80,6 @@ public class NetManager : MonoBehaviour
     public message MakeMessageFromImage(TendresseData image)
     {
         message img = new message("sendImage");
-        
         for (int i = 0; i < image.pointList.Count; i++)
         {
             NetObject lineObj = new NetObject("");
@@ -84,7 +91,6 @@ public class NetManager : MonoBehaviour
             }
             img.addNetObject(lineObj);
         }
-        Debug.Log(conversionTools.convertMessageToString(img));
         return img;
     }
 
