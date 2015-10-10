@@ -42,8 +42,6 @@ public class NetManager : MonoBehaviour
         messenger.Connect();
         message mes = new message("Validate");
 
-
-
     }
   
     public void HandleMessage(message mes)
