@@ -275,4 +275,16 @@ public class DateManager : MonoBehaviour {
         GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
         GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
     }
+
+    /// <summary>
+    /// Send a message when you press the button to confirm text
+    /// </summary>
+    /// <param name="text"></param>
+    public void SendMessage_OnConfirmText(string text) {
+        GetCurrentEvent().SetAnswer(text);
+        message messa = new message("sendText");
+        messa.addNetObject(new NetObject(""));
+        messa.getNetObject(0).addString("", text);
+        NetManager.instance.SendMessage(messa);
+    }
 }
