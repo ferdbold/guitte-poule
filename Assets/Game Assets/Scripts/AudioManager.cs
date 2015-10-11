@@ -141,15 +141,16 @@ public class AudioManager : MonoBehaviour {
 
     public void startRecord() {
         aud = Microphone.Start("", false, 3, 8996);
-        isRecording = true;
     }
 
     public message getRecordMessage() {
-        if (isRecording) {
-            Microphone.End("");
-            isRecording = false;
-        }
+        Debug.Log("test");
         return MakeMessageFromClip();
+    }
+
+    public AudioClip getRecordClip()
+    {
+        return aud;
     }
 
     public message MakeMessageFromClip() {
