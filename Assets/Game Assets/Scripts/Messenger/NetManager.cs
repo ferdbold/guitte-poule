@@ -82,7 +82,8 @@ public class NetManager : MonoBehaviour
                 break;
             case "startEvent":
                 
-                DateManager.instance.OnStartNewEvent(mes.getNetObject(0).getString(0));
+                DateManager.instance.OnStartNewEvent(mes.getNetObject(0).getString(0),
+                                                     mes.getNetObject(0).getInt(0) == 0);
                 break;
             case "endDate":
                 

@@ -31,14 +31,16 @@ namespace Tendresse.Date {
         public string question; //Question to be asked
         public string answer; //Stored answer written for the question
         public TendresseData image; //Store image drawn for the question
+        public bool mediaIsDrawing;
 
         public void SetAnswer(string var) { answer = var; }
         public void SetImage(TendresseData var) { image = var; }
 
-        public DateEvent(string q) {
+        public DateEvent(string q, bool d) {
             question = q;
             answer = "";
             image = new TendresseData();
+            mediaIsDrawing = d;
         }
     }
  
@@ -159,10 +161,12 @@ public class DateManager : MonoBehaviour {
     /// Make new Event and starts it
     /// </summary>
     /// <param name="eventText"></param>
-    public void OnStartNewEvent(string eventText) {
-        Date.DateEvents.Add(new DateEvent(eventText));
+    public void OnStartNewEvent(string eventText, bool mediaIsDrawing) {
+        Date.DateEvents.Add(new DateEvent(eventText, mediaIsDrawing));
         _currentDateEvent++;
         _currentStepInDate = 0;
+        if (IAmFirst()) Debug.Log("Drawing");
+        else Debug.Log("Writing");
         ExecuteDateEvent_DrawPhase(Date.DateEvents[_currentDateEvent]);
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
@@ -270,5 +274,13 @@ public class DateManager : MonoBehaviour {
         messa.getNetObject(0).addString("", name);
         Date.dateName = name;
         NetManager.instance.SendMessage(messa);
+    }
+
+    /// <summary>
+    /// When sending media to server
+    /// </summary>
+    public void SendMessage_OnConfirmMedia() {
+        GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
+        GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
     }
 }
