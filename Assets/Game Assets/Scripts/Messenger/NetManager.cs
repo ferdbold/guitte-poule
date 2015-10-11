@@ -57,7 +57,7 @@ public class NetManager : MonoBehaviour
   
     public void HandleMessage(message mes)
     {
-        Debug.Log(mes.messageText);
+       //Debug.Log(mes.messageText);
         switch (mes.messageText)
         {
             /*--------------------------------------  Movement Update   -----------------------------------------*/
@@ -72,6 +72,7 @@ public class NetManager : MonoBehaviour
                 break;
 
             case "receiveSound": //TODO reconnect this
+                Debug.Log(conversionTools.convertMessageToString(mes));
                 AudioManager.instance.PlaySoundFromMessage(mes);
                 break;
             

@@ -6,7 +6,7 @@ using Message;
 
 namespace Tendresse.Date {
     //Date Structure
-    public struct DateStructure {
+    public class DateStructure {
         public string theme;
         public string intro;
         public string dateName;
@@ -27,7 +27,7 @@ namespace Tendresse.Date {
     }
 
     //Date Event
-    public struct DateEvent {
+    public class DateEvent {
         public string question; //Question to be asked
         public string answer; //Stored answer written for the question
         public TendresseData image; //Store image drawn for the question

@@ -153,7 +153,6 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlaySoundFromMessage(message sound) {
-        //Debug.Log(conversionTools.convertMessageToString(sound));
         float[] samples = new float[sound.getNetObject(0).getInt(0)];
         Debug.Log("test 1");
         for (int i = 0; i < sound.getNetObjectCount(); i++) {

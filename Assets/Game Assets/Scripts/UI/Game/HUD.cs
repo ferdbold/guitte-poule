@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour {
     /// Push test date events into story view. Do not use in release.
     /// </summary>
     private void PushTestDateEvents() {
-        DateEvent testDateEvent = new DateEvent();
+        DateEvent testDateEvent = new DateEvent("Test", true);
 
         testDateEvent.question = "À ce moment, il fut clair que Joséphine ne pouvait résister au __________ de Roger.";
         testDateEvent.answer = "gros criss de tracteur trois vitesses de Canadian Tire";
