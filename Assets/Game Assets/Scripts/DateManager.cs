@@ -222,6 +222,7 @@ public class DateManager : MonoBehaviour {
     public void ExecuteDateEvent_OnReceiveText(string text) {
         GetCurrentEvent().SetAnswer(text);
         HUD.Event_OnReceivedText();
+        SendMessage_OnConfirm(Date.dateName);
     }
 
 
