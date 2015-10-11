@@ -25,10 +25,18 @@ public class MessageView : MonoBehaviour {
 
     [Header("Text")]
     [SerializeField]
-    private string firstTitleText = "C'est à vous de jouer!";
+    private string youDrawTitleText = "C'est à vous de dessiner!";
     [SerializeField]
-    private string notFirstTitleText = "C'est à l'autre de jouer...";
-    
+    private string youTalkTitleText = "C'est à vous de parler!";
+    [SerializeField]
+    private string youWriteTitleText = "C'est à vous d'écrire!";
+    [SerializeField]
+    private string theyDrawTitleText = "C'est à l'autre de dessiner...";
+    [SerializeField]
+    private string theyTalkTitleText = "C'est à l'autre de parler...";
+    [SerializeField]
+    private string theyWriteTitleText = "C'est à l'autre d'écrire...";
+
     private TweenParams slideAnimParams;
 
     private RectTransform rectTransform;
@@ -63,9 +71,9 @@ public class MessageView : MonoBehaviour {
         this.questionText.text = dateEvent.question;
 
         if (first) {
-            this.titleText.text = this.firstTitleText;
+            this.titleText.text = this.youDrawTitleText;
         } else {
-            this.titleText.text = this.notFirstTitleText;
+            this.titleText.text = this.theyDrawTitleText;
         }
     }
 

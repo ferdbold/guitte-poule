@@ -63,7 +63,6 @@ public class StoryView : MonoBehaviour {
         newWidgetAnchoredPos.z = 0;
         newWidgetOffsetMin.x = 10;
         newWidgetOffsetMax.x = -10;
-        Debug.Log(this.dateEventWidgetHeight);
         
         newWidgetRectTransform.offsetMin = newWidgetOffsetMin;
         newWidgetRectTransform.offsetMax = newWidgetOffsetMax;
