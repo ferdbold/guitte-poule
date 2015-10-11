@@ -44,12 +44,20 @@ public class TiltShakeMotor : MonoBehaviour {
         if (!inAnim) {
             tiltInputs = Input.acceleration;
             Vector3 diff = tiltInputs - previousTiltInputs;
+            
             Debug.Log(diff);
 
             JointMotor2D motor = hingeMotor.motor;
-            motor.motorSpeed = (tiltInputs.x * motorForce);
-            hingeMotor.motor = motor;
+          
+            if (isInTendresse) {
+                motor.motorSpeed = (tiltInputs.x * motorForce * 2);
+            } else {
+                motor.motorSpeed = (tiltInputs.x * motorForce * 2);
+            }
+            
 
+
+            hingeMotor.motor = motor;
             previousTiltInputs = tiltInputs;
         }
     }
