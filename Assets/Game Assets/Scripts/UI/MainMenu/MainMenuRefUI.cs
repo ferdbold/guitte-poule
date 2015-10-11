@@ -10,6 +10,11 @@ public class MainMenuRefUI : MonoBehaviour {
     public CanvasGroup playButton;
     public CanvasGroup IntroButton;
     public CanvasGroup IntroText;
+    public CanvasGroup sky;
+
+    public void Start() {
+        
+    }
 
     public void ShowPlayButton() {
         playButton.DOFade(1, 1);
@@ -31,7 +36,34 @@ public class MainMenuRefUI : MonoBehaviour {
         IntroButton.GetComponentInChildren<Button>().interactable = false;
     }
 
+    public void ShowIntroText() {
+        IntroText.DOFade(1, 1);
+    }
+
     public void HideIntroText() {
         IntroText.DOFade(0, 1);
+    }
+
+    public void ShowMainMenu() {
+        mainMenu.DOFade(1, 1);
+    }
+
+    public void HideMainMenu() {
+        mainMenu.DOFade(0, 1);
+    }
+
+    public void ShowSky() {
+        sky.DOFade(1, 1);
+    }
+
+    public void HideSky() {
+        sky.DOFade(0, 1);
+    }
+
+
+    public void TransitionToSky() {
+        sky.transform.DOMoveY(0, 3f);
+        mainMenu.transform.DOMoveY(-12, 3f);
+        //loading.transform.DOMoveY(-12, 3f);
     }
 }
