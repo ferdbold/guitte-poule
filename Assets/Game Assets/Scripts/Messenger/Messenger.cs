@@ -25,7 +25,7 @@ public class Messenger
     public string ip { get { return this._ip; } set { this._ip = value; } }
 
     private int
-        s_port = 80;
+        s_port = 21;
 
 
     private bool
