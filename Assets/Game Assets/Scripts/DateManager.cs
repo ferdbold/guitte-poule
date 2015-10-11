@@ -319,4 +319,9 @@ public class DateManager : MonoBehaviour {
         messa.getNetObject(0).addString("", text);
         NetManager.instance.SendMessage(messa);
     }
+
+    public void SendMessage_DisconnectFromServer() {
+        message messa = new message("disconnect");
+        NetManager.instance.SendMessage(messa);
+    }
 }
