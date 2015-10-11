@@ -22,7 +22,7 @@ public class StoryView : MonoBehaviour {
 
     public void OnBeginDate() {
         DateStructure date = DateManager.instance.GetCurrentDate();
-        titleText.text = "Soirée " + date.relationLevel + " avec Joséphine";
+        titleText.text = "Soirée " + date.relationLevel + " avec " + date.dateName;
     }
 
     /// <summary>

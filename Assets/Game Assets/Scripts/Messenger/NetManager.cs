@@ -77,6 +77,9 @@ public class NetManager : MonoBehaviour
                                                     mes.getNetObject(0).getInt(0),
                                                     mes.getNetObject(0).getInt(2));
                 break;
+            case "oponenName":
+                DateManager.instance.OnGetOwnName(mes.getNetObject(0).getString(0));
+                break;
             case "startEvent":
                 
                 DateManager.instance.OnStartNewEvent(mes.getNetObject(0).getString(0));

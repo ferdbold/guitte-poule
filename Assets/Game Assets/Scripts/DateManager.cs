@@ -9,6 +9,8 @@ namespace Tendresse.Date {
     public struct DateStructure {
         public string theme;
         public string intro;
+        public string dateName;
+        public string yourName;
         public int ID;
         public int relationLevel;
         public List<DateEvent> DateEvents;
@@ -19,6 +21,8 @@ namespace Tendresse.Date {
             ID = id;
             relationLevel = rl;
             DateEvents = new List<DateEvent>();
+            dateName = "";
+            yourName = "";
         }
     }
 
@@ -142,8 +146,13 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewDate(string theme, string intro, int id, int relationLevel) {
         Date = new DateStructure(theme, intro, id, relationLevel);
         _currentDateEvent = -1;
-        GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginDate();
         SendMessage_OnConfirm("Roger Toupin");
+        
+    }
+
+    public void OnGetOwnName(string name){
+        Date.yourName = name;
+        GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginDate();
     }
 
     /// <summary>
@@ -259,7 +268,7 @@ public class DateManager : MonoBehaviour {
         message messa = new message("dateReady");
         messa.addNetObject(new NetObject(""));
         messa.getNetObject(0).addString("", name);
+        Date.dateName = name;
         NetManager.instance.SendMessage(messa);
     }
-
 }
