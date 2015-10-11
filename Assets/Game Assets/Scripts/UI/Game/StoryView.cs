@@ -20,7 +20,7 @@ public class StoryView : MonoBehaviour {
     private float dateEventWidgetHeight;
 
     public void Awake() {
-        this.dateEventWidgetHeight = Screen.height / 3.0f;
+        this.dateEventWidgetHeight = Screen.height / 2.0f;
     }
 
     public void OnBeginDate() {
@@ -63,12 +63,14 @@ public class StoryView : MonoBehaviour {
         newWidgetAnchoredPos.z = 0;
         newWidgetOffsetMin.x = 10;
         newWidgetOffsetMax.x = -10;
-        newWidgetSize.y = this.dateEventWidgetHeight;
+        Debug.Log(this.dateEventWidgetHeight);
         
-        newWidgetRectTransform.sizeDelta = newWidgetSize;
         newWidgetRectTransform.offsetMin = newWidgetOffsetMin;
         newWidgetRectTransform.offsetMax = newWidgetOffsetMax;
         newWidgetRectTransform.localScale = new Vector3(1, 1, 1);
+
+        newWidgetSize = new Vector2(newWidgetRectTransform.sizeDelta.x, this.dateEventWidgetHeight);
+        newWidgetRectTransform.sizeDelta = newWidgetSize;
 
         newWidgetAnchoredPos.x = newWidgetRectTransform.anchoredPosition.x;
         newWidgetRectTransform.anchoredPosition3D = newWidgetAnchoredPos;

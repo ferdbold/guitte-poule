@@ -58,9 +58,8 @@ public class HUD : MonoBehaviour {
     /// Called when a new event is started
     /// </summary>
     public void Event_OnBeginEvent() {
-
         this.storyView.OnNewDateEvent(DateManager.instance.GetCurrentEvent());
-        this.messageView.OnNewDateEvent(DateManager.instance.GetCurrentEvent());
+        this.messageView.OnNewDateEvent(DateManager.instance.GetCurrentEvent(), DateManager.instance.IAmFirst());
     }
 
     /// <summary>
