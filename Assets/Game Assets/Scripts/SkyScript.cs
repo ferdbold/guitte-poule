@@ -14,7 +14,7 @@ public class SkyScript : MonoBehaviour {
             
             Vector3 targetPosition = new Vector3(transform.position.x,  SaveAndLoad.savedGame.lenght * translationPerHeight, transform.position.z);
             targetPosition = Vector3.Lerp(transform.position, targetPosition, 0.15f);
-            Debug.Log("Lerping to position " + targetPosition);
+            //Debug.Log("Lerping to position " + targetPosition);
             transform.position = targetPosition;
         }
     }

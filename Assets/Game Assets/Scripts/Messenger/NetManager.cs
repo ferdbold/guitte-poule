@@ -90,7 +90,7 @@ public class NetManager : MonoBehaviour
                 break;
 
             case "endDate":
-                
+                DateManager.instance.ExecuteDateEvent_EndPhase();
                 break;
     
             /*----------------------------------------------------------------------------------------------------*/
