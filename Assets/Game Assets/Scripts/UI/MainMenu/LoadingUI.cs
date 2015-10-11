@@ -18,6 +18,9 @@ public class LoadingUI : MonoBehaviour {
     public Camera cameraRef;
     
     public void StartAnim() {
+        this.GetComponent<CanvasGroup>().alpha = 1;
+        GameObject.Find("Sky Objects").SetActive(false);
+
         StartCoroutine(LoadingIndicatorAnim());
         StartCoroutine(PlayBackGroundAnim());
         cameraRef.transform.DOMoveZ(4f, 3f);
