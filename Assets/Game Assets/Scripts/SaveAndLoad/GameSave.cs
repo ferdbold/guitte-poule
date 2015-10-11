@@ -11,7 +11,6 @@ public class GameSave {
     public int lenght = 0;
     public bool hasPlantedSeed = false;
 
-
     /// <summary> Creates a new gamesave from the data of the persistent managers </summary>
     public GameSave() {
         lenght = 0;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MainMenuRef
   - MainDrawObject
+  - ui-loading
+  - ui-main-menu
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - 
   - 
   - DrawingZone
-  - 
-  - 
+  - RenderOnTop
+  - UI_RenderOnTop
   - 
   - 
   - 

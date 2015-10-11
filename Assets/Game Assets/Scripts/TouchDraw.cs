@@ -7,6 +7,7 @@ using Tendresse.Data;
 namespace Tendresse.Data {
     [SerializeField]
     public struct TendresseData  {
+        
         public List<List<Vector3>> pointList;
         public TendresseData(List<List<Vector3>> points)
         {
@@ -124,8 +125,9 @@ public class TouchDraw : MonoBehaviour {
                 lineRenderers[i].SetPosition(j, (TData.pointList[i][j] + translation) * scale);
             }
         } 
-
     }
+
+    
 
 
     public void WipeDrawData() {
