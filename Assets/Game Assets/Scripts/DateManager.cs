@@ -35,6 +35,7 @@ namespace Tendresse.Date {
         public message sound;
 
         public void SetAnswer(string var) { answer = var; }
+        public void SetSound(message var) { sound = var; }
         public void SetImage(TendresseData var) { image = var; }
 
         public DateEvent(string q, bool d) {
@@ -45,7 +46,6 @@ namespace Tendresse.Date {
             sound = new message("sendSound");
         }
     }
- 
 }
 
 public class DateManager : MonoBehaviour {
@@ -62,6 +62,8 @@ public class DateManager : MonoBehaviour {
     public GameObject DrawingObjectPrefab;
     public TouchDraw mainTouchDraw; //Main space to draw. This is where the player draws.
     private List<TouchDraw> tempDrawingList = new List<TouchDraw>(); //Temporary image shown, used to show drawings but not to draw !
+
+    public List<message> listSound = new List<message>();
 
     [Header("Components")]
     [SerializeField]
@@ -166,6 +168,7 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewEvent(string eventText, bool mediaIsDrawing) {
         Date.DateEvents.Add(new DateEvent(eventText, mediaIsDrawing));
         _currentDateEvent++;
+        //listSound.Add(new message(""));
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
 
@@ -255,16 +258,7 @@ public class DateManager : MonoBehaviour {
     }
 
     public void SetCurrentEventSound(message messa) {
-        if (Date.DateEvents[_currentDateEvent].sound.getNetObjectCount() > 10) {
-            for (int i = 0; i < messa.getNetObjectCount(); i++) {
-                Date.DateEvents[_currentDateEvent].sound.setNetObject(i, messa.getNetObject(i));
-            }
-        }
-        else {
-            for (int i = 0; i < messa.getNetObjectCount(); i++) {
-                Date.DateEvents[_currentDateEvent].sound.addNetObject(messa.getNetObject(i));
-            }
-        }
+        GetCurrentEvent().SetSound(messa);
     }
 
     public DateStructure GetCurrentDate() {
