@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour {
     }
 
     public void Start() {
-        this.PushTestDateEvents();
+        //this.PushTestDateEvents();
     }
 
     /// <summary>
