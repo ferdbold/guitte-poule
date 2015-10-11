@@ -28,10 +28,12 @@ public class TiltShakeMotor : MonoBehaviour {
             StartCoroutine(CucumberAnimation());
             GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
             GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
+            GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
         } else {
             hingeMotor.connectedAnchor = new Vector2(0, startPosition);
             GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HidePlayButton();
-            GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowIntroButton();
+            GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
+            StartCoroutine(SpawnPlantSeedButtonOnDelay(7f));
         }
     }
 	
@@ -64,7 +66,13 @@ public class TiltShakeMotor : MonoBehaviour {
 
 
     public void PlantSeed() {
+        GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
         StartCoroutine(PlantSeedAnimation());
+    }
+
+    IEnumerator SpawnPlantSeedButtonOnDelay(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowIntroButton();
     }
 
     IEnumerator PlantSeedAnimation() {

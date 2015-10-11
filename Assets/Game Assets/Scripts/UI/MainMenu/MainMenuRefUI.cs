@@ -9,6 +9,7 @@ public class MainMenuRefUI : MonoBehaviour {
     public CanvasGroup loading;
     public CanvasGroup playButton;
     public CanvasGroup IntroButton;
+    public CanvasGroup IntroText;
 
     public void ShowPlayButton() {
         playButton.DOFade(1, 1);
@@ -28,5 +29,9 @@ public class MainMenuRefUI : MonoBehaviour {
     public void HideIntroButton() {
         IntroButton.DOFade(0, 1);
         IntroButton.GetComponentInChildren<Button>().interactable = false;
+    }
+
+    public void HideIntroText() {
+        IntroText.DOFade(0, 1);
     }
 }
