@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
 --- !u!114 &11423460
 MonoBehaviour:
@@ -515,7 +515,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Planter Votre Graine
+  m_Text: Planter votre graine...
 --- !u!114 &11461754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .800000012, g: .447058827, b: .329411775, a: 1}
+  m_Color: {r: 1, g: .544117689, b: .779918671, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -568,7 +568,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Montrez Votre Tendresse
+  m_Text: Montrez votre tendresse!
 --- !u!114 &11463922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -580,8 +580,8 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
-  m_EffectDistance: {x: .5, y: .5}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!114 &11465494
 MonoBehaviour:
@@ -603,13 +603,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 83239ed6de6923d43aad0aea263e85f3, type: 3}
-    m_FontSize: 17
+    m_Font: {fileID: 12800000, guid: 175f7598a1b2f474d86799486709121d, type: 3}
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 50
-    m_Alignment: 1
+    m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .800000012, g: .447058827, b: .329411775, a: 1}
+  m_Color: {r: 1, g: .541176498, b: .776470602, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -635,7 +635,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 83239ed6de6923d43aad0aea263e85f3, type: 3}
+    m_Font: {fileID: 12800000, guid: 2d6350ddd20fd124987b331048337e6c, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 1
@@ -659,10 +659,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timePerLetter: .075000003
-  textToShow: "La r\xE9putation des jardins de la tendresse les pr\xE9c\xE8des. Depuis
-    des d\xE9c\xE9nnies, des disciples s'y d\xE9placent dans l'espoir de planter un
-    l\xE9gume de l'amour. Vous avez finalement r\xE9ussi \xE0 mettre la main sur cette
-    graine fertile si convoit\xE9e."
+  textToShow: "La r\xE9putation des Jardins de la Tendresse n'est plus \xE0 faire.
+    Depuis des d\xE9c\xE9nnies, des disciples s'y d\xE9placent dans l'espoir d'y planter
+    un l\xE9gume de l'Amour et de le faire fleurir jusqu'au septi\xE8me ciel. Vous
+    avez finalement r\xE9ussi \xE0 mettre la main sur cette graine fertile si convoit\xE9e
+    et esp\xE9rez la faire ascendre jusqu'au paradis de la romance. Pour la faire
+    grandir, vous devrez, avec l'aide des autres Jardiniers, lui raconter les plus
+    belles histoires d'amour..."
 --- !u!114 &11492558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,8 +777,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22440762}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .0299999993, y: 0}
+  m_AnchorMax: {x: .970000029, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -810,8 +813,8 @@ RectTransform:
   - {fileID: 22421058}
   m_Father: {fileID: 22422968}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: .300000012}
-  m_AnchorMax: {x: 1, y: .899999976}
+  m_AnchorMin: {x: .0299999993, y: .200000003}
+  m_AnchorMax: {x: .970000029, y: .649999976}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -40, y: 0}
   m_Pivot: {x: .5, y: 0}
@@ -860,17 +863,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.00009608}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22482910}
   - {fileID: 22433730}
   m_Father: {fileID: 22422968}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 19.9999943}
-  m_SizeDelta: {x: -40, y: 35}
+  m_AnchorMin: {x: .0299999993, y: .0149999997}
+  m_AnchorMax: {x: .970000029, y: .150000006}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -5.7220459e-06}
   m_Pivot: {x: .5, y: 0}
 --- !u!224 &22433730
 RectTransform:
@@ -902,8 +905,8 @@ RectTransform:
   - {fileID: 22403648}
   m_Father: {fileID: 22422968}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: .200000003}
-  m_AnchorMax: {x: 1, y: .699999988}
+  m_AnchorMin: {x: 0, y: .180000007}
+  m_AnchorMax: {x: 1, y: .649999976}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: .5, y: 1}
@@ -931,17 +934,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.00009608}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22413776}
   - {fileID: 22459452}
   m_Father: {fileID: 22422968}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: .0500000007}
-  m_AnchorMax: {x: 1, y: .150000006}
+  m_AnchorMin: {x: .0299999993, y: .0149999997}
+  m_AnchorMax: {x: .970000029, y: .150000006}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: 0}
 --- !u!224 &22478342
 RectTransform:

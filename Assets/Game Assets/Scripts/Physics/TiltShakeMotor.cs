@@ -41,15 +41,15 @@ public class TiltShakeMotor : MonoBehaviour {
             if (isInTendresse) { //If Tendresse Mode
                 StartCoroutine(CucumberAnimation());
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HidePlayButton();
-                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
-                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton(0);
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText(0);
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().TransitionToSky();
                 StartCoroutine(TendressePhase());
 
             } else {
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
-                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
-                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton(0);
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText(0);
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().TransitionToSky();
             }
         } else {

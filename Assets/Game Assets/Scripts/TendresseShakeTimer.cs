@@ -17,7 +17,7 @@ public class TendresseShakeTimer : MonoBehaviour {
     }
 
     IEnumerator AnimateTimer() {
-        textText.text = "Montrez Votre Tendresse";
+        textText.text = "Préparez-vous à montrer votre tendresse";
         numberText.text = "";
         yield return new WaitForSeconds(2.5f);
         numberText.text = "3";
@@ -26,7 +26,7 @@ public class TendresseShakeTimer : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         numberText.text = "1";
         yield return new WaitForSeconds(1f);
-        textText.text = "SHAKE";
+        textText.text = "Secouez votre concombre!";
         numberText.text = "";
         yield return new WaitForSeconds(2f);
         numberText.text = "";
