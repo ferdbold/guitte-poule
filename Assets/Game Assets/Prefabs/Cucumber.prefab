@@ -49,7 +49,7 @@ GameObject:
   - 114: {fileID: 11425408}
   m_Layer: 0
   m_Name: Cucumber
-  m_TagString: Untagged
+  m_TagString: cucumber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,6 +754,7 @@ MonoBehaviour:
   motorForce: 10
   SeedFallingObject: {fileID: 101962, guid: aa411d49128ad1349b282a5ef1f3b8fd, type: 2}
   SeedGrowAnimation: {fileID: 138212, guid: b40e46349a807ea4181e06c38526f1b6, type: 2}
+  TendresseObjectTimer: {fileID: 0}
   animCurve:
     serializedVersion: 2
     m_Curve:
@@ -773,6 +774,8 @@ MonoBehaviour:
   startPosition: -14
   animationTime: 4
   isInTendresse: 0
+  tendresseTime: 5
+  skyScript: {fileID: 0}
 --- !u!233 &23301644
 HingeJoint2D:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public class GameSave {
     public static GameSave current;
 
     //DATA IN A SAVE : 
-    public int lenght = 0;
+    public float lenght = 0;
     public bool hasPlantedSeed = false;
 
     /// <summary> Creates a new gamesave from the data of the persistent managers </summary>

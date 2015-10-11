@@ -19,29 +19,35 @@ public class MainMenuRefUI : MonoBehaviour {
     public void ShowPlayButton() {
         playButton.DOFade(1, 1);
         playButton.GetComponentInChildren<Button>().interactable = true;
+        playButton.blocksRaycasts = true;
     }
 
     public void HidePlayButton() {
         playButton.DOFade(0, 1);
         playButton.GetComponentInChildren<Button>().interactable = false;
+        playButton.blocksRaycasts = false;
     }
 
     public void ShowIntroButton() {
         IntroButton.DOFade(1, 1);
         IntroButton.GetComponentInChildren<Button>().interactable = true;
+        IntroButton.blocksRaycasts = true;
     }
 
     public void HideIntroButton() {
         IntroButton.DOFade(0, 1);
         IntroButton.GetComponentInChildren<Button>().interactable = false;
+        IntroButton.blocksRaycasts = false;
     }
 
     public void ShowIntroText() {
         IntroText.DOFade(1, 1);
+        IntroText.blocksRaycasts = false;
     }
 
     public void HideIntroText() {
         IntroText.DOFade(0, 1);
+        IntroText.blocksRaycasts = false;
     }
 
     public void ShowMainMenu() {
@@ -64,6 +70,5 @@ public class MainMenuRefUI : MonoBehaviour {
     public void TransitionToSky() {
         sky.transform.DOMoveY(0, 3f);
         mainMenu.transform.DOMoveY(-12, 3f);
-        //loading.transform.DOMoveY(-12, 3f);
     }
 }
