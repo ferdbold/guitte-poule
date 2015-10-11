@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using DG.Tweening;
 using Tendresse.Date;
+using System.Collections;
 
-public class MessageView : MonoBehaviour {
+public class MessageView : MonoBehaviour, ISoundView {
 
     [Header("Components")]
     [SerializeField]
@@ -22,6 +23,8 @@ public class MessageView : MonoBehaviour {
     private TouchDraw drawZone;
     [SerializeField]
     private SoundButton soundButton;
+    [SerializeField]
+    private Button deleteSoundButton;
 
     [Header("Animation")]
     [SerializeField]
@@ -48,6 +51,11 @@ public class MessageView : MonoBehaviour {
     private float pivotY;
     private float drawZoneY;
 
+    /// <summary>
+    /// Whether or not a sound has been recorded by you this phase.
+    /// </summary>
+    private bool soundRecorded;
+
     public void Awake() {
         this.rectTransform = GetComponent<RectTransform>();
 
@@ -58,6 +66,9 @@ public class MessageView : MonoBehaviour {
 
         // Set anim settings
         this.slideAnimParams = new TweenParams().SetEase(Ease.InOutExpo);
+
+        // Set sound button parent reference
+        this.soundButton.ParentView = this;
     }
 
     public void Update() {
@@ -163,15 +174,18 @@ public class MessageView : MonoBehaviour {
     private void SetupDrawing() {
         this.drawZone.canDraw = true;
         this.soundButton.Enabled = false;
+        this.DeleteSoundButtonEnabled = false;
         this.AnswerInputEnabled = false;
     }
 
     private void SetupRecording() {
         this.drawZone.canDraw = false;
         this.soundButton.Enabled = true;
+        this.DeleteSoundButtonEnabled = false;
         this.AnswerInputEnabled = false;
-
         this.soundButton.Mode = SoundButton.SoundButtonMode.RECORD;
+
+        this.soundRecorded = false;
     }
 
     /// <summary>
@@ -181,6 +195,7 @@ public class MessageView : MonoBehaviour {
     private void SetupWriting(bool mediaIsDrawing) {
         this.drawZone.canDraw = false;
         this.soundButton.Enabled = !mediaIsDrawing;
+        this.DeleteSoundButtonEnabled = false;
         this.AnswerInputEnabled = true;
 
         if (!mediaIsDrawing) {
@@ -201,6 +216,38 @@ public class MessageView : MonoBehaviour {
     public void OnSend() {
         DateManager.instance.SendMessage_OnConfirmHandle(this.answerInput.text);
         this.SlideDown();
+        this.answerInput.text = "";
+    }
+
+    /// <summary>
+    /// Handle sound button clicks
+    /// </summary>
+    public void OnSoundButtonClick() {
+        DateEvent dateEvent = DateManager.instance.GetCurrentEvent();
+        
+        if (this.soundRecorded) {
+            AudioManager.instance.PlaySoundFromMessage(AudioManager.instance.getRecordMessage());
+        } else {
+            StartCoroutine(this.RecordSound());
+        }
+    }
+
+    public IEnumerator RecordSound() {
+        AudioManager.instance.startRecord();
+        yield return new WaitForSeconds(3);
+        DateManager.instance.SetCurrentEventSound(AudioManager.instance.MakeMessageFromClip());
+        this.soundButton.Mode = SoundButton.SoundButtonMode.PLAY;
+        this.DeleteSoundButtonEnabled = true;
+    }
+
+    /// <summary>
+    /// Handle delete sound button clicks
+    /// </summary>
+    public void OnDeleteSoundButtonClick() {
+        DateManager.instance.SetCurrentEventSound(new Message.message(""));
+        this.soundButton.Mode = SoundButton.SoundButtonMode.RECORD;
+        this.soundRecorded = false;
+        this.DeleteSoundButtonEnabled = false;
     }
 
     private bool AnswerInputEnabled {
@@ -209,6 +256,15 @@ public class MessageView : MonoBehaviour {
 
             this.answerInput.interactable = value;
             answerInputCanvasGroup.alpha = (value) ? 1 : 0;
+        }
+    }
+
+    private bool DeleteSoundButtonEnabled {
+        set {
+            CanvasGroup deleteSoundButtonCanvasGroup = this.deleteSoundButton.GetComponent<CanvasGroup>();
+
+            this.deleteSoundButton.interactable = value;
+            deleteSoundButtonCanvasGroup.alpha = (value) ? 1 : 0;
         }
     }
 }

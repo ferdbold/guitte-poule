@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
     public bool isFirst; //TODO :The server chooses a first and second player in the date. THIS DOES NOT CHANGE DURING THE DATE !
     private bool finishedAGame = false;
 
+    public AudioClip music_Intro;
+
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour {
         switch (scene) {
             case Scenes.Menu:
                 GameObject.FindWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().mainMenu.DOFade(0, 0.75f);
+                AudioManager.instance.StopMusic();
                 break;
             case Scenes.LoadingGame:
                 CanvasGroup loading = GameObject.FindWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().loading;

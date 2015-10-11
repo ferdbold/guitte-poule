@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &112784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403672}
+  - 82: {fileID: 8264836}
+  m_Layer: 0
+  m_Name: musicSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &164996
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +28,6 @@ GameObject:
   - 114: {fileID: 11481982}
   - 114: {fileID: 11408080}
   - 82: {fileID: 8205466}
-  - 82: {fileID: 8243984}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20,6 +35,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &403672
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 427180}
+  m_RootOrder: 0
 --- !u!4 &427180
 Transform:
   m_ObjectHideFlags: 1
@@ -29,7 +56,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.923702538, y: -.339386731, z: 86.8027344}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 403672}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!82 &8205466
@@ -102,20 +130,20 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!82 &8243984
+--- !u!82 &8264836
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164996}
+  m_GameObject: {fileID: 112784}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -184,7 +212,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8205466}
-  audioClipArray: []
+  musicSource: {fileID: 8264836}
+  audioClipArray:
+  - {fileID: 8300000, guid: 59ec079997b459046b77bf8f1570c29b, type: 3}
+  - {fileID: 8300000, guid: 229d40c9a77293d4fa6cded1d6b65910, type: 3}
+  - {fileID: 8300000, guid: 1febe280cd73d394895ea0ee829d7ad8, type: 3}
+  musicArray:
+  - {fileID: 8300000, guid: 971852549d5305244b8d2a72d4df6898, type: 3}
 --- !u!114 &11481982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFirst: 0
+  music_Intro: {fileID: 8300000, guid: 971852549d5305244b8d2a72d4df6898, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

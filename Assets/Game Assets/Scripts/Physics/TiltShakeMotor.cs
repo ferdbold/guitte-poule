@@ -93,6 +93,8 @@ public class TiltShakeMotor : MonoBehaviour {
 
 
     public void PlantSeed() {
+        AudioManager.instance.SetLoop(true);
+        AudioManager.instance.PlayAudioClip("LaGraine");
         GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
         StartCoroutine(PlantSeedAnimation());
     }
@@ -121,6 +123,8 @@ public class TiltShakeMotor : MonoBehaviour {
     IEnumerator CucumberAnimation() {
         inAnim = true;
         float dist = startPosition;
+        AudioManager.instance.PlayAudioClipOVERWRITE("CucumberGrow");
+        AudioManager.instance.SetLoop(false);
         for (float i = 0; i < 1f; i += Time.deltaTime/ animationTime) {
             dist = Mathf.Lerp(startPosition, targetPosition, animCurve.Evaluate(i));
             hingeMotor.connectedAnchor = new Vector2(0, dist);

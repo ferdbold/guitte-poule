@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour {
     static public AudioManager instance;
 
     public AudioSource audioSource;
+    public AudioSource musicSource;
     private AudioClip aud = new AudioClip();
     private bool isRecording = false;
     private message testClip;
@@ -41,14 +42,15 @@ public class AudioManager : MonoBehaviour {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public AudioClip[] audioClipArray;
-    Dictionary<string, AudioClip> audioDictionnary;
+    public List<AudioClip> audioClipArray = new List<AudioClip>();
+    Dictionary<string, AudioClip> audioDictionnary = new Dictionary<string, AudioClip>();
+    public List<AudioClip> musicArray = new List<AudioClip>();
 
     /// <summary>
     /// Set up the dictionary to connect the name to the audio clip
     /// </summary>
     void SetUpDictionnary() {
-        for (int i = 0; i < audioClipArray.Length; i++) {
+        for (int i = 0; i < audioClipArray.Count; i++) {
             if (audioClipArray[i] != null) {
                 audioDictionnary.Add(audioClipArray[i].name, audioClipArray[i]);
             }
@@ -59,7 +61,8 @@ public class AudioManager : MonoBehaviour {
     /// Plays an audio clip if no other clip is playing
     /// </summary>
     /// <param name="name"></param>
-    public void PlayAudioClip (string name) {
+    public void PlayAudioClip(string name) {
+        Debug.Log(audioClipArray.Count);
         if (audioDictionnary.ContainsKey(name)) {
             if (!audioSource.isPlaying) {
                 audioSource.clip = audioDictionnary[name];
@@ -115,6 +118,14 @@ public class AudioManager : MonoBehaviour {
         Debug.Log("Audio Clip used does not exists");
     }
 
+    public void PlayMusicClip(AudioClip clip) {
+        if (clip != null) {
+            musicSource.clip = clip;
+            musicSource.Play();
+            return;
+        }
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void startRecord() {
@@ -163,5 +174,17 @@ public class AudioManager : MonoBehaviour {
         audioSource.clip = aud;
         audioSource.clip.SetData(samples, 0);
         audioSource.Play();
+    }
+
+    public void StopSound() {
+        audioSource.Stop();
+    }
+
+    public void StopMusic() {
+        musicSource.Stop();
+    }
+
+    public void SetLoop(bool var) {
+        audioSource.loop = var;
     }
 }
