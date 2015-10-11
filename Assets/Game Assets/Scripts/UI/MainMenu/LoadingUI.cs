@@ -20,8 +20,8 @@ public class LoadingUI : MonoBehaviour {
     public void StartAnim() {
         StartCoroutine(LoadingIndicatorAnim());
         StartCoroutine(PlayBackGroundAnim());
-        cameraRef.transform.DOMoveZ(5, 3f);
-        cameraRef.transform.DOMoveY(5, 3f);
+        cameraRef.transform.DOMoveZ(4f, 3f);
+        cameraRef.transform.DOMoveY(3.5f, 3f);
         StartCoroutine(SpinAround());
     }
 
@@ -44,10 +44,13 @@ public class LoadingUI : MonoBehaviour {
     }
 
     IEnumerator SpinAround() {
-        float angle = 180;
+        Vector2 angleMaximums = new Vector2(30f, 420f);
+        float angle = angleMaximums.x;
         while (true) {
-            angle += 0.001f * Time.deltaTime;
-            cameraRef.transform.Rotate(new Vector3(0, 0, angle));
+
+            angle += 15 * Time.deltaTime;
+            angle = Mathf.Clamp(angle,angleMaximums.x, angleMaximums.y);
+            cameraRef.transform.Rotate(new Vector3(0, 0, angle * Time.deltaTime));
             yield return new WaitForEndOfFrame();
         }
     }
