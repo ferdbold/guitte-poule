@@ -67,7 +67,7 @@ public class NetManager : MonoBehaviour
             case "receiveImage":
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
-            case "receiveTexte":
+            case "receiveText":
                 DateManager.instance.ExecuteDateEvent_OnReceiveText(mes.getNetObject(0).getString(0));
                 break;
 

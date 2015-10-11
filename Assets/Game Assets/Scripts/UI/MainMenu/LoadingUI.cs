@@ -23,6 +23,8 @@ public class LoadingUI : MonoBehaviour {
         cameraRef.transform.DOMoveZ(4f, 3f);
         cameraRef.transform.DOMoveY(3.5f, 3f);
         StartCoroutine(SpinAround());
+        AudioManager.instance.PlayAudioClip("vent");
+        AudioManager.instance.SetLoop(true);
     }
 
     IEnumerator LoadingIndicatorAnim() {
@@ -53,5 +55,10 @@ public class LoadingUI : MonoBehaviour {
             cameraRef.transform.Rotate(new Vector3(0, 0, angle * Time.deltaTime));
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    void OnDestroy() {
+        AudioManager.instance.SetLoop(false);
+        AudioManager.instance.StopSound();
     }
 }
