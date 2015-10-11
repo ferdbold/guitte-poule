@@ -40,6 +40,14 @@ public class StoryView : MonoBehaviour {
     }
 
     /// <summary>
+    /// Handle new media received events
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    public void OnReceivedMediaEvent(DateEvent dateEvent) {
+
+    }
+
+    /// <summary>
     /// Add a new DateEventWidget to the story scroll rect
     /// </summary>
     /// <param name="dateEvent">The new date event</param>
@@ -63,7 +71,6 @@ public class StoryView : MonoBehaviour {
         newWidgetAnchoredPos.z = 0;
         newWidgetOffsetMin.x = 10;
         newWidgetOffsetMax.x = -10;
-        Debug.Log(this.dateEventWidgetHeight);
         
         newWidgetRectTransform.offsetMin = newWidgetOffsetMin;
         newWidgetRectTransform.offsetMax = newWidgetOffsetMax;

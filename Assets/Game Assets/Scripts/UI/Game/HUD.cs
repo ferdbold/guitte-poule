@@ -65,10 +65,8 @@ public class HUD : MonoBehaviour {
     /// <summary>
     /// Called when your partner end his drawing
     /// </summary>
-    public void Event_OnPartnerFinishDrawing() {
-        if (!DateManager.instance.IAmFirst()) {
-            //drawBlock.SetActive(false);
-            //inputField.gameObject.SetActive(true);
-        }
+    public void Event_OnReceivedMedia() {
+        this.storyView.OnReceivedMediaEvent(DateManager.instance.GetCurrentEvent());
+        this.messageView.OnReceivedMediaEvent(DateManager.instance.GetCurrentEvent(), DateManager.instance.IAmFirst());
     }
 }
