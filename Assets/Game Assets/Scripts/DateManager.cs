@@ -32,6 +32,7 @@ namespace Tendresse.Date {
         public string answer; //Stored answer written for the question
         public TendresseData image; //Store image drawn for the question
         public bool mediaIsDrawing;
+        public message sound;
 
         public void SetAnswer(string var) { answer = var; }
         public void SetImage(TendresseData var) { image = var; }
@@ -41,6 +42,7 @@ namespace Tendresse.Date {
             answer = "";
             image = new TendresseData();
             mediaIsDrawing = d;
+            sound = new message("sendSound");
         }
     }
  
@@ -252,6 +254,19 @@ public class DateManager : MonoBehaviour {
         return Date.DateEvents[_currentDateEvent];
     }
 
+    public void SetCurrentEventSound(message messa) {
+        if (Date.DateEvents[_currentDateEvent].sound.getNetObjectCount() > 10) {
+            for (int i = 0; i < messa.getNetObjectCount(); i++) {
+                Date.DateEvents[_currentDateEvent].sound.setNetObject(i, messa.getNetObject(i));
+            }
+        }
+        else {
+            for (int i = 0; i < messa.getNetObjectCount(); i++) {
+                Date.DateEvents[_currentDateEvent].sound.addNetObject(messa.getNetObject(i));
+            }
+        }
+    }
+
     public DateStructure GetCurrentDate() {
         return Date;
     }
@@ -293,7 +308,8 @@ public class DateManager : MonoBehaviour {
             GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
         }
         else {
-
+             SetCurrentEventSound(AudioManager.instance.getRecordMessage());
+             GameManager.instance.Event_OnSendSound(GetCurrentEvent().sound);
         }
     }
 

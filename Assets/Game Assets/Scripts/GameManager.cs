@@ -150,4 +150,10 @@ public class GameManager : MonoBehaviour {
         DateManager.instance.GetCurrentEvent().SetImage(tData);
         DateManager.instance.ExecuteDateEvent_TextPhase();
     }
+
+    public void Event_OnSendSound(message messa) {
+        NetManager.instance.SendMessage(messa);
+        Debug.Log("Sent Message");
+    }
+    
 }
