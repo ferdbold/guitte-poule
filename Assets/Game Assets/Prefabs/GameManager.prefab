@@ -217,6 +217,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 59ec079997b459046b77bf8f1570c29b, type: 3}
   - {fileID: 8300000, guid: 229d40c9a77293d4fa6cded1d6b65910, type: 3}
   - {fileID: 8300000, guid: 1febe280cd73d394895ea0ee829d7ad8, type: 3}
+  MasterShakerClips:
+  - {fileID: 8300000, guid: 5f2f7e60fe809ed4dbf8bbbec1873180, type: 3}
+  - {fileID: 8300000, guid: 3d09a599232fef54eaca1b3446aadb85, type: 3}
+  - {fileID: 8300000, guid: 407517a175a95884ab99e1534f69e74f, type: 3}
+  - {fileID: 8300000, guid: 155e0df2256f7194bbeab3fd279ac6cd, type: 3}
+  - {fileID: 8300000, guid: 8ed12febf3d18d64da613e1de0d1d4d3, type: 3}
   musicArray:
   - {fileID: 8300000, guid: 971852549d5305244b8d2a72d4df6898, type: 3}
   - {fileID: 8300000, guid: 971852549d5305244b8d2a72d4df6898, type: 3}
