@@ -172,15 +172,6 @@ public class DateManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// If the client is drawing and has finished, send the image to the server
-    /// </summary>
-    public void OnImageCompleted() {
-        if (IAmFirst()) {
-            GameManager.instance.Event_OnSendImage(mainTouchDraw.SaveCurrentData());
-        }
-    }
-
-    /// <summary>
     /// Player has clicked the submit button.
     /// </summary>
     public void OnConfirmEntry() {
@@ -280,6 +271,7 @@ public class DateManager : MonoBehaviour {
     /// When sending media to server
     /// </summary>
     public void SendMessage_OnConfirmMedia() {
+        GameObject.Find("UI").GetComponent<HUD>().Event_OnPartnerFinishDrawing();
         GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
         GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
     }

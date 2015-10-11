@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour {
 
     public void Event_OnReceiveImage(TendresseData tData) {
         Debug.Log("draw 1");
-        DateManager.instance.DrawImageAt(tData, Vector3.zero, 1f);
+        //DateManager.instance.DrawImageAt(tData, Vector3.zero, 1f);
+        DateManager.instance.GetCurrentEvent().SetImage(tData);
+        DateManager.instance.ExecuteDateEvent_TextPhase();
     }
 }
