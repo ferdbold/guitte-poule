@@ -148,6 +148,7 @@ public class TiltShakeMotor : MonoBehaviour {
         yield return new WaitForSeconds(tendresseTime);
         //End Shake
         skyScript.MakeShakeUnactive();
+        AudioManager.instance.PlayMasterShakerClip();
         //Restore to menu
         GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
     }
