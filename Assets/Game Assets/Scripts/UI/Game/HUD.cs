@@ -15,7 +15,20 @@ public class HUD : MonoBehaviour {
     }
 
     public void Start() {
+        this.PushTestDateEvents();
+    }
 
+    /// <summary>
+    /// Push test date events into story view. Do not use in release.
+    /// </summary>
+    private void PushTestDateEvents() {
+        DateEvent testDateEvent = new DateEvent();
+
+        testDateEvent.question = "À ce moment, il fut clair que Joséphine ne pouvait résister au __________ de Roger.";
+        testDateEvent.answer = "gros criss de tracteur trois vitesses de Canadian Tire";
+
+        this.storyView.OnNewDateEvent(testDateEvent);
+        this.storyView.OnNewDateEvent(testDateEvent);
     }
 
     /// <summary>
@@ -45,6 +58,7 @@ public class HUD : MonoBehaviour {
     /// Called when a new event is started
     /// </summary>
     public void Event_OnBeginEvent() {
+
         this.storyView.OnNewDateEvent(DateManager.instance.GetCurrentEvent());
         this.messageView.OnNewDateEvent(DateManager.instance.GetCurrentEvent());
     }

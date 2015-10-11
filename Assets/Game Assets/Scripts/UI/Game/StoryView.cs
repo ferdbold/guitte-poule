@@ -17,8 +17,11 @@ public class StoryView : MonoBehaviour {
     [Header("Style")]
     [SerializeField]
     private float dateEventWidgetMargin = 30;
-    [SerializeField]
-    private float dateEventWidgetHeight = 310;
+    private float dateEventWidgetHeight;
+
+    public void Awake() {
+        this.dateEventWidgetHeight = Screen.height / 3.0f;
+    }
 
     public void OnBeginDate() {
         DateStructure date = DateManager.instance.GetCurrentDate();
