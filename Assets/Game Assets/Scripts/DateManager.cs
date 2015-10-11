@@ -45,11 +45,10 @@ public class DateManager : MonoBehaviour {
     static public DateManager instance;
 
     [Header("Date Management")]
-    public List<DateStructure> Dates = new List<DateStructure>(); //List of date events to execute
+    public DateStructure Date; //List of date events to execute
     private int _currentDateEvent = -1; //Current Date event
     private int _currentStepInDate = 0; //Current Step in the event ( 0 = first player draws , 1 = second player writes, 2 = text resolution, then start next )
     private bool _canUseConfirmButton = false;
-    private int _currentDate = -1;
 
     [Header("Draw Zones")]
     public GameObject DrawingObjectPrefab;
@@ -141,11 +140,10 @@ public class DateManager : MonoBehaviour {
     /// <param name="intro"></param>
     /// <param name="id"></param>
     public void OnStartNewDate(string theme, string intro, int id, int relationLevel) {
-        Dates.Add(new DateStructure(theme, intro, id, relationLevel));
-        _currentDate++;
+        Date = new DateStructure(theme, intro, id, relationLevel);
         _currentDateEvent = -1;
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginDate();
-        SendMessage_OnConfirm();
+        //SendMessage_OnConfirm();
     }
 
     /// <summary>
@@ -153,10 +151,10 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="eventText"></param>
     public void OnStartNewEvent(string eventText) {
-        Dates[_currentDate].DateEvents.Add(new DateEvent(eventText));
+        Date.DateEvents.Add(new DateEvent(eventText));
         _currentDateEvent++;
         _currentStepInDate = 0;
-        ExecuteDateEvent_DrawPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
+        ExecuteDateEvent_DrawPhase(Date.DateEvents[_currentDateEvent]);
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
 
@@ -176,7 +174,7 @@ public class DateManager : MonoBehaviour {
         if (_currentStepInDate == 0 && _canUseConfirmButton) { //If first player presses confirm when he draws, start text phase
             ExecuteDateEvent_TextPhase();
         } else if (_currentStepInDate == 1 && _canUseConfirmButton) { //If second player presses confirm when he writes, start end phase
-            ExecuteDateEvent_EndPhase(Dates[_currentDate].DateEvents[_currentDateEvent]);
+            ExecuteDateEvent_EndPhase(Date.DateEvents[_currentDateEvent]);
         }
     }
 
@@ -241,20 +239,26 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <returns> current event </returns>
     public DateEvent GetCurrentEvent() {
-        return Dates[_currentDate].DateEvents[_currentDateEvent];
+        return Date.DateEvents[_currentDateEvent];
     }
 
     public DateStructure GetCurrentDate() {
-        return Dates[_currentDate];
+        return Date;
     }
 
     #endregion
 
     /////////////////////////////////////////////// Send Date Message ///////////////////////////////
 
-    public void SendMessage_OnConfirm() {
+    /// <summary>
+    /// Send a message to confirm that the game starts
+    /// </summary>
+    /// <param name="name"> Name of the partner's name </param>
+    public void SendMessage_OnConfirm(string name) {
         DateManager.instance.OnConfirmEntry();
         message messa = new message("dateReady");
+        messa.addNetObject(new NetObject(""));
+        messa.getNetObject(0).addString("", name);
         NetManager.instance.SendMessage(messa);
     }
 
