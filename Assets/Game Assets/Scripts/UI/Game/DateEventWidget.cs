@@ -35,7 +35,8 @@ public class DateEventWidget : MonoBehaviour, ISoundView {
         this.drawing.transform.position = this.drawingPoint.TransformPoint(this.drawingPoint.rect.center);
 
         // Set up sound button
-        audioPlayButton.ParentView = this;
+        this.audioPlayButton.ParentView = this;
+        this.audioPlayButton.Mode = SoundButton.SoundButtonMode.PLAY;
     }
 
     public void Update() {

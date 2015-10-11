@@ -214,8 +214,14 @@ public class MessageView : MonoBehaviour, ISoundView {
     /// Handle send button click
     /// </summary>
     public void OnSend() {
-        DateManager.instance.SendMessage_OnConfirmHandle(this.answerInput.text);
+        StartCoroutine(this.SendCoroutine());
+    }
+
+    public IEnumerator SendCoroutine() {
         this.SlideDown();
+        yield return new WaitForSeconds(this.slideAnimDuration);
+        DateManager.instance.SendMessage_OnConfirmHandle(this.answerInput.text);
+        this.answerInput.text = "";
     }
 
     /// <summary>
@@ -263,7 +269,7 @@ public class MessageView : MonoBehaviour, ISoundView {
             CanvasGroup deleteSoundButtonCanvasGroup = this.deleteSoundButton.GetComponent<CanvasGroup>();
 
             this.deleteSoundButton.interactable = value;
-            deleteSoundButtonCanvasGroup.DOFade((value) ? 1 : 0, 0.5f);
+            deleteSoundButtonCanvasGroup.alpha = (value) ? 1 : 0;
         }
     }
 }
