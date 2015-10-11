@@ -10,10 +10,6 @@ public class GameManager : MonoBehaviour {
     static public GameManager instance;
     public bool isFirst; //TODO :The server chooses a first and second player in the date. THIS DOES NOT CHANGE DURING THE DATE !
 
-    private AudioClip aud = new AudioClip();
-    private bool isRecording = false;
-    private message testClip;
-
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -59,22 +55,7 @@ public class GameManager : MonoBehaviour {
             SaveAndLoad.savedGame.lenght++;
             Debug.Log("Length : " + SaveAndLoad.savedGame.lenght);
         }
-
-        if (Input.GetKeyDown("c"))
-        {
-            startRecord();
-        }
-        if (Input.GetKeyUp("c"))
-        {
-            testClip = getRecordMessage();
-        }
-        if (Input.GetKeyDown("v"))
-        {
-            NetManager.instance.SendMessage(testClip);
-            PlaySoundFromMessage(testClip);
-        }
     }
-    
 
     //-----------------------------------------------------------------------------------------------------------------------
     //////////////////////////////////////////////// SWITCH SCENE ///////////////////////////////////////////////////////////
@@ -150,67 +131,6 @@ public class GameManager : MonoBehaviour {
     public void Event_OnFindPartner(bool isFirst) {
         SwitchScene(Scenes.Main);
     }
-
-
-    public void startRecord()
-    {
-        aud = Microphone.Start("", false, 3, 8996);
-        isRecording = true;
-    }
-
-    public message getRecordMessage()
-    {
-        if (isRecording)
-        {
-            Microphone.End("");
-            isRecording = false;
-        }
-        return MakeMessageFromClip();
-    }
-
-    public message MakeMessageFromClip()
-    { 
-        message sound = new message("sendSound");
-
-        AudioSource speaker = GetComponent<AudioSource>();
-        speaker.clip = aud;
-        float[] samples = new float[speaker.clip.samples * speaker.clip.channels];
-        speaker.clip.GetData(samples, 0);
-        int cpt=0;
-        NetObject subSound = new NetObject("subSound");
-        subSound.addInt("", samples.Length);
-
-        for(int i=0; i<samples.Length;i++)
-        {
-            if (cpt == 250)
-            {
-                sound.addNetObject(subSound);
-                subSound = new NetObject("subSound");
-                cpt = 0;
-            }
-            subSound.addFloat("", (Mathf.Floor(samples[i]*1000)/1000));
-            cpt++;
-        }
-        return sound;
-    }
-
-    public void PlaySoundFromMessage(message sound)
-    {
-        AudioSource speaker = GetComponent<AudioSource>();
-        float[] samples = new float[sound.getNetObject(0).getInt(0)];
-        for (int i = 0; i < sound.getNetObjectCount(); i++)
-        {
-            NetObject subSound= sound.getNetObject(i);
-            for (int j = 0; j < subSound.getFloatCount(); j++)
-            {
-                samples[(i * 250) + j] = subSound.getFloat(j);
-            }
-        }
-        speaker.clip = aud;
-        speaker.clip.SetData(samples, 0);
-        speaker.Play();
-    }
-
 
 
 
