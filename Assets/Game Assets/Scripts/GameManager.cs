@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 
     static public GameManager instance;
     public bool isFirst; //TODO :The server chooses a first and second player in the date. THIS DOES NOT CHANGE DURING THE DATE !
+    private bool finishedAGame = false;
 
     void Awake() {
         if (instance == null) {
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour {
                 loading.GetComponent<LoadingUI>().StopAllCoroutines();
                 break;
             case Scenes.Main:
+                finishedAGame = true;
                 break;
         }
     }
@@ -108,6 +110,7 @@ public class GameManager : MonoBehaviour {
         switch (scene) {
             case Scenes.Menu:
                 Application.LoadLevel("Menu");
+                if (finishedAGame) GameObject.FindGameObjectWithTag("cucumber").GetComponent<TiltShakeMotor>().isInTendresse = true;
                 break;
             case Scenes.LoadingGame:
                 CanvasGroup loading = GameObject.FindWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().loading;

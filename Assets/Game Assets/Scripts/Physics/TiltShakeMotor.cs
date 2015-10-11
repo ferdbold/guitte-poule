@@ -8,6 +8,7 @@ public class TiltShakeMotor : MonoBehaviour {
     public float motorForce;
     public GameObject SeedFallingObject;
     public GameObject SeedGrowAnimation;
+    public GameObject TendresseObjectTimer;
 
     [Header("Animation")]
     public AnimationCurve animCurve;
@@ -16,10 +17,13 @@ public class TiltShakeMotor : MonoBehaviour {
     public float animationTime = 2.5f;
 
     [Header("Tilt")]
-    public bool isInTendresse = false;
     private Vector3 previousTiltInputs = new Vector3(0, 0, 0);
     private Vector3 tiltInputs = new Vector3(0, 0, 0);
     private bool inAnim = false; //Is the cucumber in animation
+
+    [Header("Tendresse")]
+    public bool isInTendresse = false;
+    public float tendresseTime = 5f;
 
     [Header("Sky")]
     public SkyScript skyScript;
@@ -28,6 +32,7 @@ public class TiltShakeMotor : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         InitializeCucumber();
+        TendresseObjectTimer.SetActive(false);
     }
 
 
@@ -39,7 +44,7 @@ public class TiltShakeMotor : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().TransitionToSky();
-                skyScript.StartHeight();
+                StartCoroutine(TendressePhase());
 
             } else {
                 GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
@@ -66,12 +71,15 @@ public class TiltShakeMotor : MonoBehaviour {
             tiltInputs = Input.acceleration;
             Vector3 diff = tiltInputs - previousTiltInputs;
             
-            Debug.Log(diff);
+            //Debug.Log(diff);
 
             JointMotor2D motor = hingeMotor.motor;
           
             if (isInTendresse) {
                 motor.motorSpeed = (diff.y * motorForce * 20);
+                if (skyScript.isActive) {
+                    SaveAndLoad.savedGame.lenght += Mathf.Abs(diff.y / 10f);
+                }
             } else {
                 motor.motorSpeed = (tiltInputs.x * motorForce * 2);
             }
@@ -122,6 +130,22 @@ public class TiltShakeMotor : MonoBehaviour {
         hingeMotor.connectedAnchor = new Vector2(0, targetPosition);
         SaveAndLoad.savedGame.hasPlantedSeed = true;
         
+    }
+
+    IEnumerator TendressePhase() {
+        //Put cucumber at correct height
+        skyScript.StartHeight();
+        yield return new WaitForSeconds(4f);
+        //Show timer
+        TendresseObjectTimer.SetActive(true);
+        yield return new WaitForSeconds(5.5f);
+        //Start Shake
+        skyScript.MakeShakeActive();
+        yield return new WaitForSeconds(tendresseTime);
+        //End Shake
+        skyScript.MakeShakeUnactive();
+        //Restore to menu
+        GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
     }
 
 }
