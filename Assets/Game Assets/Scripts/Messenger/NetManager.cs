@@ -61,30 +61,32 @@ public class NetManager : MonoBehaviour
         switch (mes.messageText)
         {
             /*--------------------------------------  Movement Update   -----------------------------------------*/
-            case "startMatch":
-                GameManager.instance.Event_OnFindPartner(mes.getNetObject(0).getBool(0));
+            case "startEvent":
+                DateManager.instance.OnStartNewEvent(mes.getNetObject(0).getString(0), mes.getNetObject(0).getInt(0) == 0);
                 break;
             case "receiveImage":
+                GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
+                break;
+            case "receiveTexte":
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
 
             case "receiveSound":
                 AudioManager.instance.PlaySoundFromMessage(mes);
                 break;
-            case "startDate":
-                DateManager.instance.OnStartNewDate(mes.getNetObject(0).getString(0),
-                                                    mes.getNetObject(0).getString(1),
-                                                    mes.getNetObject(0).getInt(0),
-                                                    mes.getNetObject(0).getInt(2));
+            
+            case "startMatch":
+                GameManager.instance.Event_OnFindPartner(mes.getNetObject(0).getBool(0));
                 break;
+           
+            case "startDate":
+                DateManager.instance.OnStartNewDate(mes.getNetObject(0).getString(0),mes.getNetObject(0).getString(1),mes.getNetObject(0).getInt(0), mes.getNetObject(0).getInt(2));
+                break;
+
             case "oponenName":
                 DateManager.instance.OnGetOwnName(mes.getNetObject(0).getString(0));
                 break;
-            case "startEvent":
-                
-                DateManager.instance.OnStartNewEvent(mes.getNetObject(0).getString(0),
-                                                     mes.getNetObject(0).getInt(0) == 0);
-                break;
+
             case "endDate":
                 
                 break;

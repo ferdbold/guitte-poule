@@ -155,6 +155,7 @@ public class DateManager : MonoBehaviour {
     public void OnGetOwnName(string name){
         Date.yourName = name;
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginDate();
+       
     }
 
     /// <summary>
@@ -164,10 +165,7 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewEvent(string eventText, bool mediaIsDrawing) {
         Date.DateEvents.Add(new DateEvent(eventText, mediaIsDrawing));
         _currentDateEvent++;
-        _currentStepInDate = 0;
-        if (IAmFirst()) Debug.Log("Drawing");
-        else Debug.Log("Writing");
-        //ExecuteDateEvent_DrawPhase(Date.DateEvents[_currentDateEvent]);
+
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
 
@@ -175,10 +173,15 @@ public class DateManager : MonoBehaviour {
     /// Player has clicked the submit button.
     /// </summary>
     public void OnConfirmEntry() {
-        if (_currentStepInDate == 0 && _canUseConfirmButton) { //If first player presses confirm when he draws, start text phase
-            ExecuteDateEvent_TextPhase();
-        } else if (_currentStepInDate == 1 && _canUseConfirmButton) { //If second player presses confirm when he writes, start end phase
-            ExecuteDateEvent_EndPhase(Date.DateEvents[_currentDateEvent]);
+        //If first player presses confirm when he draws, start text phase
+        //ExecuteDateEvent_TextPhase();
+        if (_currentStepInDate == 0) 
+        {
+            _currentStepInDate++;
+            SendMessage_OnConfirmMedia();
+        } 
+        else if (_currentStepInDate == 1) { //If second player presses confirm when he writes, start end phase
+            //ExecuteDateEvent_EndPhase(Date.DateEvents[_currentDateEvent]);
         }
     }
 
@@ -200,7 +203,8 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_DrawPhase(DateEvent dateEvent) {
-        //mainPage.confirmButton.SetActive(IAmFirst());
+        //GameObject.Find("UI").GetComponent<HUD>().
+        //.confirmButton.SetActive(IAmFirst());
     }
 
     /// <summary>
@@ -228,6 +232,7 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     public bool IAmFirst() {
+        Debug.Log(_currentDateEvent + " "+GameManager.instance.isFirst);
         if (_currentDateEvent % 2 == 0) {
             if (GameManager.instance.isFirst == true) return true;
             else return false;
@@ -270,9 +275,13 @@ public class DateManager : MonoBehaviour {
     /// When sending media to server
     /// </summary>
     public void SendMessage_OnConfirmMedia() {
-        GameObject.Find("UI").GetComponent<HUD>().Event_OnReceivedMedia();
-        GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
-        GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
+        if (GetCurrentEvent().mediaIsDrawing)
+        {
+            GameObject.Find("UI").GetComponent<HUD>().Event_OnReceivedMedia();
+            GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
+            GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
+        }
+        
     }
 
     /// <summary>

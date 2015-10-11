@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour {
                 break;
             case Scenes.Main:
                 Application.LoadLevel("Main");
+                message mes = new message("requestDateStart");
+                NetManager.instance.SendMessage(mes);
                 break;
         }
     }

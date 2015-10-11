@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour {
     }
 
     public void Start() {
-        this.PushTestDateEvents();
+        //this.PushTestDateEvents();
     }
 
     /// <summary>
@@ -53,6 +53,8 @@ public class HUD : MonoBehaviour {
     public void Event_OnBeginDate() {
         this.storyView.OnBeginDate();
     }
+
+  
 
     /// <summary>
     /// Called when a new event is started

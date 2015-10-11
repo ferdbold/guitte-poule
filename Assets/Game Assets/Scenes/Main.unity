@@ -242,9 +242,31 @@ Prefab:
       propertyPath: drawZone
       value: 
       objectReference: {fileID: 831246158}
+    - target: {fileID: 11412770, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 432164430}
+    - target: {fileID: 22463722, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 22463052, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22421000, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &432164430 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11434634, guid: 0ce59cffdfe9c70469e333db81cd4dcd,
+    type: 2}
+  m_PrefabInternal: {fileID: 432164429}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &687939580
 Prefab:
   m_ObjectHideFlags: 0
@@ -536,9 +558,19 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11430188, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 1200565515}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b03e0f8a54d57249bae02320129d459, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1200565515 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11409696, guid: 5b03e0f8a54d57249bae02320129d459,
+    type: 2}
+  m_PrefabInternal: {fileID: 1200565514}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!224 &1312946672 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22489994, guid: 0ce59cffdfe9c70469e333db81cd4dcd,
@@ -644,6 +676,10 @@ Prefab:
     - target: {fileID: 193086, guid: 29bb55aff7783714e8d6373316be024f, type: 2}
       propertyPath: m_Name
       value: DrawZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429596, guid: 29bb55aff7783714e8d6373316be024f, type: 2}
+      propertyPath: canDraw
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29bb55aff7783714e8d6373316be024f, type: 2}

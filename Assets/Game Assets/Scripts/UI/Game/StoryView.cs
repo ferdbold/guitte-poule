@@ -25,7 +25,7 @@ public class StoryView : MonoBehaviour {
 
     public void OnBeginDate() {
         DateStructure date = DateManager.instance.GetCurrentDate();
-        titleText.text = "Soirée " + date.relationLevel + " avec " + date.dateName;
+        titleText.text = "Date avec " + date.dateName;
     }
 
     /// <summary>
@@ -34,9 +34,16 @@ public class StoryView : MonoBehaviour {
     /// <param name="dateEvent">The new date event</param>
     public void OnNewDateEvent(DateEvent dateEvent) {
         DateEventWidget newWidget = this.AddNewDateEventWidget(dateEvent);
-
         newWidget.Question = dateEvent.question;
+        newWidget.Answer = "";
+
+    }
+
+    public void OnNewDateEventTextAwnser(DateEvent dateEvent)
+    {
+        DateEventWidget newWidget = this.AddNewDateEventWidget(dateEvent);
         newWidget.Answer = dateEvent.answer;
+
     }
 
     /// <summary>

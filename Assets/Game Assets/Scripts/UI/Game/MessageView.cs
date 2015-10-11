@@ -45,8 +45,12 @@ public class MessageView : MonoBehaviour {
     private float titlePanelHeight;
     private float pivotY;
     private float drawZoneY;
+    private bool sendBtActivated=false;
+
 
     public void Awake() {
+
+
         this.rectTransform = GetComponent<RectTransform>();
 
         // Cache default anim values
@@ -56,6 +60,8 @@ public class MessageView : MonoBehaviour {
 
         // Set anim settings
         this.slideAnimParams = new TweenParams().SetEase(Ease.InOutExpo);
+
+        this.drawZone.canDraw = false;
     }
 
     public void Update() {
@@ -71,20 +77,26 @@ public class MessageView : MonoBehaviour {
     /// <param name="first">If this player is first at drawing/speaking</param>
     public void OnNewDateEvent(DateEvent dateEvent, bool first) {
         this.questionText.text = dateEvent.question;
-
+        
         if (first) {
+            this.sendBtActivated = true;
             if (dateEvent.mediaIsDrawing) {
                 this.titleText.text = this.youDrawTitleText;
+                this.drawZone.canDraw = true;
             } else {
                 this.titleText.text = this.youTalkTitleText;
             }
         } else {
+            this.sendBtActivated = false;
             if (dateEvent.mediaIsDrawing) {
                 this.titleText.text = this.theyDrawTitleText;
+                this.drawZone.canDraw = false;
             } else {
                 this.titleText.text = this.theyTalkTitleText;
             }
         }
+        this.titlePanel.interactable =  this.sendBtActivated;
+
     }
 
     /// <summary>
@@ -104,13 +116,17 @@ public class MessageView : MonoBehaviour {
     /// Shows the message view by sliding it up.
     /// </summary>
     private void SlideUp() {
-        DOTween.To(() => this.pivotY, x => this.pivotY = x, 0.1f, this.slideAnimDuration)
-               .SetAs(this.slideAnimParams);
-        this.drawZone.transform.DOMoveY(0, this.slideAnimDuration)
-                               .SetAs(this.slideAnimParams);
+        if (this.sendBtActivated)
+        {
+            DOTween.To(() => this.pivotY, x => this.pivotY = x, 0.1f, this.slideAnimDuration)
+                   .SetAs(this.slideAnimParams);
+            this.drawZone.transform.DOMoveY(0, this.slideAnimDuration)
+                                   .SetAs(this.slideAnimParams);
 
-        this.titlePanel.interactable = false;
-        this.ShowTitleButtons();
+            this.titlePanel.interactable = false;
+            this.sendButton.interactable = true;
+            this.ShowTitleButtons();
+        }
     }
 
     /// <summary>
@@ -151,7 +167,15 @@ public class MessageView : MonoBehaviour {
     }
 
     public void OnSend() {
-        DateManager.instance.SendMessage_OnConfirm(this.answerInput.text);
+        DateManager.instance.OnConfirmEntry();
         this.SlideDown();
+        if (this.sendBtActivated)
+        {
+            this.sendBtActivated = false;
+        }
+        else
+        {
+            this.sendBtActivated = true;
+        }
     }
 }
