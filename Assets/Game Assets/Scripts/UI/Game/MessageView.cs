@@ -37,7 +37,7 @@ public class MessageView : MonoBehaviour {
         this.drawZoneY = this.drawZone.transform.position.y;
 
         // Set anim settings
-        this.slideAnimParams = new TweenParams().SetEase(Ease.InOutCubic);
+        this.slideAnimParams = new TweenParams().SetEase(Ease.InOutExpo);
     }
 
     public void Update() {

@@ -1,0 +1,887 @@
+fileFormatVersion: 2
+guid: 12870a817a6009c48a761e7e620f93ac
+timeCreated: 1444523393
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CloudWarp_0
+    21300002: CloudWarp_1
+    21300004: CloudWarp_2
+    21300006: CloudWarp_3
+    21300008: CloudWarp_4
+    21300010: CloudWarp_5
+    21300012: CloudWarp_6
+    21300014: CloudWarp_7
+    21300016: CloudWarp_8
+    21300018: CloudWarp_9
+    21300020: CloudWarp_10
+    21300022: CloudWarp_11
+    21300024: CloudWarp_12
+    21300026: CloudWarp_13
+    21300028: CloudWarp_14
+    21300030: CloudWarp_15
+    21300032: CloudWarp_16
+    21300034: CloudWarp_17
+    21300036: CloudWarp_18
+    21300038: CloudWarp_19
+    21300040: CloudWarp_20
+    21300042: CloudWarp_21
+    21300044: CloudWarp_22
+    21300046: CloudWarp_23
+    21300048: CloudWarp_24
+    21300050: CloudWarp_25
+    21300052: CloudWarp_26
+    21300054: CloudWarp_27
+    21300056: CloudWarp_28
+    21300058: CloudWarp_29
+    21300060: CloudWarp_30
+    21300062: CloudWarp_31
+    21300064: CloudWarp_32
+    21300066: CloudWarp_33
+    21300068: CloudWarp_34
+    21300070: CloudWarp_35
+    21300072: CloudWarp_36
+    21300074: CloudWarp_37
+    21300076: CloudWarp_38
+    21300078: CloudWarp_39
+    21300080: CloudWarp_40
+    21300082: CloudWarp_41
+    21300084: CloudWarp_42
+    21300086: CloudWarp_43
+    21300088: CloudWarp_44
+    21300090: CloudWarp_45
+    21300092: CloudWarp_46
+    21300094: CloudWarp_47
+    21300096: CloudWarp_48
+    21300098: CloudWarp_49
+    21300100: CloudWarp_50
+    21300102: CloudWarp_51
+    21300104: CloudWarp_52
+    21300106: CloudWarp_53
+    21300108: CloudWarp_54
+    21300110: CloudWarp_55
+    21300112: CloudWarp_56
+    21300114: CloudWarp_57
+    21300116: CloudWarp_58
+    21300118: CloudWarp_59
+    21300120: CloudWarp_65
+    21300122: CloudWarp_66
+    21300124: CloudWarp_67
+    21300126: CloudWarp_68
+    21300128: CloudWarp_69
+    21300130: CloudWarp_70
+    21300132: CloudWarp_71
+    21300134: CloudWarp_72
+    21300136: CloudWarp_74
+    21300138: CloudWarp_75
+    21300140: CloudWarp_76
+    21300142: CloudWarp_77
+    21300144: CloudWarp_78
+    21300146: CloudWarp_79
+    21300148: CloudWarp_80
+    21300150: CloudWarp_60
+    21300152: CloudWarp_61
+    21300154: CloudWarp_62
+    21300156: CloudWarp_63
+    21300158: CloudWarp_64
+    21300160: CloudWarp_73
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CloudWarp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_1
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_2
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_3
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_4
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_5
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_6
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_7
+      rect:
+        serializedVersion: 2
+        x: 4214
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_8
+      rect:
+        serializedVersion: 2
+        x: 4816
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_9
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_10
+      rect:
+        serializedVersion: 2
+        x: 6020
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_11
+      rect:
+        serializedVersion: 2
+        x: 6622
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_12
+      rect:
+        serializedVersion: 2
+        x: 7224
+        y: 7166
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_14
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_15
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_16
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_17
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_18
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_19
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_20
+      rect:
+        serializedVersion: 2
+        x: 4214
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_21
+      rect:
+        serializedVersion: 2
+        x: 4816
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_22
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_23
+      rect:
+        serializedVersion: 2
+        x: 6020
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_24
+      rect:
+        serializedVersion: 2
+        x: 6622
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_25
+      rect:
+        serializedVersion: 2
+        x: 7224
+        y: 6140
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_27
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_28
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_29
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_30
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_31
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_32
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_33
+      rect:
+        serializedVersion: 2
+        x: 4214
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_34
+      rect:
+        serializedVersion: 2
+        x: 4816
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_35
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_36
+      rect:
+        serializedVersion: 2
+        x: 6020
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_37
+      rect:
+        serializedVersion: 2
+        x: 6622
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_38
+      rect:
+        serializedVersion: 2
+        x: 7224
+        y: 5114
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_40
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_41
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_42
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_43
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_44
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_45
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_46
+      rect:
+        serializedVersion: 2
+        x: 4214
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_47
+      rect:
+        serializedVersion: 2
+        x: 4816
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_48
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_49
+      rect:
+        serializedVersion: 2
+        x: 6020
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_50
+      rect:
+        serializedVersion: 2
+        x: 6622
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_51
+      rect:
+        serializedVersion: 2
+        x: 7224
+        y: 4088
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_53
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_54
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_55
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_56
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_57
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_58
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_59
+      rect:
+        serializedVersion: 2
+        x: 4214
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_60
+      rect:
+        serializedVersion: 2
+        x: 4816
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_61
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_62
+      rect:
+        serializedVersion: 2
+        x: 6020
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_63
+      rect:
+        serializedVersion: 2
+        x: 6622
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_64
+      rect:
+        serializedVersion: 2
+        x: 7224
+        y: 3062
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_66
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_67
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_68
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_69
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_70
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_71
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_72
+      rect:
+        serializedVersion: 2
+        x: 4214
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_73
+      rect:
+        serializedVersion: 2
+        x: 4816
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CloudWarp_74
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 2036
+        width: 602
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
