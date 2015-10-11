@@ -34,8 +34,8 @@ public class MainMenuRefUI : MonoBehaviour {
         IntroButton.blocksRaycasts = true;
     }
 
-    public void HideIntroButton() {
-        IntroButton.DOFade(0, 1);
+    public void HideIntroButton(float duration = 1) {
+        IntroButton.DOFade(0, duration);
         IntroButton.GetComponentInChildren<Button>().interactable = false;
         IntroButton.blocksRaycasts = false;
     }
@@ -45,8 +45,8 @@ public class MainMenuRefUI : MonoBehaviour {
         IntroText.blocksRaycasts = false;
     }
 
-    public void HideIntroText() {
-        IntroText.DOFade(0, 1);
+    public void HideIntroText(float duration = 1) {
+        IntroText.DOFade(0, duration);
         IntroText.blocksRaycasts = false;
     }
 
