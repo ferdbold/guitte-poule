@@ -150,7 +150,7 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewDate(string theme, string intro, int id, int relationLevel) {
         Date = new DateStructure(theme, intro, id, relationLevel);
         _currentDateEvent = -1;
-        
+        DateManager.instance.SendMessage_OnConfirm("Roger Toupin");
     }
 
     public void OnGetOwnName(string name){
