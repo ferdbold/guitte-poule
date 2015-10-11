@@ -15,7 +15,9 @@ public class TiltShakeMotor : MonoBehaviour {
     public float startPosition = -15f;
     public float animationTime = 2.5f;
 
-
+    [Header("Tilt")]
+    public bool isInTendresse = false;
+    private Vector3 previousTiltInputs = new Vector3(0, 0, 0);
     private Vector3 tiltInputs = new Vector3(0, 0, 0);
     private bool inAnim = false; //Is the cucumber in animation
     
@@ -41,11 +43,14 @@ public class TiltShakeMotor : MonoBehaviour {
     void TiltCucumber() {
         if (!inAnim) {
             tiltInputs = Input.acceleration;
-            //Debug.Log(tiltInputs);
+            Vector3 diff = tiltInputs - previousTiltInputs;
+            Debug.Log(diff);
 
             JointMotor2D motor = hingeMotor.motor;
             motor.motorSpeed = (tiltInputs.x * motorForce);
             hingeMotor.motor = motor;
+
+            previousTiltInputs = tiltInputs;
         }
     }
 
