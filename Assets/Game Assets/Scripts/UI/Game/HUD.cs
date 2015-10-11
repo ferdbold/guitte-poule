@@ -76,4 +76,8 @@ public class HUD : MonoBehaviour {
         this.storyView.OnReceivedMediaEvent(DateManager.instance.GetCurrentEvent());
         this.messageView.OnReceivedMediaEvent(DateManager.instance.GetCurrentEvent(), DateManager.instance.IAmFirst());
     }
+
+    public void Event_OnReceivedText() {
+        this.storyView.OnNewDateEventTextAwnser(DateManager.instance.GetCurrentEvent());
+    }
 }
