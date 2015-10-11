@@ -71,9 +71,10 @@ public class NetManager : MonoBehaviour
                 DateManager.instance.ExecuteDateEvent_OnReceiveText();
                 break;
 
-            case "receiveSound": //TODO reconnect this
+            case "receiveSound": 
                 Debug.Log(conversionTools.convertMessageToString(mes));
-                AudioManager.instance.PlaySoundFromMessage(mes);
+                GameManager.instance.Event_OnReveiceSound(mes);
+
                 break;
             
             case "startMatch":

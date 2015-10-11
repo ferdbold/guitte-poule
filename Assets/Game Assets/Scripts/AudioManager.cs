@@ -154,10 +154,8 @@ public class AudioManager : MonoBehaviour {
 
     public void PlaySoundFromMessage(message sound) {
         float[] samples = new float[sound.getNetObject(0).getInt(0)];
-        Debug.Log("test 1");
         for (int i = 0; i < sound.getNetObjectCount(); i++) {
             NetObject subSound = sound.getNetObject(i);
-            Debug.Log("test 2");
             for (int j = 0; j < subSound.getFloatCount(); j++) {
                 samples[(i * 250) + j] = subSound.getFloat(j);
             }

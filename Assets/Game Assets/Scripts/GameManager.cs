@@ -150,6 +150,12 @@ public class GameManager : MonoBehaviour {
         DateManager.instance.ExecuteDateEvent_TextPhase();
     }
 
+    public void Event_OnReveiceSound(message messa) {
+        DateManager.instance.GetCurrentEvent().SetSound(messa);
+        DateManager.instance.ExecuteDateEvent_TextPhase();
+        AudioManager.instance.PlaySoundFromMessage(messa);
+    }
+
     public void Event_OnSendSound(message messa) {
         NetManager.instance.SendMessage(messa);
         Debug.Log("Sent Message");
