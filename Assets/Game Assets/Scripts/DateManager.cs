@@ -229,7 +229,7 @@ public class DateManager : MonoBehaviour {
     /// Starts the last part of the event where the resolution is shown
     /// </summary>
     /// <param name="dateEvent"></param>
-    public void ExecuteDateEvent_EndPhase(DateEvent dateEvent) {
+    public void ExecuteDateEvent_EndPhase() {
         GameManager.instance.SwitchScene(GameManager.Scenes.Menu);
     }
 
