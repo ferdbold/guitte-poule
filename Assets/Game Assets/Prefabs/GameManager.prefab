@@ -219,6 +219,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1febe280cd73d394895ea0ee829d7ad8, type: 3}
   musicArray:
   - {fileID: 8300000, guid: 971852549d5305244b8d2a72d4df6898, type: 3}
+  - {fileID: 8300000, guid: 971852549d5305244b8d2a72d4df6898, type: 3}
 --- !u!114 &11481982
 MonoBehaviour:
   m_ObjectHideFlags: 1

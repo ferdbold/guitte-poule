@@ -225,13 +225,12 @@ public class DateManager : MonoBehaviour {
         SendMessage_OnConfirm(Date.dateName);
     }
 
-
     /// <summary>
     /// Starts the last part of the event where the resolution is shown
     /// </summary>
     /// <param name="dateEvent"></param>
-    private void ExecuteDateEvent_EndPhase(DateEvent dateEvent) {
-
+    public void ExecuteDateEvent_EndPhase(DateEvent dateEvent) {
+        GameManager.instance.SwitchScene(GameManager.Scenes.Menu);
     }
 
     /// <summary>
