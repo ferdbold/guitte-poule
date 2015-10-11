@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviour {
 
     public List<AudioClip> audioClipArray = new List<AudioClip>();
     Dictionary<string, AudioClip> audioDictionnary = new Dictionary<string, AudioClip>();
+    public List<AudioClip> MasterShakerClips = new List<AudioClip>();
     public List<AudioClip> musicArray = new List<AudioClip>();
 
     /// <summary>
@@ -123,6 +124,16 @@ public class AudioManager : MonoBehaviour {
             musicSource.clip = clip;
             musicSource.Play();
             return;
+        }
+    }
+
+    /// <summary>
+    /// Plays a master shaker sound at random
+    /// </summary>
+    public void PlayMasterShakerClip() {
+        if (MasterShakerClips.Count > 1) {
+            int i = Random.Range(0, MasterShakerClips.Count);
+            audioSource.PlayOneShot(MasterShakerClips[i]);
         }
     }
 
