@@ -132,8 +132,6 @@ public class GameManager : MonoBehaviour {
         SwitchScene(Scenes.Main);
     }
 
-
-
     public void Event_OnSendImage(TendresseData tData) {
         Debug.Log("Beginning Send Message");
         message mes = NetManager.instance.MakeMessageFromImage(tData);
@@ -146,7 +144,4 @@ public class GameManager : MonoBehaviour {
         Debug.Log("draw 1");
         DateManager.instance.DrawImageAt(tData, Vector3.zero, 1f);
     }
-
-    
-
 }

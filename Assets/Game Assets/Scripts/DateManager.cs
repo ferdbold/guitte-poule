@@ -143,7 +143,7 @@ public class DateManager : MonoBehaviour {
         Date = new DateStructure(theme, intro, id, relationLevel);
         _currentDateEvent = -1;
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginDate();
-        //SendMessage_OnConfirm();
+        SendMessage_OnConfirm("Roger Toupin");
     }
 
     /// <summary>
