@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour {
 
     public void Event_OnSendImage(TendresseData tData) {
         Debug.Log("Beginning Send Message");
+        DateManager.instance.GetCurrentEvent().SetImage(tData);
         message mes = NetManager.instance.MakeMessageFromImage(tData);
         Debug.Log("Created Message" + conversionTools.convertMessageToString(mes));
         NetManager.instance.SendMessage(mes);
