@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class DateEventWidget : MonoBehaviour {
+public class DateEventWidget : MonoBehaviour, ISoundView {
 
     [Header("Components")]
     [SerializeField]
@@ -9,9 +9,17 @@ public class DateEventWidget : MonoBehaviour {
     [SerializeField]
     private Image drawing;
     [SerializeField]
-    private Button audioPlayButton;
+    private SoundButton audioPlayButton;
     [SerializeField]
     private Text answerText;
+
+    public void Awake() {
+        audioPlayButton.ParentView = this;
+    }
+
+    public void OnSoundButtonClick() {
+
+    }
 
     /* PROPERTIES */
 

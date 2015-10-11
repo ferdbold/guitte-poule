@@ -11,7 +11,8 @@ public class MainMenuUI : MonoBehaviour {
         MainMenuRefUI mainRef = GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>();
         mainRef.HidePlayButton();
         mainRef.HideIntroButton();
-        foreach(GameObject ring in cloudRings) {
+        mainRef.HideSky();
+        foreach (GameObject ring in cloudRings) {
             ring.SetActive(false);
         }
     }
