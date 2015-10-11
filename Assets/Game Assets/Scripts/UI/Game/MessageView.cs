@@ -20,6 +20,8 @@ public class MessageView : MonoBehaviour {
     private InputField answerInput;
     [SerializeField]
     private TouchDraw drawZone;
+    [SerializeField]
+    private SoundButton soundButton;
 
     [Header("Animation")]
     [SerializeField]
@@ -75,14 +77,20 @@ public class MessageView : MonoBehaviour {
         if (first) {
             if (dateEvent.mediaIsDrawing) {
                 this.titleText.text = this.youDrawTitleText;
+                this.SetupDrawing();
+                this.titlePanel.interactable = true;
             } else {
                 this.titleText.text = this.youTalkTitleText;
+                this.SetupRecording();
+                this.titlePanel.interactable = true;
             }
         } else {
             if (dateEvent.mediaIsDrawing) {
                 this.titleText.text = this.theyDrawTitleText;
+                this.titlePanel.interactable = false;
             } else {
                 this.titleText.text = this.theyTalkTitleText;
+                this.titlePanel.interactable = false;
             }
         }
     }
@@ -95,8 +103,11 @@ public class MessageView : MonoBehaviour {
     public void OnReceivedMediaEvent(DateEvent dateEvent, bool first) {
         if (first) {
             this.titleText.text = this.theyWriteTitleText;
+            this.titlePanel.interactable = false;
         } else {
             this.titleText.text = this.youWriteTitleText;
+            this.SetupWriting(dateEvent.mediaIsDrawing);
+            this.titlePanel.interactable = true;
         }
     }
 
@@ -146,12 +157,58 @@ public class MessageView : MonoBehaviour {
             .SetAs(this.slideAnimParams);
     }
 
+    /// <summary>
+    /// Set up the drawing mode.
+    /// </summary>
+    private void SetupDrawing() {
+        this.drawZone.canDraw = true;
+        this.soundButton.Enabled = false;
+        this.AnswerInputEnabled = false;
+    }
+
+    private void SetupRecording() {
+        this.drawZone.canDraw = false;
+        this.soundButton.Enabled = true;
+        this.AnswerInputEnabled = false;
+
+        this.soundButton.Mode = SoundButton.SoundButtonMode.RECORD;
+    }
+
+    /// <summary>
+    /// Set up the writing mode
+    /// </summary>
+    /// <param name="mediaIsDrawing">True if media is a drawing, false if media is a sound</param>
+    private void SetupWriting(bool mediaIsDrawing) {
+        this.drawZone.canDraw = false;
+        this.soundButton.Enabled = !mediaIsDrawing;
+        this.AnswerInputEnabled = true;
+
+        if (!mediaIsDrawing) {
+            this.soundButton.Mode = SoundButton.SoundButtonMode.PLAY;
+        }
+    }
+
+    /// <summary>
+    /// Handle close button click
+    /// </summary>
     public void OnClose() {
         this.SlideDown();
     }
 
+    /// <summary>
+    /// Handle send button click
+    /// </summary>
     public void OnSend() {
         DateManager.instance.SendMessage_OnConfirm(this.answerInput.text);
         this.SlideDown();
+    }
+
+    private bool AnswerInputEnabled {
+        set {
+            CanvasGroup answerInputCanvasGroup = this.answerInput.GetComponent<CanvasGroup>();
+
+            this.answerInput.interactable = value;
+            answerInputCanvasGroup.alpha = (value) ? 1 : 0;
+        }
     }
 }

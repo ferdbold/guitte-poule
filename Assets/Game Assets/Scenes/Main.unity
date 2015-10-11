@@ -242,6 +242,14 @@ Prefab:
       propertyPath: drawZone
       value: 
       objectReference: {fileID: 831246158}
+    - target: {fileID: 22416378, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22484466, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
   m_IsPrefabParent: 0

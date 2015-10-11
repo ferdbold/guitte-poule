@@ -26,9 +26,14 @@ public class HUD : MonoBehaviour {
 
         testDateEvent.question = "À ce moment, il fut clair que Joséphine ne pouvait résister au __________ de Roger.";
         testDateEvent.answer = "gros criss de tracteur trois vitesses de Canadian Tire";
+        testDateEvent.mediaIsDrawing = false;
 
-        this.storyView.OnNewDateEvent(testDateEvent);
-        this.storyView.OnNewDateEvent(testDateEvent);
+        //this.storyView.OnNewDateEvent(testDateEvent);
+        //this.storyView.OnNewDateEvent(testDateEvent);
+
+        //this.messageView.OnNewDateEvent(testDateEvent, false);
+
+        this.messageView.OnReceivedMediaEvent(testDateEvent, false);
     }
 
     /// <summary>
