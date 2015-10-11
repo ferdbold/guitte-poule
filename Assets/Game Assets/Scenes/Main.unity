@@ -159,7 +159,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1001 &432164429
+--- !u!1001 &170616161
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -242,13 +242,13 @@ Prefab:
       propertyPath: drawZone
       value: 
       objectReference: {fileID: 831246158}
-    - target: {fileID: 22416378, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+    - target: {fileID: 22413538, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 22484466, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
+    - target: {fileID: 22470234, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ce59cffdfe9c70469e333db81cd4dcd, type: 2}
@@ -551,12 +551,12 @@ Prefab:
 RectTransform:
   m_PrefabParentObject: {fileID: 22489994, guid: 0ce59cffdfe9c70469e333db81cd4dcd,
     type: 2}
-  m_PrefabInternal: {fileID: 432164429}
+  m_PrefabInternal: {fileID: 170616161}
 --- !u!114 &1312946673 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11412770, guid: 0ce59cffdfe9c70469e333db81cd4dcd,
     type: 2}
-  m_PrefabInternal: {fileID: 432164429}
+  m_PrefabInternal: {fileID: 170616161}
   m_Script: {fileID: 11500000, guid: ab14428268afa7d4aaa465ea36061e92, type: 3}
 --- !u!1001 &1565548428
 Prefab:
@@ -753,3 +753,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &2121849867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2121849868}
+  m_Layer: 0
+  m_Name: StoryDrawZones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2121849868
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121849867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .654254496, y: .980657101, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6

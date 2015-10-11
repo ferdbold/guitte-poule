@@ -20,15 +20,33 @@ public class TiltShakeMotor : MonoBehaviour {
     private Vector3 previousTiltInputs = new Vector3(0, 0, 0);
     private Vector3 tiltInputs = new Vector3(0, 0, 0);
     private bool inAnim = false; //Is the cucumber in animation
+
+    [Header("Sky")]
+    public SkyScript skyScript;
     
     
 	// Use this for initialization
 	void Start () {
-        if(SaveAndLoad.savedGame.hasPlantedSeed) {
-            StartCoroutine(CucumberAnimation());
-            GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
-            GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
-            GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
+        InitializeCucumber();
+    }
+
+
+    void InitializeCucumber() {
+        if (SaveAndLoad.savedGame.hasPlantedSeed) {
+            if (isInTendresse) { //If Tendresse Mode
+                StartCoroutine(CucumberAnimation());
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HidePlayButton();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().TransitionToSky();
+                skyScript.StartHeight();
+
+            } else {
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().ShowPlayButton();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroButton();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
+                GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().TransitionToSky();
+            }
         } else {
             hingeMotor.connectedAnchor = new Vector2(0, startPosition);
             GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HidePlayButton();
@@ -36,6 +54,7 @@ public class TiltShakeMotor : MonoBehaviour {
             StartCoroutine(SpawnPlantSeedButtonOnDelay(7f));
         }
     }
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -47,12 +66,12 @@ public class TiltShakeMotor : MonoBehaviour {
             tiltInputs = Input.acceleration;
             Vector3 diff = tiltInputs - previousTiltInputs;
             
-            Debug.Log(diff);
+            //Debug.Log(diff);
 
             JointMotor2D motor = hingeMotor.motor;
           
             if (isInTendresse) {
-                motor.motorSpeed = (tiltInputs.x * motorForce * 2);
+                motor.motorSpeed = (diff.y * motorForce * 20);
             } else {
                 motor.motorSpeed = (tiltInputs.x * motorForce * 2);
             }
@@ -66,6 +85,8 @@ public class TiltShakeMotor : MonoBehaviour {
 
 
     public void PlantSeed() {
+        AudioManager.instance.SetLoop(true);
+        AudioManager.instance.PlayAudioClip("LaGraine");
         GameObject.FindGameObjectWithTag("MainMenuRef").GetComponent<MainMenuRefUI>().HideIntroText();
         StartCoroutine(PlantSeedAnimation());
     }
@@ -94,6 +115,8 @@ public class TiltShakeMotor : MonoBehaviour {
     IEnumerator CucumberAnimation() {
         inAnim = true;
         float dist = startPosition;
+        AudioManager.instance.PlayAudioClipOVERWRITE("CucumberGrow");
+        AudioManager.instance.SetLoop(false);
         for (float i = 0; i < 1f; i += Time.deltaTime/ animationTime) {
             dist = Mathf.Lerp(startPosition, targetPosition, animCurve.Evaluate(i));
             hingeMotor.connectedAnchor = new Vector2(0, dist);

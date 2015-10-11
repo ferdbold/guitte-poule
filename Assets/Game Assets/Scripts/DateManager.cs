@@ -276,7 +276,7 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="name"> Name of the partner's name </param>
     public void SendMessage_OnConfirm(string name) {
-        DateManager.instance.OnConfirmEntry();
+        //DateManager.instance.OnConfirmEntry();
         message messa = new message("dateReady");
         messa.addNetObject(new NetObject(""));
         messa.getNetObject(0).addString("", name);
