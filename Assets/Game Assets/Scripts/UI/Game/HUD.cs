@@ -15,7 +15,7 @@ public class HUD : MonoBehaviour {
     }
 
     public void Start() {
-        //this.PushTestDateEvents();
+        this.PushTestDateEvents();
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class HUD : MonoBehaviour {
 
         //this.messageView.OnNewDateEvent(testDateEvent, false);
 
-        this.messageView.OnReceivedMediaEvent(testDateEvent, false);
+        this.messageView.OnNewDateEvent(testDateEvent, true);
     }
 
     /// <summary>

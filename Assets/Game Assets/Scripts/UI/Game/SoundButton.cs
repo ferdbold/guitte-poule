@@ -17,6 +17,7 @@ public class SoundButton : MonoBehaviour {
     private Slider playbackSlider;
     [SerializeField]
     private CanvasGroup canvasGroup;
+    private ISoundView parentView;
     private Button button;
 
     [Header("Colors")]
@@ -34,8 +35,7 @@ public class SoundButton : MonoBehaviour {
     private Sprite playIcon;
     [SerializeField]
     private Sprite deleteIcon;
-
-
+    
     public void Awake() {
         this.button = GetComponent<Button>();
     }
@@ -46,13 +46,13 @@ public class SoundButton : MonoBehaviour {
     public void OnClick() {
         this.button.interactable = false;
         AudioManager.instance.startRecord();
+        this.parentView.OnSoundButtonClick();
         this.playbackSlider.DOValue(1, 3)
                            .SetEase(Ease.Linear)
                            .OnComplete(this.OnPlaybackComplete);
     }
 
     public void OnPlaybackComplete() {
-        DateManager.instance.SetCurrentEventSound(AudioManager.instance.MakeMessageFromClip());
         this.button.interactable = true;
         this.playbackSlider.value = 0;
     }
@@ -96,6 +96,12 @@ public class SoundButton : MonoBehaviour {
             } else {
                 this.canvasGroup.alpha = 0;
             }
+        }
+    }
+
+    public ISoundView ParentView {
+        set {
+            this.parentView = value;
         }
     }
 }
