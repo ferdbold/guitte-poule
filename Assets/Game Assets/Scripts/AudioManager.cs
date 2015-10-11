@@ -48,7 +48,9 @@ public class AudioManager : MonoBehaviour {
     /// </summary>
     void SetUpDictionnary() {
         for (int i = 0; i < audioClipArray.Length; i++) {
-            audioDictionnary.Add(audioClipArray[i].name, audioClipArray[i]);
+            if (audioClipArray[i] != null) {
+                audioDictionnary.Add(audioClipArray[i].name, audioClipArray[i]);
+            }
         }
     }
 
@@ -102,7 +104,7 @@ public class AudioManager : MonoBehaviour {
     /// Plays an audio clip
     /// </summary>
     /// <param name="audioClip"></param>
-    public void PlayAudioClip(AudioClip audioClip) {
+    public void PlayAudioClipOVERWRITE(AudioClip audioClip) {
         if (audioClip != null) {
             audioSource.clip = audioClip;
             audioSource.Play();

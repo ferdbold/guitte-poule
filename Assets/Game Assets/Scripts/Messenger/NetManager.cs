@@ -69,7 +69,7 @@ public class NetManager : MonoBehaviour
                 break;
 
             case "receiveSound":
-                GameManager.instance.PlaySoundFromMessage(mes);
+                AudioManager.instance.PlaySoundFromMessage(mes);
                 break;
             case "startDate":
                 DateManager.instance.OnStartNewDate(mes.getNetObject(0).getString(0),
