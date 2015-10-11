@@ -21,7 +21,7 @@ public class Messenger
         listener;
 
 
-    private string _ip = "54.191.16.98";
+    private string _ip = "54.69.175.11";
     public string ip { get { return this._ip; } set { this._ip = value; } }
 
     private int
