@@ -14,6 +14,10 @@ public class HUD : MonoBehaviour {
         this.AdaptToScreenSize();
     }
 
+    public void Start() {
+
+    }
+
     /// <summary>
     /// Adjusts the size of elements so it fits all phone screen sizes.
     /// </summary>
@@ -41,6 +45,7 @@ public class HUD : MonoBehaviour {
     /// Called when a new event is started
     /// </summary>
     public void Event_OnBeginEvent() {
+        this.storyView.OnNewDateEvent(DateManager.instance.GetCurrentEvent());
         this.messageView.OnNewDateEvent(DateManager.instance.GetCurrentEvent());
     }
 
