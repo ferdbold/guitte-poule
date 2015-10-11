@@ -53,8 +53,7 @@ public class StoryView : MonoBehaviour {
     /// <param name="dateEvent"></param>
     public void OnReceivedMediaEvent(DateEvent dateEvent) {
         if (dateEvent.mediaIsDrawing) {
- 
-            this.currentDateEventWidget
+            // TODO
         } else {
             this.currentDateEventWidget.SoundButtonEnabled = true;
         }

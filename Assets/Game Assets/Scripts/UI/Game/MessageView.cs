@@ -214,8 +214,13 @@ public class MessageView : MonoBehaviour, ISoundView {
     /// Handle send button click
     /// </summary>
     public void OnSend() {
-        DateManager.instance.SendMessage_OnConfirmHandle(this.answerInput.text);
+        StartCoroutine(this.SendCoroutine());
+    }
+
+    public IEnumerator SendCoroutine() {
         this.SlideDown();
+        yield return new WaitForSeconds(this.slideAnimDuration);
+        DateManager.instance.SendMessage_OnConfirmHandle(this.answerInput.text);
         this.answerInput.text = "";
     }
 
