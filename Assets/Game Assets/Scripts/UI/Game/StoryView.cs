@@ -19,13 +19,15 @@ public class StoryView : MonoBehaviour {
     private float dateEventWidgetMargin = 30;
     private float dateEventWidgetHeight;
 
+    private DateEventWidget currentDateEventWidget;
+
     public void Awake() {
         this.dateEventWidgetHeight = Screen.height / 2.0f;
     }
 
     public void OnBeginDate() {
         DateStructure date = DateManager.instance.GetCurrentDate();
-        titleText.text = "Date avec " + date.dateName;
+        titleText.text = "Soirée torride avec " + date.dateName;
     }
 
     /// <summary>
@@ -33,17 +35,16 @@ public class StoryView : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent">The new date event</param>
     public void OnNewDateEvent(DateEvent dateEvent) {
-        DateEventWidget newWidget = this.AddNewDateEventWidget(dateEvent);
-        newWidget.Question = dateEvent.question;
-        newWidget.Answer = "";
-
+        this.currentDateEventWidget = this.AddNewDateEventWidget();
+        this.currentDateEventWidget.Question = dateEvent.question;
+        this.currentDateEventWidget.Answer = "";
+        this.currentDateEventWidget.DateEvent = dateEvent;
+        this.currentDateEventWidget.SoundButtonEnabled = false;
+        // TODO : Disable drawing zone
     }
 
-    public void OnNewDateEventTextAwnser(DateEvent dateEvent)
-    {
-        DateEventWidget newWidget = this.AddNewDateEventWidget(dateEvent);
-        newWidget.Answer = dateEvent.answer;
-
+    public void OnNewDateEventTextAnswer(DateEvent dateEvent) {
+        this.currentDateEventWidget.Answer = dateEvent.answer;
     }
 
     /// <summary>
@@ -51,14 +52,17 @@ public class StoryView : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     public void OnReceivedMediaEvent(DateEvent dateEvent) {
-
+        if (dateEvent.mediaIsDrawing) {
+            // TODO : Display drawing
+        } else {
+            this.currentDateEventWidget.SoundButtonEnabled = true;
+        }
     }
 
     /// <summary>
     /// Add a new DateEventWidget to the story scroll rect
     /// </summary>
-    /// <param name="dateEvent">The new date event</param>
-    private DateEventWidget AddNewDateEventWidget(DateEvent dateEvent) {
+    private DateEventWidget AddNewDateEventWidget() {
         RectTransform wrapperRectTransform = this.dateEventWidgetWrapper.GetComponent<RectTransform>();
         Vector2 wrapperSize = wrapperRectTransform.sizeDelta;
         float newWidgetY = -(wrapperSize.y + this.dateEventWidgetMargin);

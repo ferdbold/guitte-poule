@@ -28,12 +28,12 @@ public class HUD : MonoBehaviour {
         testDateEvent.answer = "gros criss de tracteur trois vitesses de Canadian Tire";
         testDateEvent.mediaIsDrawing = false;
 
-        //this.storyView.OnNewDateEvent(testDateEvent);
+        this.storyView.OnNewDateEvent(testDateEvent);
         //this.storyView.OnNewDateEvent(testDateEvent);
 
         //this.messageView.OnNewDateEvent(testDateEvent, false);
 
-        this.messageView.OnNewDateEvent(testDateEvent, true);
+        //this.messageView.OnNewDateEvent(testDateEvent, true);
     }
 
     /// <summary>
@@ -59,8 +59,6 @@ public class HUD : MonoBehaviour {
         this.storyView.OnBeginDate();
     }
 
-  
-
     /// <summary>
     /// Called when a new event is started
     /// </summary>
@@ -77,7 +75,10 @@ public class HUD : MonoBehaviour {
         this.messageView.OnReceivedMediaEvent(DateManager.instance.GetCurrentEvent(), DateManager.instance.IAmFirst());
     }
 
+    /// <summary>
+    /// Called when your partner submitted a new answer
+    /// </summary>
     public void Event_OnReceivedText() {
-        this.storyView.OnNewDateEventTextAwnser(DateManager.instance.GetCurrentEvent());
+        this.storyView.OnNewDateEventTextAnswer(DateManager.instance.GetCurrentEvent());
     }
 }
