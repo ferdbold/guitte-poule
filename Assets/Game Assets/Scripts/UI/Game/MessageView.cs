@@ -71,9 +71,30 @@ public class MessageView : MonoBehaviour {
         this.questionText.text = dateEvent.question;
 
         if (first) {
-            this.titleText.text = this.youDrawTitleText;
+            if (dateEvent.mediaIsDrawing) {
+                this.titleText.text = this.youDrawTitleText;
+            } else {
+                this.titleText.text = this.youTalkTitleText;
+            }
         } else {
-            this.titleText.text = this.theyDrawTitleText;
+            if (dateEvent.mediaIsDrawing) {
+                this.titleText.text = this.theyDrawTitleText;
+            } else {
+                this.titleText.text = this.theyTalkTitleText;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handle new media received events
+    /// </summary>
+    /// <param name="dateEvent">The new date event</param>
+    /// <param name="first">Is this player the first to play</param>
+    public void OnReceivedMediaEvent(DateEvent dateEvent, bool first) {
+        if (first) {
+            this.titleText.text = this.theyWriteTitleText;
+        } else {
+            this.titleText.text = this.youWriteTitleText;
         }
     }
 

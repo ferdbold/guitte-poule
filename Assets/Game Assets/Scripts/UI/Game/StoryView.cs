@@ -40,6 +40,14 @@ public class StoryView : MonoBehaviour {
     }
 
     /// <summary>
+    /// Handle new media received events
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    public void OnReceivedMediaEvent(DateEvent dateEvent) {
+
+    }
+
+    /// <summary>
     /// Add a new DateEventWidget to the story scroll rect
     /// </summary>
     /// <param name="dateEvent">The new date event</param>
