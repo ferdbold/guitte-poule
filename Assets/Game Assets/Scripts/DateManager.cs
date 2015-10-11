@@ -167,7 +167,7 @@ public class DateManager : MonoBehaviour {
         _currentStepInDate = 0;
         if (IAmFirst()) Debug.Log("Drawing");
         else Debug.Log("Writing");
-        ExecuteDateEvent_DrawPhase(Date.DateEvents[_currentDateEvent]);
+        //ExecuteDateEvent_DrawPhase(Date.DateEvents[_currentDateEvent]);
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
 

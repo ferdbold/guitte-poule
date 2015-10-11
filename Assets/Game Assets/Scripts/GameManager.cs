@@ -128,7 +128,8 @@ public class GameManager : MonoBehaviour {
     /// <summary>
     /// Event when the player finds a partner online
     /// </summary>
-    public void Event_OnFindPartner(bool isFirst) {
+    public void Event_OnFindPartner(bool _isFirst) {
+        isFirst = _isFirst;
         SwitchScene(Scenes.Main);
     }
 
