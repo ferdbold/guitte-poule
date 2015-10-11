@@ -45,12 +45,14 @@ public class SoundButton : MonoBehaviour {
     /// </summary>
     public void OnClick() {
         this.button.interactable = false;
+        AudioManager.instance.startRecord();
         this.playbackSlider.DOValue(1, 3)
                            .SetEase(Ease.Linear)
                            .OnComplete(this.OnPlaybackComplete);
     }
 
     public void OnPlaybackComplete() {
+        DateManager.instance.SetCurrentEventSound(AudioManager.instance.MakeMessageFromClip());
         this.button.interactable = true;
         this.playbackSlider.value = 0;
     }
@@ -67,11 +69,13 @@ public class SoundButton : MonoBehaviour {
                     this.icon.sprite = this.recordIcon;
                     colors.normalColor = this.recordColor;
                     colors.highlightedColor = this.recordColor;
+                    
                     break;
                 case SoundButtonMode.PLAY:
                     this.icon.sprite = this.playIcon;
                     colors.normalColor = this.playColor;
                     colors.highlightedColor = this.playColor;
+                    
                     break;
                 case SoundButtonMode.DELETE:
                     this.icon.sprite = this.deleteIcon;

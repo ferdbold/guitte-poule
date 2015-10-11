@@ -217,8 +217,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .294255286, y: -14.3699999, z: 2.31084681}
+  m_LocalRotation: {x: 0, y: -.705006838, z: 0, w: .709200561}
+  m_LocalPosition: {x: 2.6908493, y: -14.3699999, z: 5.27830553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 466134}
@@ -602,10 +602,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141640}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -618,10 +618,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149080}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -634,10 +634,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168204}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -650,10 +650,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155162}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -666,10 +666,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146166}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -682,10 +682,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152422}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -698,10 +698,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175282}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -714,10 +714,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175118}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -730,10 +730,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109838}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: 0
-  m_AngularDrag: .5
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: .699999988
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hingeMotor: {fileID: 23342806}
-  motorForce: 30
+  motorForce: 10
   SeedFallingObject: {fileID: 101962, guid: aa411d49128ad1349b282a5ef1f3b8fd, type: 2}
   SeedGrowAnimation: {fileID: 138212, guid: b40e46349a807ea4181e06c38526f1b6, type: 2}
   animCurve:
@@ -771,7 +771,8 @@ MonoBehaviour:
     m_PostInfinity: 2
   targetPosition: -5
   startPosition: -14
-  animationTime: 3
+  animationTime: 4
+  isInTendresse: 0
 --- !u!233 &23301644
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -790,8 +791,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23323006
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -810,8 +811,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23326598
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -830,8 +831,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23342806
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -850,8 +851,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -2
-    m_UpperAngle: 2
+    m_LowerAngle: -5
+    m_UpperAngle: 5
 --- !u!233 &23351714
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -870,8 +871,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23360860
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -890,8 +891,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23363848
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -910,8 +911,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23375828
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -930,8 +931,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!233 &23379210
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -950,8 +951,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -1.5
-    m_UpperAngle: 1.5
+    m_LowerAngle: -1
+    m_UpperAngle: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
