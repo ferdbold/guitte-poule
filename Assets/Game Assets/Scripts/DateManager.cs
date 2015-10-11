@@ -200,7 +200,6 @@ public class DateManager : MonoBehaviour {
     /// </summary>
     /// <param name="dateEvent"></param>
     private void ExecuteDateEvent_DrawPhase(DateEvent dateEvent) {
-        HUD.Event_OnReceivedMedia();
         //mainPage.confirmButton.SetActive(IAmFirst());
     }
 
