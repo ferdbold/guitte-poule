@@ -17,6 +17,8 @@ public class MessageView : MonoBehaviour {
     [SerializeField]
     private Text questionText;
     [SerializeField]
+    private InputField answerInput;
+    [SerializeField]
     private TouchDraw drawZone;
 
     [Header("Animation")]
@@ -149,7 +151,7 @@ public class MessageView : MonoBehaviour {
     }
 
     public void OnSend() {
+        DateManager.instance.SendMessage_OnConfirm(this.answerInput.text);
         this.SlideDown();
-        DateManager.instance.OnConfirmEntry();
     }
 }

@@ -271,7 +271,7 @@ public class DateManager : MonoBehaviour {
     /// When sending media to server
     /// </summary>
     public void SendMessage_OnConfirmMedia() {
-        GameObject.Find("UI").GetComponent<HUD>().Event_OnPartnerFinishDrawing();
+        GameObject.Find("UI").GetComponent<HUD>().Event_OnReceivedMedia();
         GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
         GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
     }
