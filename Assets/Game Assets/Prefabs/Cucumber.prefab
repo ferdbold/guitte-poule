@@ -773,7 +773,7 @@ MonoBehaviour:
   targetPosition: -5
   startPosition: -14
   animationTime: 4
-  isInTendresse: 1
+  isInTendresse: 0
   tendresseTime: 5
   skyScript: {fileID: 0}
 --- !u!233 &23301644

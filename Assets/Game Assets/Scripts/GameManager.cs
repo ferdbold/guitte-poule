@@ -8,12 +8,10 @@ using Tendresse.Data;
 public class GameManager : MonoBehaviour {
 
     static public GameManager instance;
-<<<<<<< HEAD
+
     public bool isFirst; //TODO :The server chooses a first and second player in the date. THIS DOES NOT CHANGE DURING THE DATE !
     private bool finishedAGame = false;
-=======
-    public bool isFirst; 
->>>>>>> 8450e299246bff4e6474f9353a9964aa9b0b2cf8
+
 
     public AudioClip music_Intro;
 
