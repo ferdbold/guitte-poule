@@ -9,6 +9,8 @@ public class MessageView : MonoBehaviour {
     [SerializeField]
     private Button titlePanel;
     [SerializeField]
+    private Text titleText;
+    [SerializeField]
     private Button closeButton;
     [SerializeField]
     private Button sendButton;
@@ -21,6 +23,12 @@ public class MessageView : MonoBehaviour {
     [SerializeField]
     private float slideAnimDuration = 1.0f;
 
+    [Header("Text")]
+    [SerializeField]
+    private string firstTitleText = "C'est à vous de jouer!";
+    [SerializeField]
+    private string notFirstTitleText = "C'est à l'autre de jouer...";
+    
     private TweenParams slideAnimParams;
 
     private RectTransform rectTransform;
@@ -50,8 +58,15 @@ public class MessageView : MonoBehaviour {
     /// Handle new date events
     /// </summary>
     /// <param name="dateEvent">The new date event</param>
-    public void OnNewDateEvent(DateEvent dateEvent) {
+    /// <param name="first">If this player is first at drawing/speaking</param>
+    public void OnNewDateEvent(DateEvent dateEvent, bool first) {
         this.questionText.text = dateEvent.question;
+
+        if (first) {
+            this.titleText.text = this.firstTitleText;
+        } else {
+            this.titleText.text = this.notFirstTitleText;
+        }
     }
 
     /// <summary>
