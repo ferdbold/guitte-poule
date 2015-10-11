@@ -58,9 +58,7 @@ public class MessageView : MonoBehaviour {
     /// Shows the message view by sliding it up.
     /// </summary>
     private void SlideUp() {
-        this.rectTransform.DOAnchorPos(new Vector2(0, 0), this.slideAnimDuration)
-                          .SetAs(this.slideAnimParams);
-        DOTween.To(() => this.pivotY, x => this.pivotY = x, 0, this.slideAnimDuration)
+        DOTween.To(() => this.pivotY, x => this.pivotY = x, 0.1f, this.slideAnimDuration)
                .SetAs(this.slideAnimParams);
         this.drawZone.transform.DOMoveY(0, this.slideAnimDuration)
                                .SetAs(this.slideAnimParams);
@@ -73,9 +71,7 @@ public class MessageView : MonoBehaviour {
     /// Hides the message view by sliding it down.
     /// </summary>
     private void SlideDown() {
-        this.rectTransform.DOAnchorPos(new Vector2(0, this.titlePanelHeight), this.slideAnimDuration)
-                          .SetAs(this.slideAnimParams);
-        DOTween.To(() => this.pivotY, x => this.pivotY = x, 1, this.slideAnimDuration)
+        DOTween.To(() => this.pivotY, x => this.pivotY = x, 1.0f, this.slideAnimDuration)
                .SetAs(this.slideAnimParams);
         this.drawZone.transform.DOMoveY(this.drawZoneY, this.slideAnimDuration)
                                .SetAs(this.slideAnimParams);
