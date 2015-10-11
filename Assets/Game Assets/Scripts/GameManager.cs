@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case Scenes.Main:
                 Application.LoadLevel("Main");
+                DateManager.instance.SendMessage_OnConfirm("Roger Toupin");
                 message mes = new message("requestDateStart");
                 NetManager.instance.SendMessage(mes);
                 break;

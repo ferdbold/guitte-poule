@@ -148,7 +148,6 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewDate(string theme, string intro, int id, int relationLevel) {
         Date = new DateStructure(theme, intro, id, relationLevel);
         _currentDateEvent = -1;
-        SendMessage_OnConfirm("Roger Toupin");
         
     }
 
@@ -165,7 +164,6 @@ public class DateManager : MonoBehaviour {
     public void OnStartNewEvent(string eventText, bool mediaIsDrawing) {
         Date.DateEvents.Add(new DateEvent(eventText, mediaIsDrawing));
         _currentDateEvent++;
-
         GameObject.Find("UI").GetComponent<HUD>().Event_OnBeginEvent();
     }
 
@@ -214,6 +212,10 @@ public class DateManager : MonoBehaviour {
     public void ExecuteDateEvent_TextPhase() {
         HUD.Event_OnReceivedMedia();
         //mainPage.confirmButton.SetActive(!IAmFirst());
+    }
+
+    public void ExecuteDateEvent_OnReceiveText() {
+
     }
 
 
@@ -271,17 +273,28 @@ public class DateManager : MonoBehaviour {
         NetManager.instance.SendMessage(messa);
     }
 
+    public void SendMessage_OnConfirmHandle(string text) {
+        if (IAmFirst()) {
+            SendMessage_OnConfirmMedia();
+        }
+        else {
+            SendMessage_OnConfirmText(text);
+        }
+    }
+
     /// <summary>
     /// When sending media to server
     /// </summary>
     public void SendMessage_OnConfirmMedia() {
+        GameObject.Find("UI").GetComponent<HUD>().Event_OnReceivedMedia();
         if (GetCurrentEvent().mediaIsDrawing)
         {
-            GameObject.Find("UI").GetComponent<HUD>().Event_OnReceivedMedia();
             GetCurrentEvent().SetImage(mainTouchDraw.SaveCurrentData());
             GameManager.instance.Event_OnSendImage(GetCurrentEvent().image);
         }
-        
+        else {
+
+        }
     }
 
     /// <summary>

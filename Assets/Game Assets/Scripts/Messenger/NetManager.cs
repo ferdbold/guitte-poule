@@ -68,10 +68,10 @@ public class NetManager : MonoBehaviour
                 GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
                 break;
             case "receiveTexte":
-                GameManager.instance.Event_OnReceiveImage(MakeImageFromMessage(mes));
+                DateManager.instance.ExecuteDateEvent_OnReceiveText();
                 break;
 
-            case "receiveSound":
+            case "receiveSound": //TODO reconnect this
                 AudioManager.instance.PlaySoundFromMessage(mes);
                 break;
             

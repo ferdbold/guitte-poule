@@ -199,7 +199,7 @@ public class MessageView : MonoBehaviour {
     /// Handle send button click
     /// </summary>
     public void OnSend() {
-        DateManager.instance.SendMessage_OnConfirm(this.answerInput.text);
+        DateManager.instance.SendMessage_OnConfirmHandle(this.answerInput.text);
         this.SlideDown();
     }
 
