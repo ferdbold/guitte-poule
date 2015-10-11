@@ -603,7 +603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11425408, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
       propertyPath: motorForce
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb8722b30a9233b4c99973c79a55bbbb, type: 2}
