@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour {
         if (instance == null) {
             instance = this;
             SetUpDictionnary();
+            aud = Microphone.Start("", false, 3, 8996);
         }
     }
 
@@ -132,10 +133,9 @@ public class AudioManager : MonoBehaviour {
     public message MakeMessageFromClip() {
         message sound = new message("sendSound");
 
-        AudioSource speaker = GetComponent<AudioSource>();
-        speaker.clip = aud;
-        float[] samples = new float[speaker.clip.samples * speaker.clip.channels];
-        speaker.clip.GetData(samples, 0);
+        audioSource.clip = aud;
+        float[] samples = new float[audioSource.clip.samples * audioSource.clip.channels];
+        audioSource.clip.GetData(samples, 0);
         int cpt = 0;
         NetObject subSound = new NetObject("subSound");
         subSound.addInt("", samples.Length);
@@ -153,16 +153,21 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlaySoundFromMessage(message sound) {
-        AudioSource speaker = GetComponent<AudioSource>();
         float[] samples = new float[sound.getNetObject(0).getInt(0)];
+        Debug.Log("test 1");
         for (int i = 0; i < sound.getNetObjectCount(); i++) {
             NetObject subSound = sound.getNetObject(i);
+            Debug.Log("test 2");
             for (int j = 0; j < subSound.getFloatCount(); j++) {
                 samples[(i * 250) + j] = subSound.getFloat(j);
             }
         }
-        speaker.clip = aud;
-        speaker.clip.SetData(samples, 0);
-        speaker.Play();
+        Debug.Log("test 3");
+        audioSource.clip = aud;
+        Debug.Log("test 4");
+        audioSource.clip.SetData(samples, 0);
+        Debug.Log("test 5");
+        audioSource.Play();
+        Debug.Log("test 6");
     }
 }
