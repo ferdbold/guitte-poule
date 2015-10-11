@@ -19,6 +19,8 @@ public class DateEventWidget : MonoBehaviour, ISoundView {
 
     private Transform drawZoneContainer;
     private TouchDraw drawing;
+    private Tendresse.Data.TendresseData drawingData;
+    private bool drawDrawing = false;
     
     private Tendresse.Date.DateEvent dateEvent;
 
@@ -41,6 +43,21 @@ public class DateEventWidget : MonoBehaviour, ISoundView {
 
     public void Update() {
         this.drawing.transform.position = this.drawingPoint.TransformPoint(this.drawingPoint.rect.center);
+        
+        // Refresh drawing
+        if (this.drawDrawing) {
+            this.drawing.WipeDrawData();
+            this.drawing.LoadTendresseData(this.drawingData, this.drawing.transform.position, 1);
+        }
+    }
+
+    /// <summary>
+    /// Load a drawing into this widget's drawing zone
+    /// </summary>
+    /// <param name="drawing">The drawing data</param>
+    public void DisplayDrawing(Tendresse.Data.TendresseData drawing) {
+        this.drawingData = drawing;
+        this.drawDrawing = true;
     }
 
     public void OnSoundButtonClick() {

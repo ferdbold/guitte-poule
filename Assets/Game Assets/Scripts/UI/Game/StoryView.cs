@@ -40,11 +40,6 @@ public class StoryView : MonoBehaviour {
         this.currentDateEventWidget.Answer = "";
         this.currentDateEventWidget.DateEvent = dateEvent;
         this.currentDateEventWidget.SoundButtonEnabled = false;
-        // TODO : Disable drawing zone
-    }
-
-    public void OnNewDateEventTextAnswer(DateEvent dateEvent) {
-        this.currentDateEventWidget.Answer = dateEvent.answer;
     }
 
     /// <summary>
@@ -53,10 +48,18 @@ public class StoryView : MonoBehaviour {
     /// <param name="dateEvent"></param>
     public void OnReceivedMediaEvent(DateEvent dateEvent) {
         if (dateEvent.mediaIsDrawing) {
-            // TODO
+            this.currentDateEventWidget.DisplayDrawing(dateEvent.image);
         } else {
             this.currentDateEventWidget.SoundButtonEnabled = true;
         }
+    }
+
+    /// <summary>
+    /// Handle new answer received events
+    /// </summary>
+    /// <param name="dateEvent"></param>
+    public void OnNewDateEventTextAnswer(DateEvent dateEvent) {
+        this.currentDateEventWidget.Answer = dateEvent.answer;
     }
 
     /// <summary>
