@@ -6,6 +6,8 @@ public class HUD : MonoBehaviour {
 
     [Header("Components")]
     [SerializeField]
+    private IntroView introView;
+    [SerializeField]
     private StoryView storyView;
     [SerializeField]
     private MessageView messageView;
@@ -40,14 +42,18 @@ public class HUD : MonoBehaviour {
     /// Adjusts the size of elements so it fits all phone screen sizes.
     /// </summary>
     private void AdaptToScreenSize() {
-        RectTransform storyViewRectTransform = this.storyView.GetComponent<RectTransform>(),
+        RectTransform introViewRectTransform = this.introView.GetComponent<RectTransform>(),
+                      storyViewRectTransform = this.storyView.GetComponent<RectTransform>(),
                       messageViewRectTransform = this.messageView.GetComponent<RectTransform>();
-        Vector2 storyViewSize = storyViewRectTransform.sizeDelta,
+        Vector2 introViewSize = introViewRectTransform.sizeDelta,
+                storyViewSize = storyViewRectTransform.sizeDelta,
                 messageViewSize = messageViewRectTransform.sizeDelta;
 
+        introViewSize.y = Screen.height;
         storyViewSize.y = Screen.height;
         messageViewSize.y = Screen.height;
 
+        introViewRectTransform.sizeDelta = introViewSize;
         storyViewRectTransform.sizeDelta = storyViewSize;
         messageViewRectTransform.sizeDelta = messageViewSize;
     }
@@ -56,6 +62,7 @@ public class HUD : MonoBehaviour {
     /// Called the date begins
     /// </summary>
     public void Event_OnBeginDate() {
+        this.introView.OnBeginDate();
         this.storyView.OnBeginDate();
     }
 
